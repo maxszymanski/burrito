@@ -14,6 +14,8 @@ export default {
 			},
 			colors: {
 				mywhite: '#FFF2E1',
+				menuBtnRed: 'rgba(249,37,37,0.4)',
+				menuBtnYellow: 'rgba(159,156,48,0.4)',
 			},
 			backgroundImage: {
 				'menu-bg-sm': "url('./src/images/menu-bg-small.png')",
