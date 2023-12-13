@@ -5,9 +5,9 @@ import Nav from './Nav'
 
 function AppLayout() {
 	return (
-		<div className="min-h-screen w-full relative bg-menu-bg-sm">
+		<div className=" w-full relative bg-menu-bg-sm min-h-screen">
 			<Nav />
-			{/* <MainPage /> */}
+			<MainPage />
 			<MenuPage />
 			<Footer />
 		</div>
