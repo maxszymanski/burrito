@@ -15,17 +15,17 @@ const NavItem: React.FC<NavItemProps> = ({
     children,
 }) => {
     return (
-        <li className="text-mywhite p-2 flex flex-col gap-2.5 items-center small:gap-3 relative ">
+        <li className="text-mywhite  flex flex-col gap-2.5 items-center small:gap-3 relative ">
             <NavLink
                 to={linkTo}
                 className={({ isActive }) =>
-                    isActive ? 'text-yellow-500' : ''
+                    isActive ? 'text-yellow-500 py-2 px-3' : 'py-2 px-3'
                 }
             >
                 {icon}
                 <span className="text-xs">{iconText}</span>
+                {children}
             </NavLink>
-            {children}
         </li>
     )
 }
