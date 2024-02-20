@@ -1,4 +1,4 @@
-import BucketButton from '../../ui/BucketButton'
+import BucketButton from '../../ui/BasketButton'
 
 // const cardInfo = {
 // 	name: 'Burrito Chicken',
