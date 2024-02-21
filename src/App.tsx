@@ -10,6 +10,8 @@ import BasketPage from './pages/BasketPage'
 import Contact from './pages/Contact'
 import MenuPage from './pages/MenuPage'
 import PageNotFound from './pages/PageNotFound'
+import ForgotPassword from './pages/ForgotPassword'
+import Registration from './pages/Registration'
 
 const queryClient = new QueryClient()
 
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
     {
         path: '/login',
         element: <Login />,
+    },
+    {
+        path: '/forgotpassword',
+        element: <ForgotPassword />,
+    },
+    {
+        path: '/registration',
+        element: <Registration />,
     },
     {
         path: '*',
