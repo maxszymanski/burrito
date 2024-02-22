@@ -2,27 +2,26 @@ import { useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import Button from '../../ui/Button'
+import useLogin from './useLogin'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
-    const navigate = useNavigate()
+    const { login, isLoading } = useLogin()
     const { register, formState, handleSubmit, reset } = useForm()
     const { errors } = formState
 
-    const onSubmit = (user: object) => {
-        console.log(user)
-        reset()
-        navigate('/menu')
+    const onSubmit = (user) => {
+        login(user, { onSettled: reset() })
     }
     const handleShowPassword = () => {
         setIsShowPassword((show) => !show)
     }
 
     return (
-        <div className="bg-[rgba(216,222,203,0.2)] px-6 py-12 w-full text-mywhite relative rounded-lg">
+        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
             <img
                 src="./pin.png"
                 alt="żółta pinezka"
@@ -74,6 +73,7 @@ function LoginForm() {
                         className="absolute -top-0.5 p-2 right-1 text-lg  small:p-3.5 small:text-2xl  small:right-2 focus:outline-none focus:text-yellow-500 hover:text-yellow-500 transition-colors duration-300 text-mywhite"
                         onClick={handleShowPassword}
                         type="button"
+                        disabled={isLoading}
                     >
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>

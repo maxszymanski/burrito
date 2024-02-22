@@ -24,6 +24,7 @@ export default {
             backgroundImage: {
                 'menu-bg-sm': "url('./src/images/menu-bg-small.png')",
                 food: "url('./src/images/food-bg.png')",
+                foodSm: "url('./src/images/food-sm.png')",
             },
         },
     },

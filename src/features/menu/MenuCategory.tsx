@@ -20,7 +20,7 @@ function MenuCategory({ category = '' }) {
             </button>
             {currentCategory &&
                 currentCategory.map((item) => (
-                    <MenuCard cardInfo={item} isOpen={isOpen} />
+                    <MenuCard cardInfo={item} isOpen={isOpen} key={item.name} />
                 ))}
         </li>
     )

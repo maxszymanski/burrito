@@ -32,7 +32,7 @@ const router = createBrowserRouter([
                 element: <BasketPage />,
             },
             {
-                path: '/account/:accountId',
+                path: '/account',
                 element: <Account />,
             },
             {
@@ -67,7 +67,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </QueryClientProvider>
     )
 }

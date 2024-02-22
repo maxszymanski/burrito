@@ -5,24 +5,24 @@ import { IoMdEyeOff } from 'react-icons/io'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Button from '../../ui/Button'
+import { useSignUp } from './useSignin'
 
 function SigninForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { register, formState, handleSubmit, reset, getValues } = useForm()
     const { errors } = formState
+    const { signUp, isLoading } = useSignUp()
 
-    const onSubmit = (user: object) => {
-        console.log(user)
-        reset()
-        navigate('/login')
+    const onSubmit = (newUser) => {
+        signUp(newUser, { onSettled: reset() })
     }
     const handleShowPassword = () => {
         setIsShowPassword((show) => !show)
     }
 
     return (
-        <div className="bg-[rgba(17,20,11,0.9)] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
+        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
             <img
                 src="./pin.png"
                 alt="żółta pinezka"
@@ -50,6 +50,20 @@ function SigninForm() {
                     `}
                     />
                 </FormRow>
+                <FormRow error={errors?.userName?.message}>
+                    <input
+                        {...register('userName', {
+                            required: 'Proszę podać nazwę użytkownika',
+                        })}
+                        type="text"
+                        id="userName"
+                        placeholder="Nazwa użytkownika"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
                 <FormRow>
                     <input
                         {...register('password', {
@@ -71,15 +85,13 @@ function SigninForm() {
                     `}
                     />
                 </FormRow>
-                <FormRow error={errors?.password?.message}>
+                <FormRow error={errors?.passwordConfirm?.message}>
                     <input
-                        {...register('password', {
+                        {...register('passwordConfirm', {
                             required: 'Podane hasła nie są zgodne',
-                            minLength: {
-                                value: 8,
-                                message:
-                                    'Hasło nie może być krótsze niż 8 znaków',
-                            },
+                            validate: (value) =>
+                                value === getValues().password ||
+                                'Hasła nie są identyczne',
                         })}
                         type={isShowPassword ? 'text' : 'password'}
                         id="password"

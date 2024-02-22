@@ -4,9 +4,12 @@ import { FaRegCircleUser } from 'react-icons/fa6'
 import { GoHome } from 'react-icons/go'
 import { CiPhone } from 'react-icons/ci'
 import NavItem from './NavItem'
+import { useUser } from '../features/authentication/useUser'
 
 function NavMenu() {
-    const number = 2
+    const { isAuthenticated } = useUser()
+
+    const number = 0
     const isFixed = number >= 1
     return (
         <nav className="fixed left-0 bottom-0 w-full border-t-[1px] border-stone-700  ">
@@ -23,15 +26,16 @@ function NavMenu() {
                         </p>
                     )}
                 </NavItem>
+
                 <NavItem
                     icon={<FaRegCircleUser />}
                     iconText="Konto"
-                    linkTo="/login"
+                    linkTo={isAuthenticated ? '/account' : '/login'}
                 />
                 <NavItem
                     icon={<CiPhone />}
-                    iconText="Kontakt"
-                    linkTo="/contact"
+                    iconText="Zadzwoń"
+                    linkTo="tel:514000000"
                 />
             </ul>
         </nav>
