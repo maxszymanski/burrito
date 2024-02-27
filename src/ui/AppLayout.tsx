@@ -1,6 +1,4 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import Footer from './Footer'
-import Logo from './Logo'
 import NavMenu from './NavMenu'
 import { useEffect } from 'react'
 
@@ -11,9 +9,7 @@ function AppLayout() {
     }, [location.pathname])
     return (
         <div className=" w-full relative bg-menu-bg-sm min-h-screen">
-            <Logo />
             <Outlet />
-            <Footer />
             <NavMenu />
         </div>
     )

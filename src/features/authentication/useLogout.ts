@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { logout as logoutApi } from '../../services/apiAuth'
+import toast from 'react-hot-toast'
 
 function useLogout() {
     const navigate = useNavigate()
@@ -11,8 +12,8 @@ function useLogout() {
         onSuccess: () => {
             queryClient.removeQueries(), navigate('/', { replace: true })
         },
-        onError: (err) => {
-            console.log('ERROR', err)
+        onError: () => {
+            toast.error('Wystąpił błąd podczas wylogowywania')
         },
     })
     return { logout, isLogingout }

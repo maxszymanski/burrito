@@ -11,8 +11,11 @@ import BasketPage from './pages/BasketPage'
 import Contact from './pages/Contact'
 import MenuPage from './pages/MenuPage'
 import PageNotFound from './pages/PageNotFound'
-import ForgotPassword from './pages/ForgotPassword'
-import Registration from './pages/Registration'
+import ForgotPassword from './features/authentication/ForgotPassword'
+import LoginForm from './features/authentication/LoginForm'
+import SigninForm from './features/authentication/SigninForm'
+import UpdateProfile from './features/user/updateProfile'
+import UserProfile from './features/user/UserProfile'
 
 const queryClient = new QueryClient()
 
@@ -33,8 +36,8 @@ const router = createBrowserRouter([
                 element: <BasketPage />,
             },
             {
-                path: '/account',
-                element: <Account />,
+                path: '/updateProfile',
+                element: <UpdateProfile />,
             },
             {
                 path: '/order',
@@ -47,17 +50,32 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: '/login',
         element: <Login />,
+        children: [
+            {
+                path: '/login',
+                element: <LoginForm />,
+            },
+            {
+                path: '/forgotpassword',
+                element: <ForgotPassword />,
+            },
+            {
+                path: '/registration',
+                element: <SigninForm />,
+            },
+        ],
     },
     {
-        path: 'login/forgotpassword',
-        element: <ForgotPassword />,
+        element: <Account />,
+        children: [
+            {
+                path: '/account',
+                element: <UserProfile />,
+            },
+        ],
     },
-    {
-        path: '/registration',
-        element: <Registration />,
-    },
+
     {
         path: '*',
         element: <PageNotFound />,

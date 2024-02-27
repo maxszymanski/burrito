@@ -88,7 +88,7 @@ function LoginForm() {
                     zaloguj
                 </Button>
                 <NavLink
-                    to="login/forgotpassword"
+                    to="/forgotpassword"
                     className="font-scope text-xs small:text-base p-2 text-center block hover:text-yellow-500 transition-colors duration-300 text-yellow-400 my-6 "
                 >
                     Nie pamiętasz swojego hasła lub chcesz stworzyć nowe?

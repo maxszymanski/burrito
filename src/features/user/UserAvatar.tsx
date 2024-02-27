@@ -6,7 +6,7 @@ function UserAvatar() {
 
     return (
         <img
-            className="rounded-full  outline-2 outline-gray-100 object-cover w-28 block small:w-32 object-center"
+            className="rounded-full outline-2 outline-gray-100 object-cover w-28 block small:w-32 object-center"
             src="/default-user.jpg"
             alt={`avatar użytkownika ${userName}`}
         />

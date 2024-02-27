@@ -15,6 +15,7 @@ export default {
                 ],
                 frederick: 'Fredericka the Great, sans-serif',
                 scope: 'Scope One, sans-serif',
+                muli: 'Mulish, sans-serif',
             },
             colors: {
                 mywhite: '#FFF2E1',
