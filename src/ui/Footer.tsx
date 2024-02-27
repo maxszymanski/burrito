@@ -1,28 +1,29 @@
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa'
+import FooterLink from './FooterLink'
 function Footer() {
     return (
-        <footer className=" bg-[#9A1E02] w-full px-6 pt-8 pb-28  text-white space-y-7">
-            <div className="flex items-center justify-between text-xl text-mywhite">
-                <a href="/">
+        <footer className=" bg-[#9A1E02] w-full px-6 small:pt-8 pt-6 small:pb-28 pb-24 space-y-5 small:space-y-7 text-[rgb(249,255,213,0.7)] ">
+            <div className="flex items-center justify-between small:text-xl text-lg ">
+                <FooterLink to="/">
                     <img src="./logo.webp" alt="" className="mb-1" />
-                </a>
-                <a href="/">O nas</a>
-                <a href="/">Kontakt</a>
-                <a href="/">FAQ</a>
+                </FooterLink>
+                <FooterLink to="/">O nas</FooterLink>
+                <FooterLink to="/">Kontakt</FooterLink>
+                <FooterLink to="/">FAQ</FooterLink>
             </div>
-            <div className="flex items-center justify-evenly text-4xl text-[rgb(249,255,213,0.7)]">
-                <a href="https://www.facebook.pl">
+            <div className="flex items-center justify-evenly small:text-3xl text-2xl ">
+                <FooterLink to="https://www.facebook.pl">
                     <FaFacebook />
-                </a>
-                <a href="https://www.instagram.pl">
+                </FooterLink>
+                <FooterLink to="https://www.instagram.pl">
                     <FaInstagram />
-                </a>
-                <a href="https://www.youtube.pl">
+                </FooterLink>
+                <FooterLink to="https://www.youtube.pl">
                     <FaYoutube />
-                </a>
-                <a href="https://www.tiktok.pl">
+                </FooterLink>
+                <FooterLink to="https://www.tiktok.pl">
                     <FaTiktok />
-                </a>
+                </FooterLink>
             </div>
         </footer>
     )

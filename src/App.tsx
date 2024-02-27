@@ -1,7 +1,8 @@
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import AppLayout from './ui/AppLayout'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import Order from './pages/Order'
 import Login from './pages/Login'
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         element: <Login />,
     },
     {
-        path: '/forgotpassword',
+        path: 'login/forgotpassword',
         element: <ForgotPassword />,
     },
     {
@@ -67,7 +68,31 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />
-            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            <ReactQueryDevtools initialIsOpen={false} />
+            <Toaster
+                position="top-center"
+                gutter={12}
+                containerStyle={{ margin: '24px' }}
+                toastOptions={{
+                    success: {
+                        duration: 3000,
+                    },
+                    error: {
+                        duration: 5000,
+                        style: {
+                            backgroundColor: '#ef4444',
+                        },
+                    },
+                    style: {
+                        fontSize: '16px',
+                        maxWidth: '500px',
+                        padding: '16px 24px',
+                        backgroundColor: '#84cc16',
+                        color: '#fff',
+                        fontFamily: 'Scope One',
+                    },
+                }}
+            />
         </QueryClientProvider>
     )
 }

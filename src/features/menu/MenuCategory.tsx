@@ -12,7 +12,7 @@ function MenuCategory({ category = '' }) {
     return (
         <li>
             <button
-                className="rounded-2xl flex items-center justify-between bg-gradient-to-r from-menuBtnRed to-menuBtnYellow  w-full px-5 text-2xl tracking-wide py-2 "
+                className="rounded-2xl flex items-center justify-between bg-gradient-to-r from-menuBtnRed to-menuBtnYellow  w-full px-5 small:text-2xl text-lg tracking-wide py-2 "
                 onClick={() => setIsOpen((open) => !open)}
             >
                 <p>{category}</p>

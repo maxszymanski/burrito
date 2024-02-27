@@ -18,6 +18,16 @@ export async function getCurrentUser() {
     if (error) throw new Error(error.message)
     return data?.user
 }
+export async function logout() {
+    const { error } = await supabase.auth.signOut()
+    if (error) throw new Error(error.message)
+}
+export async function signOut(userId) {
+    console.log(userId)
+    const { data, error } = await supabase.auth.admin.deleteUser(userId)
+    if (error) throw new Error(error.message)
+    return data
+}
 export async function signUp({ email, password, userName }) {
     const { data, error } = await supabase.auth.signUp({
         email,

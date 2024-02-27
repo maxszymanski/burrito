@@ -43,6 +43,7 @@ function LoginForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
+                        defaultValue="test@test.pl"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
@@ -62,6 +63,7 @@ function LoginForm() {
                         type={isShowPassword ? 'text' : 'password'}
                         id="password"
                         placeholder="Hasło"
+                        defaultValue="Startowe1"
                         className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
                             errors?.password?.message
                                 ? 'focus:ring-red-400'
@@ -78,18 +80,22 @@ function LoginForm() {
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
                 </FormRow>
-                <Button onClick={() => {}} type="w-full mt-2">
+                <Button
+                    onClick={() => {}}
+                    disabled={isLoading}
+                    type="w-full mt-2"
+                >
                     zaloguj
                 </Button>
                 <NavLink
-                    to="/forgotpassword"
+                    to="login/forgotpassword"
                     className="font-scope text-xs small:text-base p-2 text-center block hover:text-yellow-500 transition-colors duration-300 text-yellow-400 my-6 "
                 >
                     Nie pamiętasz swojego hasła lub chcesz stworzyć nowe?
                 </NavLink>
                 <NavLink
                     to="/registration"
-                    className="w-full text-center block border-2 border-yellow-100 rounded-lg text-yellow-100   transition-colors duration-300 uppercase font-semibold text-sm small:text-xl pb-2 pt-3 tracking-widest font-scope  focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2 disabled:cursor-not-allowed bg-[rgba(138,139,136,0.4)]"
+                    className="w-full text-center block border-2 border-yellow-100 rounded-lg text-yellow-100   transition-colors duration-300 uppercase font-semibold text-sm small:text-xl pb-2 pt-3 tracking-widest font-scope  focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2 disabled:cursor-not-allowed bg-[rgba(138,139,136,0.4)] hover:bg-[rgba(138,139,136,0.8)]"
                 >
                     załóż konto
                 </NavLink>

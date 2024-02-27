@@ -15,13 +15,13 @@ const NavItem: React.FC<NavItemProps> = ({
     children,
 }) => {
     return (
-        <li className="text-mywhite relative ">
+        <li className="text-mywhite relative xl:hover:bg-[rgba(213,216,199,0.1)] duration-300 transition-colors ">
             <NavLink
                 to={linkTo}
                 className={({ isActive }) =>
                     isActive
-                        ? 'text-yellow-500 py-2 px-3 flex flex-col items-center gap-2.5 small:gap-3'
-                        : 'py-2 px-3 flex flex-col items-center gap-2.5 small:gap-3 '
+                        ? 'text-yellow-500 py-2 px-3 flex flex-col items-center gap-2.5 small:gap-3 text-2xl small:text-3xl'
+                        : 'py-2 px-3 flex flex-col items-center gap-2.5 small:gap-3 text-2xl small:text-3xl '
                 }
             >
                 {icon}

@@ -12,7 +12,7 @@ function Popular() {
     const tacoPork = menu?.find((item) => item.name === 'Taco Pork')
     return (
         <main className="">
-            <h2 className="text-mywhite text-3xl font-semibold p-6 tracking-widest">
+            <h2 className="text-mywhite small:text-3xl text-2xl font-semibold p-6 tracking-widest">
                 Popularne
             </h2>
             <SetCard

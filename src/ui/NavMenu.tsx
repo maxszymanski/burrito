@@ -29,7 +29,7 @@ function NavMenu() {
 
                 <NavItem
                     icon={<FaRegCircleUser />}
-                    iconText="Konto"
+                    iconText="Profil"
                     linkTo={isAuthenticated ? '/account' : '/login'}
                 />
                 <NavItem

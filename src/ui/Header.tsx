@@ -29,13 +29,13 @@ function Header() {
                         <img
                             src="./geo.png"
                             alt="obraz google play"
-                            className="mt-2 small:w-32 "
+                            className="mt-2 w-18 small:w-32 "
                         />
                     </a>
                     <img
                         src="./mockup.png"
                         alt="telefon z wyswietloną stroną"
-                        className="small:w-16 small:h-8"
+                        className="small:w-16 small:h-7"
                     />
                 </div>
             </div>
