@@ -32,6 +32,91 @@ function SigninForm() {
                 Rejestracja
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className=" ">
+                <FormRow error={errors?.userName?.message}>
+                    <input
+                        {...register('userName', {
+                            required: 'Proszę podać nazwę użytkownika',
+                        })}
+                        type="text"
+                        id="userName"
+                        placeholder="Imię"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
+                <FormRow error={errors?.street?.message}>
+                    <input
+                        {...register('street', {
+                            required: 'Proszę podać ulicę i numer domu',
+                        })}
+                        type="text"
+                        id="street"
+                        placeholder="Ulica i numer domu"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
+                <FormRow error={errors?.zipCode?.message}>
+                    <input
+                        {...register('zipCode', {
+                            required: 'Proszę podać kod pocztowy',
+                        })}
+                        type="text"
+                        id="zipCode"
+                        placeholder="Kod pocztowy"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
+                <FormRow error={errors?.city?.message}>
+                    <input
+                        {...register('city', {
+                            required: 'Proszę podać nazwę miejscowość',
+                        })}
+                        type="text"
+                        id="city"
+                        placeholder="Miejscowość"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
+                <FormRow error={errors?.phone?.message}>
+                    <input
+                        {...register('phone', {
+                            required: 'Proszę podać numer telefonu',
+                            minLength: {
+                                value: 9,
+                                message:
+                                    'Numer telefonu musi składać się z 9 cyfr',
+                            },
+                            maxLength: {
+                                value: 9,
+                                message:
+                                    'Numer telefonu musi składać się z 9 cyfr',
+                            },
+                            pattern: {
+                                value: /^\d+$/,
+                                message:
+                                    'Numer telefonu nie może zawierać liter ani znaków specjalnych',
+                            },
+                        })}
+                        type="phone"
+                        id="phone"
+                        placeholder="Numer telefonu"
+                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                        }
+                    `}
+                    />
+                </FormRow>
                 <FormRow error={errors?.email?.message}>
                     <input
                         {...register('email', {
@@ -44,20 +129,6 @@ function SigninForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
-                        }
-                    `}
-                    />
-                </FormRow>
-                <FormRow error={errors?.userName?.message}>
-                    <input
-                        {...register('userName', {
-                            required: 'Proszę podać nazwę użytkownika',
-                        })}
-                        type="text"
-                        id="userName"
-                        placeholder="Nazwa użytkownika"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
@@ -94,7 +165,7 @@ function SigninForm() {
                                 'Hasła nie są identyczne',
                         })}
                         type={isShowPassword ? 'text' : 'password'}
-                        id="password"
+                        id="passwordConfirm"
                         placeholder="Powtórz hasło"
                         className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
                             errors?.password?.message

@@ -28,14 +28,25 @@ export async function signOut(userId) {
     if (error) throw new Error(error.message)
     return data
 }
-export async function signUp({ email, password, userName }) {
+export async function signUp({
+    email,
+    password,
+    userName,
+    street,
+    zipCode,
+    city,
+    phone,
+}) {
     const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-            // ab przekazać jakieś dane o user dodajemy go do nowego options
             data: {
                 userName,
+                street,
+                zipCode,
+                city,
+                phone,
             },
         },
     })

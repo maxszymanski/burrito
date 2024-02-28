@@ -5,7 +5,7 @@ function Logout() {
     const { logout, isLogingOut } = useLogout()
 
     return (
-        <Button type="" onClick={logout} disabled={isLogingOut}>
+        <Button type="px-4" onClick={logout} disabled={isLogingOut}>
             Wyloguj
         </Button>
     )

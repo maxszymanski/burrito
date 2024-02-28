@@ -5,10 +5,25 @@ import { useNavigate } from 'react-router-dom'
 export function useSignUp() {
     const navigate = useNavigate()
     const { mutate: signUp, isLoading } = useMutation({
-        mutationFn: ({ email, password, userName }) =>
-            signUpApi({ email, password, userName }),
+        mutationFn: ({
+            email,
+            password,
+            userName,
+            street,
+            zipCode,
+            city,
+            phone,
+        }) =>
+            signUpApi({
+                email,
+                password,
+                userName,
+                street,
+                zipCode,
+                city,
+                phone,
+            }),
         onSuccess: (user) => {
-            console.log(user)
             navigate('/login')
         },
         onError: (err) => {

@@ -1,49 +1,94 @@
-import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 import Logout from '../authentication/Logout'
 import { useUser } from '../authentication/useUser'
-import UserAvatar from './UserAvatar'
+import UserHeader from './UserHeader'
+import UserInfo from './UserInfo'
+import UserMain from './UserMain'
 import UserName from './UserName'
 
 function UserProfile() {
+    const [showDetails, setShowDetails] = useState(false)
     const { user } = useUser()
+
+    // const userData = {
+    //     userName: 'Max',
+    //     email: 'maksymilianszymanski2@gmail.com',
+    //     street: 'kolejowa 49',
+    //     city: 'Łączany',
+    //     zipCode: '34-115',
+    //     phone: '888148045',
+    //     orders: '30',
+    //     rank: 'Złota',
+    //     favorite: 'Burrito Beef, Taco Pork',
+    // }
     const userData = {
-        userName: 'Max',
-        email: 'maksymilianszymanski2@gmail.com',
-        street: 'kolejowa 49',
-        city: 'Łączany',
-        zipCode: '34-115',
-        phone: '888148045',
-        points: '30',
-        level: 'gold',
+        userName: 'Aga',
+        email: 'agadek1@interia.pl',
+        street: 'szkolna 1',
+        city: 'Wielmoża',
+        zipCode: '32-111',
+        phone: '514711906',
+        orders: 5,
         favorite: 'Burrito Beef, Taco Pork',
     }
-    const {
-        userName,
-        email,
-        street,
-        city,
-        zipCode,
-        phone,
-        points,
-        level,
-        favorite,
-    } = userData
+    const { userName, email, street, city, zipCode, phone, orders, favorite } =
+        userData
 
     return (
-        <div className="text-center ">
-            <div className="flex flex-col items-center  bg-yellow-500 py-10 px-8 rounded-b-3xl">
-                <UserAvatar />
-                <UserName
-                    userName={user?.user_metadata?.userName || 'Max'}
-                    email={email}
-                />
-            </div>
-            <div className="text-left">
-                <h3 className="text-yellow-500">Szczegóły</h3>
-                <p>kolejowa 41</p>
-                <p>34-115 Łączany</p>
-                <p>+48888148045</p>
-            </div>
+        <div className="text-center bg-[#2c2c2b] min-h-screen text-mywhite small:text-lg pb-24 small:pb-32">
+            <UserHeader />
+            <UserMain>
+                <UserInfo>
+                    <h3 className="font-bold text-yellow-500 ">Telefon</h3>
+                    <p>+48{phone}</p>
+                </UserInfo>
+                <UserInfo>
+                    <h3 className="font-bold text-yellow-500 ">Email</h3>
+                    <p>{email}</p>
+                </UserInfo>
+                <UserInfo>
+                    <h3 className="font-bold text-yellow-500 ">Adres</h3>
+                    <p>
+                        {street}, {zipCode} {city}
+                    </p>
+                </UserInfo>
+                <UserInfo>
+                    <div className="flex justify-between items-center relative">
+                        <h3
+                            className="font-bold text-yellow-500 "
+                            onMouseEnter={() => setShowDetails((open) => !open)}
+                            onMouseLeave={() => setShowDetails((open) => !open)}
+                        >
+                            Ranga
+                            <span className="ml-1">*</span>
+                        </h3>
+                        <div
+                            className={`absolute top-6 bg-[rgb(12,12,12,0.9)] p-3 small:p-4 rounded-xl text-xs space-y-1 small:space-y-2 small:text-sm ${
+                                showDetails ? 'block' : 'hidden'
+                            }`}
+                        >
+                            <p>
+                                <span className="text-yellow-500">Brązowa</span>{' '}
+                                (0-10 zamówień) : darmowa dostawa
+                            </p>
+                            <p>
+                                <span className="text-yellow-500">Srebrna</span>{' '}
+                                (11-30 zamówień) : -10% na każde zamówienie +
+                                darmowa dostawa
+                            </p>
+                            <p>
+                                <span className="text-yellow-500">Złota</span>{' '}
+                                (+30 zamówień) : poprzednie rangi + priorytetowa
+                                obsługa
+                            </p>
+                        </div>
+                        <p>{orders} zamówień</p>
+                    </div>
+                    {orders <= 10 && <p>Brązowa</p>}
+                    {orders <= 30 && orders > 10 && <p>Srebrna</p>}
+                    {orders > 30 && <p>Złota</p>}
+                </UserInfo>
+            </UserMain>
 
             <Logout />
         </div>

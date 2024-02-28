@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom'
+import { useUser } from '../authentication/useUser'
 
-function UserName({ userName = '', email = '' }) {
+function UserName() {
+    const { user } = useUser()
     return (
-        <div className="text-sm text-mywhite ">
+        <div className="text-sm small:mb-3">
             <p
-                className="mt-6 font-bold  text-lg small:text-2xl 
+                className=" my-1 small:my-2 font-bold text-lg small:text-2xl 
                 "
             >
-                {userName}
+                {user?.user_metadata.userName || 'Max'}
             </p>
-            <p className="my-1">{email}</p>
-            <NavLink className="text-gray-950 p-2" to="/updateProfile">
+            <NavLink className="text-yellow-500 p-3  " to="/updateProfile">
                 Edytuj profil
             </NavLink>
         </div>
