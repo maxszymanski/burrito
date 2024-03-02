@@ -13,6 +13,7 @@ export function useSignUp() {
             zipCode,
             city,
             phone,
+            orders,
         }) =>
             signUpApi({
                 email,
@@ -22,6 +23,7 @@ export function useSignUp() {
                 zipCode,
                 city,
                 phone,
+                orders,
             }),
         onSuccess: (user) => {
             navigate('/login')

@@ -36,6 +36,7 @@ export async function signUp({
     zipCode,
     city,
     phone,
+    orders,
 }) {
     const { data, error } = await supabase.auth.signUp({
         email,
@@ -47,9 +48,40 @@ export async function signUp({
                 zipCode,
                 city,
                 phone,
+                orders,
             },
         },
     })
     if (error) throw new Error(error.message)
     return data
+}
+export async function updateUser({ userName, street, zipCode, city, phone }) {
+    // 1 Update password OR fullNAme,
+    let updateData
+
+    if (userName || street || zipCode || city || phone)
+        updateData = { data: { userName, street, zipCode, city, phone } }
+
+    const { data, error } = await supabase.auth.updateUser(updateData)
+
+    if (error) throw new Error(error.message)
+    // if (!avatar) return data
+
+    // // 2 Upload the avatar
+    // const fileName = `avatar-${data.user.id}-${Math.random()}`
+
+    // const { error: storageError } = await supabase.storage
+    //     .from('avatars')
+    //     .upload(fileName, avatar)
+
+    // if (storageError) throw new Error(storageError.message)
+
+    // // 3 Update avatar in user
+    // const { error: error2, data: updatedAvatar } =
+    //     await supabase.auth.updateUser({
+    //         data: {
+    //             avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
+    //         },
+    //     })
+    return updateUser
 }

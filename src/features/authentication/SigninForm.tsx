@@ -39,9 +39,12 @@ function SigninForm() {
                         })}
                         type="text"
                         id="userName"
+                        disabled={isLoading}
                         placeholder="Imię"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                            errors?.userName?.message
+                                ? 'focus:ring-red-400'
+                                : ''
                         }
                     `}
                     />
@@ -53,9 +56,10 @@ function SigninForm() {
                         })}
                         type="text"
                         id="street"
+                        disabled={isLoading}
                         placeholder="Ulica i numer domu"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                            errors?.street?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
                     />
@@ -66,10 +70,11 @@ function SigninForm() {
                             required: 'Proszę podać kod pocztowy',
                         })}
                         type="text"
+                        disabled={isLoading}
                         id="zipCode"
                         placeholder="Kod pocztowy"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                            errors?.zipCode?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
                     />
@@ -81,9 +86,10 @@ function SigninForm() {
                         })}
                         type="text"
                         id="city"
+                        disabled={isLoading}
                         placeholder="Miejscowość"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                            errors?.city?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
                     />
@@ -110,9 +116,10 @@ function SigninForm() {
                         })}
                         type="phone"
                         id="phone"
+                        disabled={isLoading}
                         placeholder="Numer telefonu"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                            errors?.email?.message ? 'focus:ring-red-400' : ''
+                            errors?.phone?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
                     />
@@ -129,6 +136,7 @@ function SigninForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
+                        disabled={isLoading}
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
@@ -147,6 +155,7 @@ function SigninForm() {
                         })}
                         type={isShowPassword ? 'text' : 'password'}
                         id="password"
+                        disabled={isLoading}
                         placeholder="Hasło (min. 8 znaków)"
                         className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
                             errors?.password?.message
@@ -167,8 +176,9 @@ function SigninForm() {
                         type={isShowPassword ? 'text' : 'password'}
                         id="passwordConfirm"
                         placeholder="Powtórz hasło"
+                        disabled={isLoading}
                         className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
-                            errors?.password?.message
+                            errors?.passwordConfirm?.message
                                 ? 'focus:ring-red-400'
                                 : ''
                         }
@@ -178,11 +188,23 @@ function SigninForm() {
                         className="absolute -top-0.5 p-2 right-1 text-lg  small:p-3.5 small:text-2xl  small:right-2 focus:outline-none focus:text-yellow-500 hover:text-yellow-500 transition-colors duration-300 text-mywhite"
                         onClick={handleShowPassword}
                         type="button"
+                        disabled={isLoading}
                     >
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
                 </FormRow>
-                <Button onClick={() => {}} type="w-full mt-2">
+                <input
+                    {...register('orders')}
+                    type="number"
+                    id="orders"
+                    className="hidden"
+                    value={0}
+                />
+                <Button
+                    onClick={() => {}}
+                    type="w-full mt-2"
+                    disabled={isLoading}
+                >
                     Zarejestruj się
                 </Button>
                 <p className="font-scope text-xs small:text-base p-2 text-center text-mywhite transition-colors duration-300 my-6 ">
@@ -190,6 +212,7 @@ function SigninForm() {
                 </p>
                 <NavLink
                     to="/login"
+                    aria-disabled={isLoading}
                     className="w-full text-center block border-2 border-yellow-100 rounded-lg text-yellow-100   transition-colors duration-300 uppercase font-semibold text-sm small:text-xl pb-2 pt-3 tracking-widest font-scope  focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2 disabled:cursor-not-allowed bg-[rgba(138,139,136,0.4)] hover:bg-[rgba(138,139,136,0.7)] "
                 >
                     Zaloguj się

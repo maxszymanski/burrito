@@ -14,7 +14,7 @@ import PageNotFound from './pages/PageNotFound'
 import ForgotPassword from './features/authentication/ForgotPassword'
 import LoginForm from './features/authentication/LoginForm'
 import SigninForm from './features/authentication/SigninForm'
-import UpdateProfile from './features/user/updateProfile'
+import UpdateProfile from './features/user/UpdateProfile'
 import UserProfile from './features/user/UserProfile'
 
 const queryClient = new QueryClient()
@@ -34,10 +34,6 @@ const router = createBrowserRouter([
             {
                 path: '/basket',
                 element: <BasketPage />,
-            },
-            {
-                path: '/updateProfile',
-                element: <UpdateProfile />,
             },
             {
                 path: '/order',
@@ -72,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: '/account',
                 element: <UserProfile />,
+            },
+            {
+                path: '/updateProfile',
+                element: <UpdateProfile />,
             },
         ],
     },

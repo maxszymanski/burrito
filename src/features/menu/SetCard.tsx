@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import AddRemoveBtn from '../../ui/AddRemoveBtn'
 import BasketButton from '../../ui/BasketButton'
 
@@ -7,7 +8,26 @@ function SetCard({
     itemOne = { name: '', price: 0 },
     itemTwo = { name: '', price: 0 },
 }) {
-    const price = itemOne?.price + itemTwo?.price || 0
+    const [quantity, setQuantity] = useState(1)
+
+    const handleOddOrder = () => {
+        if (quantity <= 1) return
+        setQuantity((num) => num - 1)
+    }
+    const handleAddOrder = () => {
+        setQuantity((num) => num + 1)
+    }
+    const totalPrice = itemOne?.price + itemTwo?.price || 0
+
+    const handleCreateOrder = () => {
+        const newCard = {
+            title,
+            totalPrice,
+            quantity,
+        }
+        console.log(newCard)
+    }
+
     return (
         <div
             className={` flex items-center justify-between px-6 py-10 w-full text-mywhite
@@ -20,10 +40,14 @@ function SetCard({
                 <p className="text-base small:text-lg">{itemOne?.name}</p>
                 <p className="text-base small:text-lg">+</p>
                 <p className="text-base small:text-lg">{itemTwo?.name}</p>
-                <p className="text-base small:text-lg">{price} zł</p>
+                <p className="text-base small:text-lg">{totalPrice} zł</p>
                 <div className="flex items-center justify-between gap-4 pt-4 sm:w-48 ">
-                    <AddRemoveBtn />
-                    <BasketButton />
+                    <AddRemoveBtn
+                        handleAddOrder={handleAddOrder}
+                        quantity={quantity}
+                        handleOddOrder={handleOddOrder}
+                    />
+                    <BasketButton onClick={handleCreateOrder} />
                 </div>
             </div>
             <img

@@ -17,7 +17,7 @@ function useLogin() {
         },
         onError: (err) => {
             console.log('Error', err)
-            toast.error('Podany email lub hasło jest niepopoprawne')
+            toast.error('Podany email lub hasło jest niepoprawne')
         },
     })
     return { login, isLoading }

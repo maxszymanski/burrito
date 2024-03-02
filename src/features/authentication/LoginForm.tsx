@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import Button from '../../ui/Button'
 import useLogin from './useLogin'
+import Loader from '../../ui/Loader'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -19,6 +20,8 @@ function LoginForm() {
     const handleShowPassword = () => {
         setIsShowPassword((show) => !show)
     }
+
+    if (isLoading) return <Loader />
 
     return (
         <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
@@ -43,7 +46,7 @@ function LoginForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
-                        defaultValue="test@test.pl"
+                        defaultValue="maksymilianszymanski2@gmail.com"
                         className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }

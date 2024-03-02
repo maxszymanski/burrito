@@ -4,35 +4,16 @@ import { useUser } from '../authentication/useUser'
 import UserHeader from './UserHeader'
 import UserInfo from './UserInfo'
 import UserMain from './UserMain'
-import UserName from './UserName'
+import RankDetails from '../../ui/RankDetails'
+import Loader from '../../ui/Loader'
 
 function UserProfile() {
     const [showDetails, setShowDetails] = useState(false)
-    const { user } = useUser()
+    const { user, isLoading: isLoadingUser } = useUser()
+    const { city, phone, street, userName, zipCode, orders } =
+        user?.user_metadata || ''
 
-    // const userData = {
-    //     userName: 'Max',
-    //     email: 'maksymilianszymanski2@gmail.com',
-    //     street: 'kolejowa 49',
-    //     city: 'Łączany',
-    //     zipCode: '34-115',
-    //     phone: '888148045',
-    //     orders: '30',
-    //     rank: 'Złota',
-    //     favorite: 'Burrito Beef, Taco Pork',
-    // }
-    const userData = {
-        userName: 'Aga',
-        email: 'agadek1@interia.pl',
-        street: 'szkolna 1',
-        city: 'Wielmoża',
-        zipCode: '32-111',
-        phone: '514711906',
-        orders: 5,
-        favorite: 'Burrito Beef, Taco Pork',
-    }
-    const { userName, email, street, city, zipCode, phone, orders, favorite } =
-        userData
+    if (isLoadingUser) return <Loader />
 
     return (
         <div className="text-center bg-[#2c2c2b] min-h-screen text-mywhite small:text-lg pb-24 small:pb-32">
@@ -44,7 +25,7 @@ function UserProfile() {
                 </UserInfo>
                 <UserInfo>
                     <h3 className="font-bold text-yellow-500 ">Email</h3>
-                    <p>{email}</p>
+                    <p>{user?.email}</p>
                 </UserInfo>
                 <UserInfo>
                     <h3 className="font-bold text-yellow-500 ">Adres</h3>
@@ -62,29 +43,11 @@ function UserProfile() {
                             Ranga
                             <span className="ml-1">*</span>
                         </h3>
-                        <div
-                            className={`absolute top-6 bg-[rgb(12,12,12,0.9)] p-3 small:p-4 rounded-xl text-xs space-y-1 small:space-y-2 small:text-sm ${
-                                showDetails ? 'block' : 'hidden'
-                            }`}
-                        >
-                            <p>
-                                <span className="text-yellow-500">Brązowa</span>{' '}
-                                (0-10 zamówień) : darmowa dostawa
-                            </p>
-                            <p>
-                                <span className="text-yellow-500">Srebrna</span>{' '}
-                                (11-30 zamówień) : -10% na każde zamówienie +
-                                darmowa dostawa
-                            </p>
-                            <p>
-                                <span className="text-yellow-500">Złota</span>{' '}
-                                (+30 zamówień) : poprzednie rangi + priorytetowa
-                                obsługa
-                            </p>
-                        </div>
-                        <p>{orders} zamówień</p>
+                        <p>{orders || 0} zamówień</p>
+                        <RankDetails showDetails={showDetails} />
                     </div>
-                    {orders <= 10 && <p>Brązowa</p>}
+
+                    {(!orders || orders <= 10) && <p>Brązowa</p>}
                     {orders <= 30 && orders > 10 && <p>Srebrna</p>}
                     {orders > 30 && <p>Złota</p>}
                 </UserInfo>

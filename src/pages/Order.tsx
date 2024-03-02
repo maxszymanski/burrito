@@ -1,5 +1,5 @@
 function Order() {
-    return <div>zamówienie</div>
+    return <div className="text-mywhite">zamówienie</div>
 }
 
 export default Order
