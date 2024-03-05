@@ -7,8 +7,15 @@ export function useUpdateUser() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
     const { mutate: updateUser, isLoading: isUpdating } = useMutation({
-        mutationFn: ({ userName, street, zipCode, city, phone }) =>
-            updateCurrentUser({ userName, street, zipCode, city, phone }),
+        mutationFn: ({ userName, street, zipCode, city, phone, avatar }) =>
+            updateCurrentUser({
+                userName,
+                street,
+                zipCode,
+                city,
+                phone,
+                avatar,
+            }),
         onSuccess: () => {
             toast.success('Profil został zaaktualizowany')
             queryClient.invalidateQueries({

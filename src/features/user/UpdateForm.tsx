@@ -21,6 +21,19 @@ function UpdateForm() {
 
     return (
         <form onSubmit={handleSubmit(onUpdate)}>
+            <UpdateUserFormRow error={errors?.avatar?.message} label="Avatar">
+                <input
+                    {...register('avatar')}
+                    type="file"
+                    id="avatar"
+                    accept="image/*"
+                    placeholder="Numer telefonu"
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color   bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 cursor-pointer ${
+                        errors?.phone?.message ? 'focus:border-red-500' : ''
+                    }
+                    `}
+                />
+            </UpdateUserFormRow>
             <UpdateUserFormRow error={errors?.userName?.message} label="Imię">
                 <input
                     {...register('userName')}
@@ -109,6 +122,7 @@ function UpdateForm() {
                     `}
                 />
             </UpdateUserFormRow>
+
             <Button onClick={() => {}} type=" mt-2 px-6 " disabled={isUpdating}>
                 Zapisz
             </Button>
