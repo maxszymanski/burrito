@@ -1,6 +1,6 @@
 import supabase, { supabaseUrl } from './supabase'
 
-export async function Login({ email, password }) {
+export async function login({ email, password }) {
     const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -23,7 +23,6 @@ export async function logout() {
     if (error) throw new Error(error.message)
 }
 export async function signOut(userId) {
-    console.log(userId)
     const { data, error } = await supabase.auth.admin.deleteUser(userId)
     if (error) throw new Error(error.message)
     return data
@@ -55,6 +54,12 @@ export async function signUp({
     if (error) throw new Error(error.message)
     return data
 }
+export async function passwordRecovery(email) {
+    console.log(email)
+    const { error } = await supabase.auth.resetPasswordForEmail(email)
+    if (error) throw new Error(error.message)
+}
+
 export async function updateUser({
     userName = 'Anonim',
     street = 'brak ulicy',
