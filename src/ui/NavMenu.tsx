@@ -25,7 +25,7 @@ function NavMenu() {
                     linkTo="/basket"
                 >
                     {isFixed && (
-                        <p className="absolute small:top-6 top-5 small:right-2 right-3 small:w-5 small:h-5 h-4 w-4 bg-gradient-to-r from-[#F92525] to-[#9F9C30] text-mywhite rounded-full text-center font-scope  flex items-center justify-center">
+                        <p className="absolute small:top-6 top-5 small:right-2 right-3 small:w-5 small:h-5 h-4 w-4 bg-gradient-to-r from-[#F92525] to-[#9F9C30] text-mywhite rounded-full text-center font-scope flex items-center justify-center">
                             <span className="text-xs mt-0.5">{number}</span>
                         </p>
                     )}
