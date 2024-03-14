@@ -23,6 +23,7 @@ function SetCard({
 
     const handleCreateOrder = () => {
         const newCard = {
+            itemId: id,
             title,
             totalPrice,
             quantity,

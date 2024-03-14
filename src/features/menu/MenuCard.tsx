@@ -1,18 +1,26 @@
+import { useDispatch } from 'react-redux'
 import BucketButton from '../../ui/BasketButton'
-
-// const cardInfo = {
-// 	name: 'Burrito Chicken',
-// 	ingredients: 'tortilla, kurczak, warzywa, sos',
-// 	price: 28,
-// 	image: 'https://yzldumjsikdcvhvippif.supabase.co/storage/v1/object/sign/menu/b-vege.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZW51L2ItdmVnZS53ZWJwIiwiaWF0IjoxNzAxNDUxOTI2LCJleHAiOjE3MzI5ODc5MjZ9.MPGgXKYBkXd4DUglmLPxHJhIpA7W4b7lPiDenCBjhEQ&t=2023-12-01T17%3A32%3A06.448Z',
-// }
+import { addItem } from '../cart/cartSlice'
 
 function MenuCard({
-    cardInfo = { name: '', ingredients: '', price: 0, image: '' },
+    cardInfo = { name: '', ingredients: '', price: 0, image: '', id: '' },
     isOpen = false,
 }) {
-    const { name, ingredients, price, image } = cardInfo
+    const dispatch = useDispatch()
+    const { name, ingredients, price, image, id } = cardInfo
     if (!cardInfo) return <p>Loading...</p>
+
+    function handleAddToCart() {
+        const newItem = {
+            itemId: id,
+            name,
+            quantity: 1,
+            price,
+            totalPrice: price * 1,
+        }
+        dispatch(addItem(newItem))
+    }
+
     if (isOpen)
         return (
             <div className="flex items-center justify-between py-4 gap-3 px-4 my-4 rounded-2xl bg-[rgba(216,222,203,0.2)] min-h-[170px]">
@@ -32,7 +40,7 @@ function MenuCard({
                         {price} zł
                     </p>
                 </div>
-                <BucketButton />
+                <BucketButton onClick={handleAddToCart} />
             </div>
         )
 }
