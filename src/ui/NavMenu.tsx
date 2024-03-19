@@ -5,12 +5,14 @@ import { CiPhone } from 'react-icons/ci'
 import { TbShoppingBag } from 'react-icons/tb'
 import NavItem from './NavItem'
 import { useUser } from '../features/authentication/useUser'
+import { useSelector } from 'react-redux'
+import { getCart } from '../features/cart/cartSlice'
 
 function NavMenu() {
     const { isAuthenticated } = useUser()
-
-    const number = 2
-    const isFixed = number >= 1
+    const cart = useSelector(getCart)
+    const cartQuantity = cart.length || 0
+    const isFixed = cartQuantity >= 1
     return (
         <nav className="fixed left-0 bottom-0 w-full border-t-[1px] border-stone-700 ">
             <ul
@@ -26,7 +28,9 @@ function NavMenu() {
                 >
                     {isFixed && (
                         <p className="absolute small:top-6 top-5 small:right-2 right-3 small:w-5 small:h-5 h-4 w-4 bg-gradient-to-r from-[#F92525] to-[#9F9C30] text-mywhite rounded-full text-center font-scope flex items-center justify-center">
-                            <span className="text-xs mt-0.5">{number}</span>
+                            <span className="text-xs mt-0.5">
+                                {cartQuantity}
+                            </span>
                         </p>
                     )}
                 </NavItem>

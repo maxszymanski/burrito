@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import AddRemoveBtn from '../../ui/AddRemoveBtn'
 import BasketButton from '../../ui/BasketButton'
 
@@ -10,26 +9,16 @@ function SetCard({
     image = '',
     imageBig = '',
 }) {
-    const [quantity, setQuantity] = useState(1)
-    console.log(itemOne)
-    const handleOddOrder = () => {
-        if (quantity <= 1) return
-        setQuantity((num) => num - 1)
-    }
-    const handleAddOrder = () => {
-        setQuantity((num) => num + 1)
-    }
     const totalPrice = itemOne?.price + itemTwo?.price || 0
-
-    const handleCreateOrder = () => {
-        const newCard = {
-            itemId: id,
-            title,
-            totalPrice,
-            quantity,
-        }
-        console.log(newCard)
-    }
+    // const itemId = itemOne.id.toString() + '-' + itemTwo.id.toString() || ''
+    // const handleCreateOrder = () => {
+    //     const newCard = {
+    //         itemId,
+    //         title,
+    //         totalPrice,
+    //         quantity,
+    //     }
+    // }
 
     return (
         <div
@@ -61,12 +50,8 @@ function SetCard({
                     {totalPrice} zł
                 </p>
                 <div className="flex items-center justify-between gap-4 pt-4 sm:w-48 md:w-full">
-                    <AddRemoveBtn
-                        handleAddOrder={handleAddOrder}
-                        quantity={quantity}
-                        handleOddOrder={handleOddOrder}
-                    />
-                    <BasketButton onClick={handleCreateOrder} />
+                    <AddRemoveBtn />
+                    <BasketButton onClick={() => {}} />
                 </div>
             </div>
             <img

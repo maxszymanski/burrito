@@ -17,6 +17,7 @@ function MenuCard({
             quantity: 1,
             price,
             totalPrice: price * 1,
+            image,
         }
         dispatch(addItem(newItem))
     }
@@ -27,7 +28,7 @@ function MenuCard({
                 <img
                     src={image}
                     alt=""
-                    className="h-auto max-w-[30%] small:max-w-[35%] max-h-[60%]"
+                    className="h-auto max-w-[30%] small:max-w-[35%] max-h-28"
                 />
                 <div className="flex flex-col gap-2 small:pl-3 pl-1.5 ">
                     <h4 className="font-semibold tracking-wider small:text-base text-sm leading-6">

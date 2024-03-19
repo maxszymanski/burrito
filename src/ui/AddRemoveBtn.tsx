@@ -1,6 +1,14 @@
 import { useState } from 'react'
 
-function AddRemoveBtn({ handleOddOrder, handleAddOrder, quantity }) {
+function AddRemoveBtn() {
+    const [quantity, setQuantity] = useState(1)
+    const handleOddOrder = () => {
+        if (quantity <= 1) return
+        setQuantity((num) => num - 1)
+    }
+    const handleAddOrder = () => {
+        setQuantity((num) => num + 1)
+    }
     return (
         <div className=" w-full border-2 rounded-full xl flex items-center justify-between font-scope px-2 border-[#EFB12A]">
             <button
