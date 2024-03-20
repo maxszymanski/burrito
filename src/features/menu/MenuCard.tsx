@@ -20,6 +20,7 @@ function MenuCard({
             image,
         }
         dispatch(addItem(newItem))
+        console.log(newItem)
     }
 
     if (isOpen)

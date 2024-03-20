@@ -1,12 +1,24 @@
-import AddRemoveBtn from '../../ui/AddRemoveBtn'
+import { useDispatch } from 'react-redux'
+import {
+    deleteItem,
+    increaseItemQuantity,
+    decreaseItemQuantity,
+} from './cartSlice'
 
 function CartItem({
     item,
 }: {
-    item: { name: string; quantity: number; totalPrice: number; image: string }
+    item: {
+        name: string
+        quantity: number
+        totalPrice: number
+        itemId: number
+        image: string
+    }
 }) {
-    const { name, quantity, totalPrice, image } = item
-    // console.log(item)
+    const dispatch = useDispatch()
+    const { name, quantity, totalPrice, image, itemId } = item
+
     return (
         <div className="flex items-center justify-evenly pt-6 ">
             <img
@@ -19,10 +31,19 @@ function CartItem({
                     {name}
                 </h4>
                 <div className=" w-full px-2 flex gap-3">
-                    <button className=" text-xl l font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl">
+                    <button
+                        className={` text-xl l font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl ${
+                            quantity <= 1 ? 'border-gray-500 text-gray-500' : ''
+                        }`}
+                        onClick={() => dispatch(decreaseItemQuantity(itemId))}
+                        disabled={quantity <= 1}
+                    >
                         -
                     </button>
-                    <button className=" text-xl  font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl">
+                    <button
+                        className=" text-xl  font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl"
+                        onClick={() => dispatch(increaseItemQuantity(itemId))}
+                    >
                         +
                     </button>
                 </div>
@@ -31,11 +52,16 @@ function CartItem({
                     ilość: <span className="text-yellow-500">{quantity}</span>
                 </p>
             </div>
-            <div className="flex flex-col justify-between self-stretch px-2 grow-0 basis-1/6">
-                <p className="font-semibold tracking-wider small:text-base text-sm">
+            <div className="flex flex-col justify-between self-stretch text-center  grow-0 basis-1/6">
+                <p className="font-semibold tracking-wider  text-sm">
                     {totalPrice} zł
                 </p>
-                <button className="text-yellow-500">Usuń</button>
+                <button
+                    className="text-yellow-500"
+                    onClick={() => dispatch(deleteItem(itemId))}
+                >
+                    Usuń
+                </button>
             </div>
         </div>
     )

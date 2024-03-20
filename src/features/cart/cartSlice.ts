@@ -17,26 +17,27 @@ const cartSlice = createSlice({
             state.cart = state.cart.filter(
                 // payload = pizzaId
                 // przeszukuje tablice i zostawia tylko w niej elementy które nie mają takiego samego ID jak action.payload
-                (item) => item.pizzaId !== action.payload
+                (item) => item.itemId !== action.payload
             )
         },
         increaseItemQuantity(state, action) {
             //szukamy przedmiotu który ma takie samo id jak action.payload
             const item = state.cart.find(
-                (item) => item.pizzaId === action.payload
+                (item) => item.itemId === action.payload
             )
 
             item.quantity++
-            item.totalPrice = item.quantity * item.unitPrice
+            item.totalPrice = item.quantity * item.price
         },
         decreaseItemQuantity(state, action) {
             const item = state.cart.find(
-                (item) => item.pizzaId === action.payload
+                (item) => item.itemId === action.payload
             )
+            if (item.quantity < 1) return
             item.quantity--
-            item.totalPrice = item.quantity * item.unitPrice
-            if (item.quantity === 0)
-                cartSlice.caseReducers.deleteItem(state, action) // jesli jest wybrane zero pizz caseReducers możemy wywołąc dany reducer, który chcemy
+            item.totalPrice = item.quantity * item.price
+
+            // cartSlice.caseReducers.deleteItem(state, action) // jesli jest wybrane zero pizz caseReducers możemy wywołąc dany reducer, który chcemy
         },
         clearCart(state) {
             state.cart = []
