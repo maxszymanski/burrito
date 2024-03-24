@@ -11,7 +11,12 @@ import { getCart } from '../features/cart/cartSlice'
 function NavMenu() {
     const { isAuthenticated } = useUser()
     const cart = useSelector(getCart)
-    const cartQuantity = cart.length || 0
+    const cartQuantity =
+        cart &&
+        cart.reduce(
+            (acc: number, cur: { quantity: number }) => acc + cur.quantity,
+            0
+        )
     const isFixed = cartQuantity >= 1
     return (
         <nav className="fixed left-0 bottom-0 w-full border-t-[1px] border-stone-700 ">
@@ -29,7 +34,7 @@ function NavMenu() {
                     {isFixed && (
                         <p className="absolute small:top-6 top-5 small:right-2 right-3 small:w-5 small:h-5 h-4 w-4 bg-gradient-to-r from-[#F92525] to-[#9F9C30] text-mywhite rounded-full text-center font-scope flex items-center justify-center">
                             <span className="text-xs mt-0.5">
-                                {cartQuantity}
+                                {cartQuantity ? cartQuantity : 0}
                             </span>
                         </p>
                     )}

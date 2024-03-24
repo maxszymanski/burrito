@@ -3,9 +3,9 @@ import { getTotalCardPrice, getTotalCartQuantity } from './cartSlice'
 
 function CartSummary() {
     const totalCartQuantity = useSelector(getTotalCartQuantity)
-    const totalCartPrice = useSelector(getTotalCardPrice)
+    const totalCartPrice: number = useSelector(getTotalCardPrice)
     const shipping = totalCartPrice >= 60 ? 0 : 5
-    const discount = totalCartPrice * 0.1
+    const discount: number = +(totalCartPrice * 0.1).toFixed(2)
     const total = totalCartPrice + shipping - discount
     if (!totalCartQuantity) return null
     return (

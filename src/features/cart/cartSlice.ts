@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const cartStateString = localStorage.getItem('cart')
+const cart = cartStateString !== null && JSON.parse(cartStateString)
 const initialState = {
     // cart: [],
-    cart: [],
+    cart: cart.cart || [],
 }
 
 const cartSlice = createSlice({
@@ -57,6 +59,13 @@ export default cartSlice.reducer
 
 //exportujemy naszą kartę z wybranymi pizzami i dodajemy ją w komponiencie cart
 export const getCart = (state) => state.cart.cart
+
+export function getCartItemById(id) {
+    return function (state) {
+        const cartItems = state.cart.cart
+        return cartItems.filter((item) => item.itemId === id)
+    }
+}
 
 // za pomocą useSelectora który ejst w cartOverview pobieramy dane z redux i od razy za pomocą funcki reduce wyliczmy ile jest pizz wybranych. W selektorze dajemy tylko funkcję getTotalCardQuantity, Mozemy pożniej urzyć tego w wielu komponentach
 export const getTotalCartQuantity = (state) =>

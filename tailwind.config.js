@@ -28,6 +28,15 @@ export default {
                 foodSm: "url('./src/images/food-sm.png')",
                 headerTablet: "url('./src/images/header-tablet.png')",
             },
+            keyframes: {
+                slide: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '100' },
+                },
+            },
+            animation: {
+                slide: 'slide 1s',
+            },
         },
     },
     plugins: [],

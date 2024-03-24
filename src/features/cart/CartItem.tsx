@@ -4,6 +4,8 @@ import {
     increaseItemQuantity,
     decreaseItemQuantity,
 } from './cartSlice'
+import toast from 'react-hot-toast'
+import QuantityButton from '../../ui/QuantityButton'
 
 function CartItem({
     item,
@@ -30,10 +32,17 @@ function CartItem({
                 <h4 className="font-semibold tracking-wider  text-sm leading-6">
                     {name}
                 </h4>
-                <div className=" w-full px-2 flex gap-3">
+                <QuantityButton
+                    quantity={quantity}
+                    onClickInc={() => dispatch(decreaseItemQuantity(itemId))}
+                    onClickDec={() => dispatch(increaseItemQuantity(itemId))}
+                />
+                {/* <div className=" w-full px-2 flex gap-3">
                     <button
-                        className={` text-xl l font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl ${
-                            quantity <= 1 ? 'border-gray-500 text-gray-500' : ''
+                        className={` text-xl l font-frederick font-bold border-2   text-center px-1.5 rounded-xl ${
+                            quantity <= 1
+                                ? 'border-gray-500 text-gray-500'
+                                : 'border-yellow-500'
                         }`}
                         onClick={() => dispatch(decreaseItemQuantity(itemId))}
                         disabled={quantity <= 1}
@@ -46,7 +55,7 @@ function CartItem({
                     >
                         +
                     </button>
-                </div>
+                </div> */}
 
                 <p className="font-semibold tracking-wider  text-sm">
                     ilość: <span className="text-yellow-500">{quantity}</span>
@@ -58,7 +67,10 @@ function CartItem({
                 </p>
                 <button
                     className="text-yellow-500"
-                    onClick={() => dispatch(deleteItem(itemId))}
+                    onClick={() => {
+                        dispatch(deleteItem(itemId))
+                        toast.error('Produkt usunięty z koszyka')
+                    }}
                 >
                     Usuń
                 </button>

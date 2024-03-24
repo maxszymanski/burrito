@@ -1,13 +1,31 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import BucketButton from '../../ui/BasketButton'
-import { addItem } from '../cart/cartSlice'
+import {
+    addItem,
+    decreaseItemQuantity,
+    getCart,
+    increaseItemQuantity,
+} from '../cart/cartSlice'
+import toast from 'react-hot-toast'
+import { useState } from 'react'
+import QuantityButton from '../../ui/QuantityButton'
 
 function MenuCard({
-    cardInfo = { name: '', ingredients: '', price: 0, image: '', id: '' },
+    cardInfo = {
+        name: '',
+        ingredients: '',
+        price: 0,
+        image: '',
+        id: '',
+    },
     isOpen = false,
 }) {
     const dispatch = useDispatch()
     const { name, ingredients, price, image, id } = cardInfo
+    const cart = useSelector(getCart)
+    const cartItem = cart.filter((item) => item.itemId === id)
+    const isInCart = cartItem.length > 0
+
     if (!cardInfo) return <p>Loading...</p>
 
     function handleAddToCart() {
@@ -20,7 +38,7 @@ function MenuCard({
             image,
         }
         dispatch(addItem(newItem))
-        console.log(newItem)
+        toast('Produkt dodany do koszyka')
     }
 
     if (isOpen)
@@ -42,7 +60,24 @@ function MenuCard({
                         {price} zł
                     </p>
                 </div>
-                <BucketButton onClick={handleAddToCart} />
+                {isInCart ? (
+                    <QuantityButton
+                        isCol={true}
+                        quantity={cartItem[0].quantity}
+                        onClickInc={() =>
+                            dispatch(decreaseItemQuantity(cartItem[0].itemId))
+                        }
+                        onClickDec={() =>
+                            dispatch(increaseItemQuantity(cartItem[0].itemId))
+                        }
+                    >
+                        <p className="text-center font-muli">
+                            {cartItem[0].quantity}
+                        </p>
+                    </QuantityButton>
+                ) : (
+                    <BucketButton onClick={handleAddToCart} />
+                )}
             </div>
         )
 }

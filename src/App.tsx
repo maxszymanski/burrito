@@ -90,24 +90,24 @@ function App() {
             <Toaster
                 position="top-center"
                 gutter={12}
-                containerStyle={{ margin: '24px' }}
+                containerStyle={{ marginTop: '10px' }}
                 toastOptions={{
                     success: {
-                        duration: 3000,
+                        duration: 2500,
                     },
                     error: {
-                        duration: 5000,
+                        duration: 2500,
                         style: {
                             backgroundColor: '#ef4444',
                         },
                     },
                     style: {
-                        fontSize: '16px',
-                        maxWidth: '500px',
-                        padding: '16px 24px',
+                        fontSize: '18px',
+                        padding: '16px 20px',
                         backgroundColor: '#84cc16',
                         color: '#fff',
                         fontFamily: 'Scope One',
+                        textAlign: 'center',
                     },
                 }}
             />
