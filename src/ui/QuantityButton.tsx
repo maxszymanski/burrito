@@ -8,7 +8,7 @@ function QuantityButton({
     return (
         <div
             className={`w-full px-2 flex gap-3 ${
-                isCol ? 'flex-col-reverse max-w-[40px]' : ''
+                isCol ? 'flex-col-reverse max-w-[50px] small:px-2.5' : ''
             }`}
         >
             <button

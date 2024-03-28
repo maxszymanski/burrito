@@ -7,7 +7,6 @@ import {
     increaseItemQuantity,
 } from '../cart/cartSlice'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
 import QuantityButton from '../../ui/QuantityButton'
 
 function MenuCard({
@@ -23,7 +22,9 @@ function MenuCard({
     const dispatch = useDispatch()
     const { name, ingredients, price, image, id } = cardInfo
     const cart = useSelector(getCart)
+
     const cartItem = cart.filter((item) => item.itemId === id)
+    console.log(cartItem)
     const isInCart = cartItem.length > 0
 
     if (!cardInfo) return <p>Loading...</p>

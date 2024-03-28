@@ -24,7 +24,7 @@ function NavMenu() {
                 className="px-2 pt-1 font-scope text-2xl small:text-3xl text-mywhite flex
 			justify-between bg-menu-bg-sm items-center "
             >
-                <NavItem icon={<GoHome />} iconText="Home" linkTo="/" />
+                <NavItem icon={<GoHome />} iconText="Start" linkTo="/" />
                 <NavItem icon={<BiFoodMenu />} iconText="Menu" linkTo="/menu" />
                 <NavItem
                     icon={<TbShoppingBag />}

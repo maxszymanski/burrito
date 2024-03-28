@@ -9,7 +9,7 @@ function CartSummary() {
     const total = totalCartPrice + shipping - discount
     if (!totalCartQuantity) return null
     return (
-        <div className="font-muli mt-7 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 ">
+        <div className="font-muli mt-9 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 ">
             <h4 className="pb-4 text-white">Twoje zamówienie</h4>
             <div className="flex items-center justify-between">
                 <p>Suma</p>
@@ -21,7 +21,10 @@ function CartSummary() {
             </div>
             <div className="flex items-center justify-between">
                 <p>Dostawa</p>
-                <p>{shipping} zł</p>
+                <div className="flex items-center gap-1">
+                    <p className="text-gray-500 line-through">5 zł</p>
+                    <p>{shipping} zł</p>
+                </div>
             </div>
             <div className="flex items-center justify-between pt-6 text-white">
                 <p>Cena całkowita</p>

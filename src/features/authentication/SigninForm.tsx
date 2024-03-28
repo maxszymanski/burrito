@@ -13,6 +13,8 @@ function SigninForm() {
     const { register, formState, handleSubmit, reset, getValues } = useForm()
     const { errors } = formState
     const { signUp, isLoading } = useSignUp()
+    const inputClass =
+        'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
 
     const onSubmit = (newUser) => {
         signUp(newUser, { onSettled: reset() })
@@ -41,7 +43,7 @@ function SigninForm() {
                         id="userName"
                         disabled={isLoading}
                         placeholder="Imię"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.userName?.message
                                 ? 'focus:ring-red-400'
                                 : ''
@@ -58,7 +60,7 @@ function SigninForm() {
                         id="street"
                         disabled={isLoading}
                         placeholder="Ulica i numer domu"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.street?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -73,7 +75,7 @@ function SigninForm() {
                         disabled={isLoading}
                         id="zipCode"
                         placeholder="Kod pocztowy"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.zipCode?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -88,7 +90,7 @@ function SigninForm() {
                         id="city"
                         disabled={isLoading}
                         placeholder="Miejscowość"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.city?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -118,7 +120,7 @@ function SigninForm() {
                         id="phone"
                         disabled={isLoading}
                         placeholder="Numer telefonu"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.phone?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -137,7 +139,7 @@ function SigninForm() {
                         id="email"
                         placeholder="Email"
                         disabled={isLoading}
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -157,7 +159,7 @@ function SigninForm() {
                         id="password"
                         disabled={isLoading}
                         placeholder="Hasło (min. 8 znaków)"
-                        className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
+                        className={`${inputClass} focus:pt-0 ${
                             errors?.password?.message
                                 ? 'focus:ring-red-400'
                                 : ''
@@ -177,7 +179,7 @@ function SigninForm() {
                         id="passwordConfirm"
                         placeholder="Powtórz hasło"
                         disabled={isLoading}
-                        className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
+                        className={`${inputClass}  focus:pt-0 ${
                             errors?.passwordConfirm?.message
                                 ? 'focus:ring-red-400'
                                 : ''

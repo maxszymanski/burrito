@@ -13,6 +13,8 @@ function LoginForm() {
     const { login, isLoading } = useLogin()
     const { register, formState, handleSubmit, reset } = useForm()
     const { errors } = formState
+    const inputClass =
+        'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
 
     const onSubmit = (user) => {
         login(user, { onSettled: reset() })
@@ -47,7 +49,7 @@ function LoginForm() {
                         id="email"
                         placeholder="Email"
                         defaultValue="maksymilianszymanski2@gmail.com"
-                        className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
+                        className={`${inputClass}  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
                     `}
@@ -67,7 +69,7 @@ function LoginForm() {
                         id="password"
                         placeholder="Hasło"
                         defaultValue="Startowe1"
-                        className={`w-full h-8 small:h-12 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base bg-[rgba(138,139,136,0.4)]  focus:pt-0 ${
+                        className={`${inputClass} ${
                             errors?.password?.message
                                 ? 'focus:ring-red-400'
                                 : ''

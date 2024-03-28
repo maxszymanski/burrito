@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import AppLayout from './ui/AppLayout'
 import MainPage from './pages/MainPage'
-import Order from './pages/Order'
 import Login from './pages/Login'
 import Account from './pages/Account'
 import BasketPage from './pages/BasketPage'
@@ -16,6 +15,8 @@ import LoginForm from './features/authentication/LoginForm'
 import SigninForm from './features/authentication/SigninForm'
 import UpdateProfile from './features/user/UpdateProfile'
 import UserProfile from './features/user/UserProfile'
+import Cart from './features/cart/Cart'
+import OrderCart from './features/cart/OrderCart'
 
 const queryClient = new QueryClient()
 
@@ -30,14 +31,6 @@ const router = createBrowserRouter([
             {
                 path: '/menu',
                 element: <MenuPage />,
-            },
-            {
-                path: '/basket',
-                element: <BasketPage />,
-            },
-            {
-                path: '/order',
-                element: <Order />,
             },
             {
                 path: '/contact',
@@ -59,6 +52,19 @@ const router = createBrowserRouter([
             {
                 path: '/registration',
                 element: <SigninForm />,
+            },
+        ],
+    },
+    {
+        element: <BasketPage />,
+        children: [
+            {
+                path: '/basket',
+                element: <Cart />,
+            },
+            {
+                path: '/order',
+                element: <OrderCart />,
             },
         ],
     },

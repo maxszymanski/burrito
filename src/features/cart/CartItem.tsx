@@ -37,26 +37,6 @@ function CartItem({
                     onClickInc={() => dispatch(decreaseItemQuantity(itemId))}
                     onClickDec={() => dispatch(increaseItemQuantity(itemId))}
                 />
-                {/* <div className=" w-full px-2 flex gap-3">
-                    <button
-                        className={` text-xl l font-frederick font-bold border-2   text-center px-1.5 rounded-xl ${
-                            quantity <= 1
-                                ? 'border-gray-500 text-gray-500'
-                                : 'border-yellow-500'
-                        }`}
-                        onClick={() => dispatch(decreaseItemQuantity(itemId))}
-                        disabled={quantity <= 1}
-                    >
-                        -
-                    </button>
-                    <button
-                        className=" text-xl  font-frederick font-bold border-2 border-yellow-500  text-center px-1.5 rounded-xl"
-                        onClick={() => dispatch(increaseItemQuantity(itemId))}
-                    >
-                        +
-                    </button>
-                </div> */}
-
                 <p className="font-semibold tracking-wider  text-sm">
                     ilość: <span className="text-yellow-500">{quantity}</span>
                 </p>
@@ -77,14 +57,6 @@ function CartItem({
             </div>
         </div>
     )
-    // return (
-    //     <li className="flex items-center justify-between py-4 gap-3 px-4 my-4 rounded-2xl bg-[rgba(216,222,203,0.2)] text-mywhite font-muli">
-    //         <p>{name}</p>
-    //         <p>{quantity}</p>
-    //         <p>{totalPrice}zł</p>
-    //         <p></p>
-    //     </li>
-    // )
 }
 
 export default CartItem
