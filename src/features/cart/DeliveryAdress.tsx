@@ -13,12 +13,12 @@ function DeliveryAdress() {
     if (isLoading) return <Loader />
 
     return (
-        <div className="mt-5 ">
-            <h3 className="text-2xl pb-2 border-b-[1px] border-yellow-500">
+        <div className="mt-5 small:mt-8">
+            <h4 className="text-2xl pb-2.5 border-b-[1px] border-yellow-500">
                 Dane odbiorcy
-            </h3>
+            </h4>
             {(isAuthenticated || shippingData) && (
-                <div className="flex justify-between items-end my-5">
+                <div className="flex justify-between items-end my-6">
                     <div className="text-sm small:text-base leading-5 pb-1">
                         <p>{userData?.userName || shippingData.name}</p>
                         <p>{userData?.street || shippingData.streetUser}</p>

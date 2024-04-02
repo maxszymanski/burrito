@@ -17,6 +17,7 @@ import UpdateProfile from './features/user/UpdateProfile'
 import UserProfile from './features/user/UserProfile'
 import Cart from './features/cart/Cart'
 import OrderCart from './features/cart/OrderCart'
+import { PriceProvider } from './context/PriceContext'
 
 const queryClient = new QueryClient()
 
@@ -90,34 +91,36 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router} />
-            <ReactQueryDevtools initialIsOpen={false} />
-            <Toaster
-                position="top-center"
-                gutter={12}
-                containerStyle={{ marginTop: '10px' }}
-                toastOptions={{
-                    success: {
-                        duration: 2500,
-                    },
-                    error: {
-                        duration: 2500,
-                        style: {
-                            backgroundColor: '#ef4444',
+        <PriceProvider>
+            <QueryClientProvider client={queryClient}>
+                <RouterProvider router={router} />
+                <ReactQueryDevtools initialIsOpen={false} />
+                <Toaster
+                    position="top-center"
+                    gutter={12}
+                    containerStyle={{ marginTop: '10px' }}
+                    toastOptions={{
+                        success: {
+                            duration: 2500,
                         },
-                    },
-                    style: {
-                        fontSize: '18px',
-                        padding: '16px 20px',
-                        backgroundColor: '#84cc16',
-                        color: '#fff',
-                        fontFamily: 'Scope One',
-                        textAlign: 'center',
-                    },
-                }}
-            />
-        </QueryClientProvider>
+                        error: {
+                            duration: 2500,
+                            style: {
+                                backgroundColor: '#ef4444',
+                            },
+                        },
+                        style: {
+                            fontSize: '18px',
+                            padding: '16px 20px',
+                            backgroundColor: '#84cc16',
+                            color: '#fff',
+                            fontFamily: 'Scope One',
+                            textAlign: 'center',
+                        },
+                    }}
+                />
+            </QueryClientProvider>
+        </PriceProvider>
     )
 }
 
