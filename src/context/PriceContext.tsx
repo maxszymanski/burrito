@@ -3,16 +3,25 @@ import {
     getTotalCardPrice,
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const PriceContext = createContext()
 
 const PriceProvider = ({ children }) => {
+    const [paymentMethod, setPaymentMethod] = useState(null)
+    const [isFormShow, setIsFormShow] = useState(false)
     const totalCartQuantity = useSelector(getTotalCartQuantity)
     const totalCartPrice: number = useSelector(getTotalCardPrice)
     const shipping = totalCartPrice >= 60 ? 0 : 5
     const discount: number = +(totalCartPrice * 0.1).toFixed(2)
     const total = totalCartPrice + shipping - discount
+
+    const handleSetPaymentMenthod = (e) => {
+        setPaymentMethod(e.target.value)
+    }
+    const handleShowForm = () => {
+        setIsFormShow((is) => !is)
+    }
 
     return (
         <PriceContext.Provider
@@ -22,6 +31,10 @@ const PriceProvider = ({ children }) => {
                 shipping,
                 discount,
                 total,
+                paymentMethod,
+                handleSetPaymentMenthod,
+                isFormShow,
+                handleShowForm,
             }}
         >
             {children}

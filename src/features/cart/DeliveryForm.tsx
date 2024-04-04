@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form'
 import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
+import { usePrice } from '../../context/PriceContext'
 
-function DeliveryForm() {
+function DeliveryForm({ onReset }) {
     const { register, formState, handleSubmit, reset } = useForm()
+    const { handleShowForm } = usePrice()
     const { errors } = formState
     const inputClass =
         'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
@@ -11,12 +13,14 @@ function DeliveryForm() {
     const onSubmit = (deliveryData) => {
         localStorage.setItem('deliveryData', JSON.stringify(deliveryData))
         reset()
+        handleShowForm()
+
         // Wyczyść dane z formularza lub wykonaj inne działania po zakończeniu
         // np. przekierowanie do kolejnego widoku
     }
 
     return (
-        <div>
+        <div className="mt-8">
             <form onSubmit={handleSubmit(onSubmit)} className=" ">
                 <FormRow error={errors?.name?.message}>
                     <input
@@ -111,8 +115,12 @@ function DeliveryForm() {
                     `}
                     />
                 </FormRow>
-                <Button onClick={() => {}} type="w-full mt-2">
-                    Zapisz
+                <Button type="w-full mt-2">Zapisz</Button>
+                <Button
+                    onClick={onReset}
+                    type="w-full mt-4 bg-red-500 focus:bg-red-500"
+                >
+                    Anuluj
                 </Button>
             </form>
         </div>
