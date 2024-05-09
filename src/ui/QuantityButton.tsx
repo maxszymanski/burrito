@@ -13,12 +13,12 @@ function QuantityButton({
         >
             <button
                 className={` text-xl l font-frederick font-bold border-2   text-center px-1.5 rounded-xl ${
-                    quantity <= 1
+                    quantity <= 0
                         ? 'border-gray-500 text-gray-500'
                         : 'border-yellow-500'
                 }`}
                 onClick={onClickInc}
-                disabled={quantity <= 1}
+                disabled={quantity <= 0}
             >
                 -
             </button>

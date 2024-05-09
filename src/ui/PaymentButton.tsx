@@ -12,12 +12,14 @@ function PaymentButton({
     alt: string
     children: ReactNode
 }) {
-    const { handleSetPaymentMenthod } = usePrice()
+    const { handleSetPaymentMenthod, paymentMethod } = usePrice()
     return (
         <button
             type="button"
             value={value}
-            className="w-full border-[1px] border-[#c4c0c0] rounded-md py-1  px-6 text-sm text-left focus:border-yellow-500  focus:outline-none small:border-2 small:text-base flex items-center gap-6"
+            className={`w-full border-[1px] border-[#c4c0c0] rounded-md py-1  px-6 text-sm text-left  focus:outline-none small:border-2 small:text-base flex items-center gap-6 ${
+                paymentMethod === value ? 'border-yellow-500' : ''
+            }`}
             onClick={handleSetPaymentMenthod}
         >
             <img

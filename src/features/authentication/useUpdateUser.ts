@@ -7,7 +7,16 @@ export function useUpdateUser() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
     const { mutate: updateUser, isLoading: isUpdating } = useMutation({
-        mutationFn: ({ userName, street, zipCode, city, phone, avatar }) =>
+        mutationFn: ({
+            userName,
+            street,
+            zipCode,
+            city,
+            phone,
+            avatar,
+            ordersHistory,
+            orders,
+        }) =>
             updateCurrentUser({
                 userName,
                 street,
@@ -15,9 +24,11 @@ export function useUpdateUser() {
                 city,
                 phone,
                 avatar,
+                ordersHistory,
+                orders,
             }),
         onSuccess: () => {
-            toast.success('Profil został zaaktualizowany')
+            // toast.success('Profil został zaaktualizowany')
             queryClient.invalidateQueries({
                 // gdy funkcja dodawania się powiedzie nakazujemy wywołać invalidate dla queryKey: 'user i się odświeża
                 queryKey: ['user'],
@@ -27,5 +38,6 @@ export function useUpdateUser() {
         },
         onError: (err) => toast.error(err.message),
     })
+
     return { isUpdating, updateUser }
 }

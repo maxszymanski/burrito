@@ -22,11 +22,6 @@ export async function logout() {
     const { error } = await supabase.auth.signOut()
     if (error) throw new Error(error.message)
 }
-export async function signOut(userId) {
-    const { data, error } = await supabase.auth.admin.deleteUser(userId)
-    if (error) throw new Error(error.message)
-    return data
-}
 export async function signUp({
     email,
     password,
@@ -36,6 +31,7 @@ export async function signUp({
     city,
     phone,
     orders,
+    ordersHistory,
 }) {
     const { data, error } = await supabase.auth.signUp({
         email,
@@ -48,6 +44,7 @@ export async function signUp({
                 city,
                 phone,
                 orders,
+                ordersHistory,
             },
         },
     })
@@ -55,7 +52,6 @@ export async function signUp({
     return data
 }
 export async function passwordRecovery(email) {
-    console.log(email)
     const { error } = await supabase.auth.resetPasswordForEmail(email)
     if (error) throw new Error(error.message)
 }
@@ -67,11 +63,12 @@ export async function updateUser({
     city = 'brak miejscowości',
     phone = 'brak numeru tel.',
     avatar = '/user2.jpg',
+    ordersHistory,
+    orders,
 }) {
     // 1 Update password OR fullNAme,
     let updateData
-
-    if (userName || street || zipCode || city || phone)
+    if (userName || street || zipCode || city || phone || ordersHistory)
         updateData = {
             data: {
                 userName: userName || 'Anonim',
@@ -79,13 +76,16 @@ export async function updateUser({
                 zipCode: zipCode || '',
                 city: city || 'brak miejscowości',
                 phone: phone || 'brak numeru tel.',
+                ordersHistory: ordersHistory || [],
+                orders: ordersHistory.length,
             },
         }
 
     const { data, error } = await supabase.auth.updateUser(updateData)
     if (error) throw new Error(error.message)
+
     const avatarFile = avatar[0]
-    if (!avatarFile) return data
+    if (!avatarFile || avatarFile === '/') return data
 
     // 2 Upload the avatar
     const fileName = `avatar-${data.user.id}-${Math.random()}`

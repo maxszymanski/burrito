@@ -18,6 +18,10 @@ import UserProfile from './features/user/UserProfile'
 import Cart from './features/cart/Cart'
 import OrderCart from './features/cart/OrderCart'
 import { PriceProvider } from './context/PriceContext'
+import Summary from './features/cart/Summary'
+import SuccessOrder from './features/cart/SuccessOrder'
+import OrderDetails from './features/orders/OrderDetails'
+import OrdersHistory from './features/orders/OrdersHistory'
 
 const queryClient = new QueryClient()
 
@@ -67,6 +71,18 @@ const router = createBrowserRouter([
                 path: '/order',
                 element: <OrderCart />,
             },
+            {
+                path: '/summary',
+                element: <Summary />,
+            },
+            {
+                path: '/success',
+                element: <SuccessOrder />,
+            },
+            {
+                path: '/order/:orderNumber',
+                element: <OrderDetails />,
+            },
         ],
     },
     {
@@ -79,6 +95,10 @@ const router = createBrowserRouter([
             {
                 path: '/updateProfile',
                 element: <UpdateProfile />,
+            },
+            {
+                path: '/ordersHistory',
+                element: <OrdersHistory />,
             },
         ],
     },

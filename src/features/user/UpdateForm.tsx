@@ -4,6 +4,7 @@ import Button from '../../ui/Button'
 import { useUpdateUser } from '../authentication/useUpdateUser'
 import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
+import toast from 'react-hot-toast'
 
 function UpdateForm() {
     const { register, formState, handleSubmit } = useForm()
@@ -11,11 +12,24 @@ function UpdateForm() {
     const { updateUser, isUpdating } = useUpdateUser()
 
     const { user, isLoading } = useUser()
-    const { city, phone, street, userName, zipCode, orders } =
-        user?.user_metadata || ''
+    const {
+        city,
+        phone,
+        street,
+        userName,
+        zipCode,
+        orders,
+        avatar,
+        ordersHistory,
+    } = user?.user_metadata || ''
+    console.log(ordersHistory)
 
     const onUpdate = (updatedUser) => {
-        updateUser(updatedUser)
+        updateUser(updatedUser, {
+            onSuccess: () => {
+                toast.success('Profil został zaktualizowany')
+            },
+        })
     }
     if (isUpdating || isLoading) return <Loader />
 
@@ -122,6 +136,18 @@ function UpdateForm() {
                     `}
                 />
             </UpdateUserFormRow>
+            <input
+                {...register('orders')}
+                type="hidden"
+                id="orders"
+                defaultValue={orders}
+            />
+            <input
+                {...register('ordersHistory')}
+                type="hidden"
+                id="ordersHistory"
+                defaultValue={[]}
+            />
 
             <Button onClick={() => {}} type=" mt-2 px-6 " disabled={isUpdating}>
                 Zapisz

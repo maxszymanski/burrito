@@ -3,6 +3,7 @@ import BucketButton from '../../ui/BasketButton'
 import {
     addItem,
     decreaseItemQuantity,
+    deleteItem,
     getCart,
     increaseItemQuantity,
 } from '../cart/cartSlice'
@@ -24,7 +25,6 @@ function MenuCard({
     const cart = useSelector(getCart)
 
     const cartItem = cart.filter((item) => item.itemId === id)
-    console.log(cartItem)
     const isInCart = cartItem.length > 0
 
     if (!cardInfo) return <p>Loading...</p>
@@ -37,9 +37,14 @@ function MenuCard({
             price,
             totalPrice: price * 1,
             image,
+            ingredients,
         }
         dispatch(addItem(newItem))
         toast('Produkt dodany do koszyka')
+    }
+    function removeFromCart() {
+        dispatch(deleteItem(cartItem[0].itemId))
+        toast.error('Produkt usunięty z koszyka')
     }
 
     if (isOpen)
@@ -65,9 +70,13 @@ function MenuCard({
                     <QuantityButton
                         isCol={true}
                         quantity={cartItem[0].quantity}
-                        onClickInc={() =>
-                            dispatch(decreaseItemQuantity(cartItem[0].itemId))
-                        }
+                        onClickInc={() => {
+                            cartItem[0].quantity > 1
+                                ? dispatch(
+                                      decreaseItemQuantity(cartItem[0].itemId)
+                                  )
+                                : removeFromCart()
+                        }}
                         onClickDec={() =>
                             dispatch(increaseItemQuantity(cartItem[0].itemId))
                         }

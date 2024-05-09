@@ -35,7 +35,7 @@ const cartSlice = createSlice({
             const item = state.cart.find(
                 (item) => item.itemId === action.payload
             )
-            if (item.quantity < 1) return
+            // if (item.quantity < 1) return
             item.quantity--
             item.totalPrice = item.quantity * item.price
 

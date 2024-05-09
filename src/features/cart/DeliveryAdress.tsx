@@ -47,7 +47,7 @@ function DeliveryAdress() {
                         </p>
                     </div>
                     <button
-                        className="text-yellow-500 p-1"
+                        className="text-yellow-500 p-1 uppercase text-xs small:text-sm"
                         onClick={handleShowForm}
                     >
                         Zmień

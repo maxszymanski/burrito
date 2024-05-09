@@ -33,7 +33,7 @@ function Cart() {
     if (!cart?.length) return <EmptyCart />
 
     return (
-        <div className=" pb-28">
+        <div className=" pb-28 px-4 py-6 small:px-6">
             <ClearCart
                 onClose={handleCloseModal}
                 ref={ref}

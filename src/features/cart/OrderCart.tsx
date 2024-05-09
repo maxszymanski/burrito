@@ -8,8 +8,8 @@ import { usePrice } from '../../context/PriceContext'
 function OrderCart() {
     const { isFormShow } = usePrice()
     return (
-        <div className="relative ">
-            <OrderCartHeader />
+        <div className="relative px-4 py-6 small:px-6 ">
+            <OrderCartHeader title="Dostawa i płatność" />
             <CartStep one={true} two={true} />
             <DeliveryAdress />
             {!isFormShow && (

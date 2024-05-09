@@ -6,13 +6,13 @@ import UserInfo from './UserInfo'
 import UserMain from './UserMain'
 import RankDetails from '../../ui/RankDetails'
 import Loader from '../../ui/Loader'
+import { Link } from 'react-router-dom'
 
 function UserProfile() {
     const [showDetails, setShowDetails] = useState(false)
     const { user, isLoading: isLoadingUser } = useUser()
     const { city, phone, street, userName, zipCode, orders } =
         user?.user_metadata || ''
-
     if (isLoadingUser) return <Loader />
 
     return (
@@ -34,6 +34,15 @@ function UserProfile() {
                     </p>
                 </UserInfo>
                 <UserInfo>
+                    <div className="flex justify-between items-center relative mb-1.5">
+                        <h3 className="font-bold text-yellow-500">
+                            Historia Zamówień
+                        </h3>
+                        <Link to="/ordersHistory">{orders || 0} zamówień</Link>
+                    </div>
+                    <Link to="/ordersHistory">Wyświetl</Link>
+                </UserInfo>
+                <UserInfo>
                     <div className="flex justify-between items-center relative">
                         <h3
                             className="font-bold text-yellow-500 "
@@ -43,7 +52,7 @@ function UserProfile() {
                             Ranga
                             <span className="ml-1">*</span>
                         </h3>
-                        <p>{orders || 0} zamówień</p>
+
                         <RankDetails showDetails={showDetails} />
                     </div>
 

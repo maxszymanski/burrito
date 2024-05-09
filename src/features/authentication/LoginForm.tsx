@@ -48,7 +48,7 @@ function LoginForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
-                        defaultValue="maksymilianszymanski2@gmail.com"
+                        // defaultValue="maksymilianszymanski2@gmail.com"
                         className={`${inputClass}  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
@@ -68,7 +68,7 @@ function LoginForm() {
                         type={isShowPassword ? 'text' : 'password'}
                         id="password"
                         placeholder="Hasło"
-                        defaultValue="Startowe1"
+                        // defaultValue="Startowe1"
                         className={`${inputClass} ${
                             errors?.password?.message
                                 ? 'focus:ring-red-400'
