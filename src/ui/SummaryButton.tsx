@@ -1,19 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { usePrice } from '../context/PriceContext'
 import toast from 'react-hot-toast'
-import { useSelector } from 'react-redux'
-import { getCart } from '../features/cart/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart, getCart } from '../features/cart/cartSlice'
 import { useUpdateUser } from '../features/authentication/useUpdateUser'
 import { useUser } from '../features/authentication/useUser'
+import { formatDate } from '../utils/helpers'
 // import { loadStripe } from '@stripe/stripe-js'
 // import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 
 function SummaryButton({ isSummary = false }) {
     const cart = useSelector(getCart)
-    const { total, discount, shipping, paymentMethod } = usePrice()
+    const { total, discount, shipping, paymentMethod, clearPaymentMethod } =
+        usePrice()
     const { updateUser, isUpdating } = useUpdateUser()
     const { user, isLoading } = useUser()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const shippingPriceToDiscount = shipping === 0 ? 5 : 0
     const totalDiscount = discount + shippingPriceToDiscount
     const totalRest = total % 1 === 0 ? '.00' : '0'
@@ -28,11 +31,16 @@ function SummaryButton({ isSummary = false }) {
         const orderId = Array.from({ length }, () =>
             Math.floor(Math.random() * 10)
         ).join('')
+        const currentDate = new Date().toDateString().slice(4)
+        const formatedDate = new Date(currentDate)
+        const createdDate = formatDate(formatedDate)
 
         const newOrder = {
             cartOrder: cart,
             orderId,
             total,
+            payment: paymentMethod,
+            createdDate,
         }
 
         updateUser(
@@ -48,6 +56,8 @@ function SummaryButton({ isSummary = false }) {
                 onSuccess: () => {
                     toast.success('Zamówienie zostało złożone')
                     navigate('/success')
+                    dispatch(clearCart())
+                    clearPaymentMethod()
                 },
                 onError: () =>
                     toast.error('Wystąpił problem z złożeniem zamówienia'),

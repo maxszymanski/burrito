@@ -7,11 +7,14 @@ import CartStep from './CartStep'
 function SuccessOrder() {
     const { user, isLoading } = useUser()
 
+    if (isLoading || !user) return <Loader />
+
     const { ordersHistory } = user?.user_metadata || {
         ordersHistory: [],
     }
-    if (isLoading || !user.user_metadata.ordersHistory) return <Loader />
-    const newOrderID = ordersHistory[ordersHistory.length - 1].orderId
+    if (ordersHistory.length === 0) return <Loader />
+
+    const newOrderID = ordersHistory[ordersHistory.length - 1].orderId || '0'
 
     return (
         <section className=" px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm">

@@ -22,6 +22,9 @@ const PriceProvider = ({ children }) => {
     const handleShowForm = () => {
         setIsFormShow((is) => !is)
     }
+    const clearPaymentMethod = () => {
+        setPaymentMethod(null)
+    }
 
     return (
         <PriceContext.Provider
@@ -35,6 +38,7 @@ const PriceProvider = ({ children }) => {
                 handleSetPaymentMenthod,
                 isFormShow,
                 handleShowForm,
+                clearPaymentMethod,
             }}
         >
             {children}
