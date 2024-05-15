@@ -2,14 +2,28 @@ import supabase from './supabase'
 
 export async function getOrder(id) {
     const { data, error } = await supabase
-        .from('bookings')
-        .select('*, cabins(*), guests(*)')
+        .from('orders')
+        .select('*')
         .eq('id', id)
         .single()
 
     if (error) {
         console.error(error)
         throw new Error('Nie znaleziono zamówienia')
+    }
+
+    return data
+}
+
+export async function createOrder(newOrder) {
+    const { data, error } = await supabase
+        .from('orders')
+        .insert([newOrder])
+        .select('*')
+
+    if (error) {
+        console.error(error)
+        throw new Error('Wystąpił problem podczas składania zamówienia')
     }
 
     return data
