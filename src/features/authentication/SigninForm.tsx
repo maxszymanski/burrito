@@ -195,13 +195,6 @@ function SigninForm() {
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
                 </FormRow>
-                <input
-                    {...register('orders')}
-                    type="number"
-                    id="orders"
-                    className="hidden"
-                    value={0}
-                />
                 <Button
                     onClick={() => {}}
                     type="w-full mt-2"

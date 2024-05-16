@@ -7,12 +7,14 @@ import UserMain from './UserMain'
 import RankDetails from '../../ui/RankDetails'
 import Loader from '../../ui/Loader'
 import { Link } from 'react-router-dom'
+import { useOrders } from '../orders/useOrders'
 
 function UserProfile() {
     const [showDetails, setShowDetails] = useState(false)
     const { user, isLoading: isLoadingUser } = useUser()
-    const { city, phone, street, userName, zipCode, orders } =
-        user?.user_metadata || ''
+    const { city, phone, street, userName, zipCode } = user?.user_metadata || ''
+    const { orders: orderss } = useOrders()
+    const orders = orderss?.length
     if (isLoadingUser) return <Loader />
 
     return (
@@ -38,7 +40,7 @@ function UserProfile() {
                         <h3 className="font-bold text-yellow-500">
                             Historia Zamówień
                         </h3>
-                        <Link to="/ordersHistory">{orders || 0} zamówień</Link>
+                        <Link to="/ordersHistory">{orders} zamówień</Link>
                     </div>
                     <Link to="/ordersHistory">Wyświetl</Link>
                 </UserInfo>

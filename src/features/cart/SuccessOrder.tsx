@@ -1,20 +1,15 @@
 import { Link } from 'react-router-dom'
-import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
 import OrderCartHeader from './OrderCartHeader'
 import CartStep from './CartStep'
+import { useOrders } from '../orders/useOrders'
 
 function SuccessOrder() {
-    const { user, isLoading } = useUser()
+    const { orders, isLoading: isLoadingOrders } = useOrders()
 
-    if (isLoading || !user) return <Loader />
+    if (isLoadingOrders || !orders || orders.length === 0) return <Loader />
 
-    const { ordersHistory } = user?.user_metadata || {
-        ordersHistory: [],
-    }
-    if (ordersHistory.length === 0) return <Loader />
-
-    const newOrderID = ordersHistory[ordersHistory.length - 1].orderId || '0'
+    const newOrderID = orders[orders.length - 1].id || '0'
 
     return (
         <section className=" px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm">

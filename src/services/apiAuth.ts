@@ -63,12 +63,10 @@ export async function updateUser({
     city = 'brak miejscowości',
     phone = 'brak numeru tel.',
     avatar = '/user2.jpg',
-    ordersHistory,
-    orders,
 }) {
     // 1 Update password OR fullNAme,
     let updateData
-    if (userName || street || zipCode || city || phone || ordersHistory)
+    if (userName || street || zipCode || city || phone)
         updateData = {
             data: {
                 userName: userName || 'Anonim',
@@ -76,8 +74,6 @@ export async function updateUser({
                 zipCode: zipCode || '',
                 city: city || 'brak miejscowości',
                 phone: phone || 'brak numeru tel.',
-                ordersHistory: ordersHistory || [],
-                orders: ordersHistory.length,
             },
         }
 

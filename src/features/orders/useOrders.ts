@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import { getOrder } from '../../services/apiOrders'
-import { useParams } from 'react-router-dom'
+import { getOrders } from '../../services/apiOrders'
+import { useUser } from '../authentication/useUser'
 
 export function useOrders() {
-    const { orderNumber } = useParams()
+    const { user } = useUser()
+    const userId = user ? user.id : 'no-name'
     const {
         isLoading,
         error,
-        data: order,
+        data: orders,
     } = useQuery({
-        queryKey: ['orders', orderNumber],
-        queryFn: () => getOrder(orderNumber),
+        queryKey: ['orders', userId],
+        queryFn: () => getOrders(userId),
     })
-    return { isLoading, error, order, orderNumber }
+    return { isLoading, error, orders }
 }

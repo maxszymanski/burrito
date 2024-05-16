@@ -12,17 +12,8 @@ function UpdateForm() {
     const { updateUser, isUpdating } = useUpdateUser()
 
     const { user, isLoading } = useUser()
-    const {
-        city,
-        phone,
-        street,
-        userName,
-        zipCode,
-        orders,
-        avatar,
-        ordersHistory,
-    } = user?.user_metadata || ''
-    console.log(ordersHistory)
+    const { city, phone, street, userName, zipCode, avatar } =
+        user?.user_metadata || ''
 
     const onUpdate = (updatedUser) => {
         updateUser(updatedUser, {
@@ -136,18 +127,6 @@ function UpdateForm() {
                     `}
                 />
             </UpdateUserFormRow>
-            <input
-                {...register('orders')}
-                type="hidden"
-                id="orders"
-                defaultValue={orders}
-            />
-            <input
-                {...register('ordersHistory')}
-                type="hidden"
-                id="ordersHistory"
-                defaultValue={[]}
-            />
 
             <Button onClick={() => {}} type=" mt-2 px-6 " disabled={isUpdating}>
                 Zapisz

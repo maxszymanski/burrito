@@ -3,17 +3,15 @@ import { usePrice } from '../context/PriceContext'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart, getCart } from '../features/cart/cartSlice'
-import { useUpdateUser } from '../features/authentication/useUpdateUser'
 import { useUser } from '../features/authentication/useUser'
-import { formatDate } from '../utils/helpers'
-// import { loadStripe } from '@stripe/stripe-js'
-// import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { useCreateOrder } from '../features/orders/useCreateOrder'
+import Loader from './Loader'
 
 function SummaryButton({ isSummary = false }) {
     const cart = useSelector(getCart)
     const { total, discount, shipping, paymentMethod, clearPaymentMethod } =
         usePrice()
-    const { updateUser, isUpdating } = useUpdateUser()
+    const { createOrder, isCreating } = useCreateOrder()
     const { user, isLoading } = useUser()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,48 +19,30 @@ function SummaryButton({ isSummary = false }) {
     const totalDiscount = discount + shippingPriceToDiscount
     const totalRest = total % 1 === 0 ? '.00' : '0'
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
-
-    const { userName, street, zipCode, city, phone } = user?.user_metadata || {
-        userName: 'użytkownik',
-    }
+    if (isCreating || isLoading || !user) return <Loader />
 
     function handleOrder() {
         const length = 6
         const orderId = Array.from({ length }, () =>
             Math.floor(Math.random() * 10)
         ).join('')
-        const currentDate = new Date().toDateString().slice(4)
-        const formatedDate = new Date(currentDate)
-        const createdDate = formatDate(formatedDate)
+        const UserId = user ? user.id : 'no-name'
 
         const newOrder = {
-            cartOrder: cart,
-            orderId,
-            total,
+            cart,
+            id: orderId,
+            totalPrice: total,
             payment: paymentMethod,
-            createdDate,
+            UserId,
+            status: 'W przygotowaniu',
         }
-
-        updateUser(
-            {
-                userName,
-                street,
-                zipCode,
-                city,
-                phone,
-                ordersHistory: [...user?.user_metadata.ordersHistory, newOrder],
+        createOrder(newOrder, {
+            onSuccess: () => {
+                navigate('/success')
+                dispatch(clearCart())
+                clearPaymentMethod()
             },
-            {
-                onSuccess: () => {
-                    toast.success('Zamówienie zostało złożone')
-                    navigate('/success')
-                    dispatch(clearCart())
-                    clearPaymentMethod()
-                },
-                onError: () =>
-                    toast.error('Wystąpił problem z złożeniem zamówienia'),
-            }
-        )
+        })
     }
 
     return (
