@@ -36,11 +36,11 @@ function Cart() {
         <div className=" pb-28 px-4 py-6 small:px-6">
             <ClearCart
                 onClose={handleCloseModal}
-                ref={ref}
+                refs={ref}
                 showMore={showMore}
                 onClear={() => dispatch(clearCart())}
             />
-            <CartStep one={true} />
+            <CartStep one />
             <CartList cart={cart} />
             <CartSummary />
             <div className="mx-4 mt-2 pb-8">

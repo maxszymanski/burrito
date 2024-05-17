@@ -15,7 +15,7 @@ const NavItem: React.FC<NavItemProps> = ({
     children,
 }) => {
     return (
-        <li className="text-mywhite relative xl:hover:bg-[rgba(213,216,199,0.1)] duration-300 transition-colors ">
+        <li className="text-mywhite relative xl:hover:bg-[rgba(213,216,199,0.1)] duration-300 transition-colors  ">
             <NavLink
                 to={linkTo}
                 className={({ isActive }) =>

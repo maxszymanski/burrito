@@ -19,10 +19,10 @@ function NavMenu() {
         )
     const isFixed = cartQuantity >= 1
     return (
-        <nav className="fixed left-0 bottom-0 w-full border-t-[1px] border-stone-700 ">
+        <nav className="fixed left-0 bottom-0 w-full border-t-[1px] border-stone-700 xl:top-0  ">
             <ul
                 className="px-2 pt-1 font-scope text-2xl small:text-3xl text-mywhite flex
-			justify-between bg-menu-bg-sm items-center "
+			justify-between bg-menu-bg-sm items-center xl:bg-none xl:bg-[rgba(43,44,42,0.6)]  "
             >
                 <NavItem icon={<GoHome />} iconText="Start" linkTo="/" />
                 <NavItem icon={<BiFoodMenu />} iconText="Menu" linkTo="/menu" />

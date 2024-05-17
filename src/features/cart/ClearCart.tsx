@@ -1,11 +1,11 @@
 import { CiTrash } from 'react-icons/ci'
 import { IoMdMore } from 'react-icons/io'
 
-function ClearCart({ onClose, ref, showMore, onClear }) {
+function ClearCart({ onClose, refs, showMore, onClear }) {
     return (
         <div className="flex items-center mb-2 justify-between text-xl">
             <h2>Twój koszyk</h2>
-            <button className="p-2 text-2xl" onClick={onClose} ref={ref}>
+            <button className="p-2 text-2xl" onClick={onClose} ref={refs}>
                 <IoMdMore />
             </button>
             <div

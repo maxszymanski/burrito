@@ -26,7 +26,7 @@ function CartItem({
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[25%] max-h-28 rounded-full grow-0 basis-2/6"
+                className="h-auto max-w-[23%] max-h-24 rounded-full grow-0 basis-2/6"
             />
             <div className="flex flex-col gap-4 px-3 justify-between grow-0 basis-3/6  items-start">
                 <h4 className="font-semibold tracking-wider  text-sm leading-6">
@@ -36,7 +36,9 @@ function CartItem({
                     quantity={quantity}
                     onClickInc={() => dispatch(decreaseItemQuantity(itemId))}
                     onClickDec={() => dispatch(increaseItemQuantity(itemId))}
-                />
+                >
+                    {' '}
+                </QuantityButton>
                 <p className="font-semibold tracking-wider  text-sm">
                     ilość: <span className="text-yellow-500">{quantity}</span>
                 </p>

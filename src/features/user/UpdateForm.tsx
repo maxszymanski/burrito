@@ -16,11 +16,7 @@ function UpdateForm() {
         user?.user_metadata || ''
 
     const onUpdate = (updatedUser) => {
-        updateUser(updatedUser, {
-            onSuccess: () => {
-                toast.success('Profil został zaktualizowany')
-            },
-        })
+        updateUser(updatedUser)
     }
     if (isUpdating || isLoading) return <Loader />
 

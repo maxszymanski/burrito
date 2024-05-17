@@ -3,7 +3,7 @@ import Logo from './Logo'
 function Header() {
     return (
         <>
-            <div className="bg-gradient-to-b from-[#9A1E02] to-[#eeb02a] md:bg-headerTablet relative z-0 md:bg-center md:bg-cover md:py-24">
+            <div className="bg-gradient-to-b from-[#9A1E02] to-[#eeb02a] md:bg-headerTablet relative z-0 md:bg-center md:bg-cover md:py-24 xl:pt-44 xl:min-h-[750px]">
                 <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.2)] z-10 md:hidden"></div>
                 <Logo />
 

@@ -11,8 +11,8 @@ function Account() {
         <>
             <div className=" font-muli w-full min-h-screen relative">
                 <Outlet />
+                <NavMenu />
             </div>
-            <NavMenu />
         </>
     )
 }

@@ -8,7 +8,7 @@ function AppLayout() {
         window.scrollTo(0, 0)
     }, [location.pathname])
     return (
-        <div className=" w-full relative bg-menu-bg-sm min-h-screen">
+        <div className=" w-full relative bg-menu-bg-sm min-h-screen ">
             <Outlet />
             <NavMenu />
         </div>

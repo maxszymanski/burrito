@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 export function useUpdateUser() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
-    const { mutate: updateUser, isLoading: isUpdating } = useMutation({
+    const { mutate: updateUser, isPending: isUpdating } = useMutation({
         mutationFn: ({ userName, street, zipCode, city, phone, avatar }) =>
             updateCurrentUser({
                 userName,
@@ -17,7 +17,7 @@ export function useUpdateUser() {
                 avatar,
             }),
         onSuccess: () => {
-            // toast.success('Profil został zaaktualizowany')
+            toast.success('Profil został zaaktualizowany')
             queryClient.invalidateQueries({
                 // gdy funkcja dodawania się powiedzie nakazujemy wywołać invalidate dla queryKey: 'user i się odświeża
                 queryKey: ['user'],
