@@ -2,6 +2,7 @@ import Loader from '../../ui/Loader'
 import { useUser } from '../authentication/useUser'
 import DeliveryForm from './DeliveryForm'
 import { usePrice } from '../../context/PriceContext'
+import SavedAdress from './SavedAdress'
 
 function DeliveryAdress() {
     const { user, isAuthenticated, isLoading } = useUser()
@@ -54,6 +55,8 @@ function DeliveryAdress() {
                     </button>
                 </div>
             )}
+            {/* {(!isAuthenticated && !isLoading && !shippingData) ||
+                (isFormShow && <SavedAdress />)} */}
             {(!isAuthenticated && !isLoading && !shippingData) ||
                 (isFormShow && <DeliveryForm onReset={handleShowForm} />)}
         </div>

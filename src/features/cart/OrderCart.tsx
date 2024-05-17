@@ -8,9 +8,9 @@ import { usePrice } from '../../context/PriceContext'
 function OrderCart() {
     const { isFormShow } = usePrice()
     return (
-        <div className="relative px-4 py-6 small:px-6 ">
+        <section className="relative px-4 py-6 small:px-6 ">
             <OrderCartHeader title="Dostawa i płatność" />
-            <CartStep one={true} two={true} />
+            <CartStep one two />
             <DeliveryAdress />
             {!isFormShow && (
                 <>
@@ -18,7 +18,7 @@ function OrderCart() {
                     <SummaryButton />
                 </>
             )}
-        </div>
+        </section>
     )
 }
 
