@@ -2,9 +2,11 @@ import { useForm } from 'react-hook-form'
 import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
 import { usePrice } from '../../context/PriceContext'
+import { useUser } from '../authentication/useUser'
 
-function DeliveryForm({ onReset }) {
+function DeliveryForm({ onReset, storedDeliveryData }) {
     const { register, formState, handleSubmit, reset } = useForm()
+    const { isAuthenticated } = useUser()
     const { handleShowForm } = usePrice()
     const { errors } = formState
     const inputClass =
@@ -20,7 +22,7 @@ function DeliveryForm({ onReset }) {
     }
 
     return (
-        <div className="mt-8">
+        <div className="py-12 ">
             <form onSubmit={handleSubmit(onSubmit)} className=" ">
                 <FormRow error={errors?.name?.message}>
                     <input
@@ -115,13 +117,15 @@ function DeliveryForm({ onReset }) {
                     `}
                     />
                 </FormRow>
-                <Button type="w-full mt-2">Zapisz</Button>
-                <Button
-                    onClick={onReset}
-                    type="w-full mt-4 bg-red-500 focus:bg-red-500"
-                >
-                    Anuluj
-                </Button>
+                <Button type="w-full mt-2 bg-yellow-500">Zapisz</Button>
+                {(isAuthenticated || storedDeliveryData) && (
+                    <Button
+                        onClick={onReset}
+                        type="w-full mt-4 bg-red-500 focus:bg-red-500"
+                    >
+                        Anuluj
+                    </Button>
+                )}
             </form>
         </div>
     )

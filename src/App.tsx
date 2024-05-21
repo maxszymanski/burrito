@@ -22,6 +22,7 @@ import Summary from './features/cart/Summary'
 import SuccessOrder from './features/cart/SuccessOrder'
 import OrderDetails from './features/orders/OrderDetails'
 import OrdersHistory from './features/orders/OrdersHistory'
+import Admin from './pages/Admin'
 
 const queryClient = new QueryClient()
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />,
+            },
+            {
+                path: '/admin',
+                element: <Admin />,
             },
         ],
     },
@@ -114,7 +119,7 @@ function App() {
         <PriceProvider>
             <QueryClientProvider client={queryClient}>
                 <RouterProvider router={router} />
-                <ReactQueryDevtools initialIsOpen={false} />
+                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                 <Toaster
                     position="top-center"
                     gutter={12}

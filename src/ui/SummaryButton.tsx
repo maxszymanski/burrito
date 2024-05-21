@@ -6,27 +6,29 @@ import { clearCart, getCart } from '../features/cart/cartSlice'
 import { useUser } from '../features/authentication/useUser'
 import { useCreateOrder } from '../features/orders/useCreateOrder'
 import Loader from './Loader'
+import { ANONYMOUS_USER_ID } from '../utils/helpers'
 
 function SummaryButton({ isSummary = false }) {
     const cart = useSelector(getCart)
     const { total, discount, shipping, paymentMethod, clearPaymentMethod } =
         usePrice()
     const { createOrder, isCreating } = useCreateOrder()
-    const { user, isLoading } = useUser()
+    const { user, isLoading, isAuthenticated } = useUser()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const shippingPriceToDiscount = shipping === 0 ? 5 : 0
     const totalDiscount = discount + shippingPriceToDiscount
     const totalRest = total % 1 === 0 ? '.00' : '0'
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
-    if (isCreating || isLoading || !user) return <Loader />
+    if (isCreating || isLoading || (!user && isAuthenticated)) return <Loader />
 
     function handleOrder() {
         const length = 6
         const orderId = Array.from({ length }, () =>
             Math.floor(Math.random() * 10)
         ).join('')
-        const UserId = user ? user.id : 'no-name'
+
+        const UserId = user ? user.id : ANONYMOUS_USER_ID
 
         const newOrder = {
             cart,
@@ -41,6 +43,7 @@ function SummaryButton({ isSummary = false }) {
                 navigate('/success')
                 dispatch(clearCart())
                 clearPaymentMethod()
+                localStorage.removeItem('deliveryData')
             },
         })
     }

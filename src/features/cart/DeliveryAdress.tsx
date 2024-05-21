@@ -2,16 +2,22 @@ import Loader from '../../ui/Loader'
 import { useUser } from '../authentication/useUser'
 import DeliveryForm from './DeliveryForm'
 import { usePrice } from '../../context/PriceContext'
-import SavedAdress from './SavedAdress'
+import { useEffect } from 'react'
 
 function DeliveryAdress() {
     const { user, isAuthenticated, isLoading } = useUser()
-    const { isFormShow, handleShowForm } = usePrice()
+    const { isFormShow, handleShowForm, setIsFormShow } = usePrice()
     const userData = user?.user_metadata
     const storedDeliveryData = localStorage.getItem('deliveryData')
     const shippingData = storedDeliveryData
         ? JSON.parse(storedDeliveryData)
         : null
+    useEffect(() => {
+        if (isAuthenticated) return
+        if (!storedDeliveryData || !isAuthenticated) {
+            setIsFormShow(true)
+        }
+    }, [isAuthenticated, storedDeliveryData, setIsFormShow, isLoading])
 
     if (isLoading) return <Loader />
 
@@ -57,8 +63,12 @@ function DeliveryAdress() {
             )}
             {/* {(!isAuthenticated && !isLoading && !shippingData) ||
                 (isFormShow && <SavedAdress />)} */}
-            {(!isAuthenticated && !isLoading && !shippingData) ||
-                (isFormShow && <DeliveryForm onReset={handleShowForm} />)}
+            {isFormShow && (
+                <DeliveryForm
+                    onReset={handleShowForm}
+                    storedDeliveryData={storedDeliveryData}
+                />
+            )}
         </div>
     )
 }

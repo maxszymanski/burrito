@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createOrder as createOrderApi } from '../../services/apiOrders'
+import { updateStatus } from '../services/apiOrders'
 import toast from 'react-hot-toast'
 
-export function useCreateOrder() {
+export function useEditOrder() {
     const queryClient = useQueryClient()
-    const { mutate: createOrder, isPending: isCreating } = useMutation({
-        mutationFn: createOrderApi,
+    const { mutate: updateOrder, isPending: isEditing } = useMutation({
+        mutationFn: (status) => updateStatus(status),
         onSuccess: () => {
-            toast.success('Zamówienie zostalo złożone')
+            toast.success('Statsus zamówienia został zaaktualizowany')
             queryClient.invalidateQueries({
                 // gdy funkcja dodawania się powiedzie nakazujemy wywołać invalidate dla queryKey: 'cabins i się odświeża
                 queryKey: ['orders'],
@@ -15,5 +15,5 @@ export function useCreateOrder() {
         },
         onError: (err) => toast.error(err.message),
     })
-    return { isCreating, createOrder }
+    return { isEditing, updateOrder }
 }

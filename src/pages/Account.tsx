@@ -1,11 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import NavMenu from '../ui/NavMenu'
 import { useUser } from '../features/authentication/useUser'
-import { useUpdateUser } from '../features/authentication/useUpdateUser'
+import { useEffect } from 'react'
 
 function Account() {
-    useUser()
-    useUpdateUser()
+    const { isAuthenticated } = useUser()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!isAuthenticated) navigate('/login')
+    }, [isAuthenticated, navigate])
 
     return (
         <>

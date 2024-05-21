@@ -4,14 +4,17 @@ import SummaryButton from '../../ui/SummaryButton'
 import PaymentMethod from './PaymentMethod'
 import OrderCartHeader from './OrderCartHeader'
 import { usePrice } from '../../context/PriceContext'
-
+import { useUser } from '../authentication/useUser'
 function OrderCart() {
+    const { isAuthenticated } = useUser()
     const { isFormShow } = usePrice()
+
     return (
         <section className="relative px-4 py-6 small:px-6 ">
             <OrderCartHeader title="Dostawa i płatność" />
             <CartStep one two />
             <DeliveryAdress />
+
             {!isFormShow && (
                 <>
                     <PaymentMethod />

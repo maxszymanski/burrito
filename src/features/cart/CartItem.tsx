@@ -20,6 +20,10 @@ function CartItem({
 }) {
     const dispatch = useDispatch()
     const { name, quantity, totalPrice, image, itemId } = item
+    function removeFromCart() {
+        dispatch(deleteItem(itemId))
+        toast.error('Produkt usunięty z koszyka')
+    }
 
     return (
         <div className="flex items-center justify-evenly pt-6 ">
@@ -34,7 +38,11 @@ function CartItem({
                 </h4>
                 <QuantityButton
                     quantity={quantity}
-                    onClickInc={() => dispatch(decreaseItemQuantity(itemId))}
+                    onClickInc={() => {
+                        quantity > 1
+                            ? dispatch(decreaseItemQuantity(itemId))
+                            : removeFromCart()
+                    }}
                     onClickDec={() => dispatch(increaseItemQuantity(itemId))}
                 >
                     {' '}

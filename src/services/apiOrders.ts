@@ -41,3 +41,15 @@ export async function createOrder(newOrder) {
 
     return data
 }
+export async function updateStatus(status) {
+    const { data, error } = await supabase
+        .from('orders')
+        .update({ status: status })
+        .eq('id', 577102)
+        .select('*')
+
+    if (error) {
+        throw new Error('Wystąpił problem podczas aktualizacji zamówienia')
+    }
+    return data
+}

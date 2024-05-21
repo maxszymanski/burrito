@@ -39,6 +39,7 @@ const PriceProvider = ({ children }) => {
                 isFormShow,
                 handleShowForm,
                 clearPaymentMethod,
+                setIsFormShow,
             }}
         >
             {children}

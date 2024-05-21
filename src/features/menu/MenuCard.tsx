@@ -68,7 +68,7 @@ function MenuCard({
                 </div>
                 {isInCart ? (
                     <QuantityButton
-                        isCol={true}
+                        isCol
                         quantity={cartItem[0].quantity}
                         onClickInc={() => {
                             cartItem[0].quantity > 1
