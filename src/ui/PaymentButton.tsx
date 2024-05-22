@@ -25,7 +25,7 @@ function PaymentButton({
             <img
                 src={src}
                 alt={alt}
-                className="w-10 h-auto max-h-10 small:w-12 small:h-12"
+                className="w-10 h-8 small:w-10 small:h-10"
             />{' '}
             {children}
         </button>
