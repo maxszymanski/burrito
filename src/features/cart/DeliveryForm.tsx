@@ -3,6 +3,7 @@ import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
 import { usePrice } from '../../context/PriceContext'
 import { useUser } from '../authentication/useUser'
+import LoginLink from '../../ui/LoginLink'
 
 function DeliveryForm({ onReset, storedDeliveryData }) {
     const { register, formState, handleSubmit, reset } = useForm()
@@ -22,7 +23,7 @@ function DeliveryForm({ onReset, storedDeliveryData }) {
     }
 
     return (
-        <div className="py-12 ">
+        <div className="py-8 ">
             <form onSubmit={handleSubmit(onSubmit)} className=" ">
                 <FormRow error={errors?.name?.message}>
                     <input
@@ -118,13 +119,21 @@ function DeliveryForm({ onReset, storedDeliveryData }) {
                     />
                 </FormRow>
                 <Button type="w-full mt-2 bg-yellow-500">Zapisz</Button>
-                {(isAuthenticated || storedDeliveryData) && (
+                {isAuthenticated || storedDeliveryData ? (
                     <Button
                         onClick={onReset}
                         type="w-full mt-4 bg-red-500 focus:bg-red-500"
                     >
                         Anuluj
                     </Button>
+                ) : (
+                    <>
+                        <p className="text-center text-xs py-4 px-8 small:text-sm">
+                            Jeśli masz już konto, możesz zalogować się, aby
+                            zaoszczędzić czas na wprowadzaniu danych do dostawy.
+                        </p>
+                        <LoginLink />
+                    </>
                 )}
             </form>
         </div>

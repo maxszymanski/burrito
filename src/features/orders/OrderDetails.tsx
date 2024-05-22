@@ -8,22 +8,16 @@ import { useOrder } from './useOrder'
 
 function OrderDetails() {
     const { order, isLoading, orderNumber } = useOrder()
-    // const { user, isLoading } = useUser()
+    const { isAuthenticated } = useUser()
     if (isLoading || !order) return <Loader />
-    // if (isLoading || !user) return <Loader />
-    // const { ordersHistory } = user.user_metadata
     const { created_at, totalPrice, status } = order
     const createdDate = created_at.slice(0, 10).split('-').reverse().join('.')
-
-    // const currentOrder = ordersHistory
-    //     .filter((order) => order?.orderId === orderNumber)
-    //     .at(0)
 
     return (
         <section className=" px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm">
             <OrderCartHeader
                 title={`Zamówienie #${orderNumber}`}
-                to="/ordersHistory"
+                to={isAuthenticated ? '/ordersHistory' : '/'}
             />
 
             <ul className="space-y-3 my-3 pb-8  ">

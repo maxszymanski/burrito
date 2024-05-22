@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Button from '../../ui/Button'
 import { useSignUp } from './useSignin'
+import LoginLink from '../../ui/LoginLink'
 
 function SigninForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -205,13 +206,7 @@ function SigninForm() {
                 <p className="font-scope text-xs small:text-base p-2 text-center text-mywhite transition-colors duration-300 my-6 ">
                     Posiadasz już konto i chcesz się zalogować?
                 </p>
-                <NavLink
-                    to="/login"
-                    aria-disabled={isLoading}
-                    className="w-full text-center block border-2 border-yellow-100 rounded-lg text-yellow-100   transition-colors duration-300 uppercase font-semibold text-sm small:text-xl pb-2 pt-3 tracking-widest font-scope  focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2 disabled:cursor-not-allowed bg-[rgba(138,139,136,0.4)] hover:bg-[rgba(138,139,136,0.7)] "
-                >
-                    Zaloguj się
-                </NavLink>
+                <LoginLink />
             </form>
         </div>
     )

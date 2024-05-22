@@ -13,12 +13,11 @@ function DeliveryAdress() {
         ? JSON.parse(storedDeliveryData)
         : null
     useEffect(() => {
-        if (isAuthenticated) return
+        if (isAuthenticated || storedDeliveryData) return
         if (!storedDeliveryData || !isAuthenticated) {
             setIsFormShow(true)
         }
-    }, [isAuthenticated, storedDeliveryData, setIsFormShow, isLoading])
-
+    }, [isAuthenticated, storedDeliveryData, setIsFormShow])
     if (isLoading) return <Loader />
 
     return (

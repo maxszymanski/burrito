@@ -1,3 +1,4 @@
+import { usePrice } from '../../context/PriceContext'
 import SummaryButton from '../../ui/SummaryButton'
 import CartStep from './CartStep'
 import DeliveryAdress from './DeliveryAdress'
@@ -6,14 +7,19 @@ import SummaryOrder from './SummaryOrder'
 import SummaryPayment from './SummaryPayment'
 
 function Summary() {
+    const { isFormShow } = usePrice()
     return (
         <section className="px-4 py-6 small:px-6">
             <OrderCartHeader title="Podsumowanie" to="/order" />
-            <CartStep one={true} two={true} three={true} />
+            <CartStep one two three />
             <DeliveryAdress />
-            <SummaryOrder />
-            <SummaryPayment />
-            <SummaryButton isSummary={true} />
+            {!isFormShow && (
+                <>
+                    <SummaryOrder />
+                    <SummaryPayment />
+                    <SummaryButton isSummary />
+                </>
+            )}
         </section>
     )
 }
