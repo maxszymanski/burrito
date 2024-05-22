@@ -6,10 +6,18 @@ import {
 import { createContext, useContext, useState } from 'react'
 
 const PriceContext = createContext()
+const defaultAdress = {
+    name: 'Anonimowy użytkownik',
+    street: '',
+    zip: '',
+    city: '',
+    phone: '',
+}
 
 const PriceProvider = ({ children }) => {
     const [paymentMethod, setPaymentMethod] = useState(null)
     const [isFormShow, setIsFormShow] = useState(false)
+    const [orderAddress, setOrderAddress] = useState(defaultAdress)
     const totalCartQuantity = useSelector(getTotalCartQuantity)
     const totalCartPrice: number = useSelector(getTotalCardPrice)
     const shipping = totalCartPrice >= 60 ? 0 : 5
@@ -40,6 +48,8 @@ const PriceProvider = ({ children }) => {
                 handleShowForm,
                 clearPaymentMethod,
                 setIsFormShow,
+                orderAddress,
+                setOrderAddress,
             }}
         >
             {children}

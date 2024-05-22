@@ -2,11 +2,12 @@ import { useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import Button from '../../ui/Button'
 import { useSignUp } from './useSignin'
 import LoginLink from '../../ui/LoginLink'
+import { useUser } from './useUser'
 
 function SigninForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -14,11 +15,16 @@ function SigninForm() {
     const { register, formState, handleSubmit, reset, getValues } = useForm()
     const { errors } = formState
     const { signUp, isLoading } = useSignUp()
+    const { isAuthenticated } = useUser()
+    const navigate = useNavigate()
     const inputClass =
         'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
+    useEffect(() => {
+        isAuthenticated && navigate('/account', { replace: true })
+    }, [isAuthenticated, navigate])
 
     const onSubmit = (newUser) => {
-        signUp(newUser, { onSettled: reset() })
+        signUp(newUser, { onSettled: () => reset() })
     }
     const handleShowPassword = () => {
         setIsShowPassword((show) => !show)

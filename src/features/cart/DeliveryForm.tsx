@@ -17,9 +17,6 @@ function DeliveryForm({ onReset, storedDeliveryData }) {
         localStorage.setItem('deliveryData', JSON.stringify(deliveryData))
         reset()
         handleShowForm()
-
-        // Wyczyść dane z formularza lub wykonaj inne działania po zakończeniu
-        // np. przekierowanie do kolejnego widoku
     }
 
     return (
@@ -118,10 +115,13 @@ function DeliveryForm({ onReset, storedDeliveryData }) {
                     `}
                     />
                 </FormRow>
-                <Button type="w-full mt-2 bg-yellow-500">Zapisz</Button>
+                <Button disabled={false} type="w-full mt-2 bg-yellow-500">
+                    Zapisz
+                </Button>
                 {isAuthenticated || storedDeliveryData ? (
                     <Button
                         onClick={onReset}
+                        disabled={false}
                         type="w-full mt-4 bg-red-500 focus:bg-red-500"
                     >
                         Anuluj

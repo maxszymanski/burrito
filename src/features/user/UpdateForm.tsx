@@ -4,7 +4,6 @@ import Button from '../../ui/Button'
 import { useUpdateUser } from '../authentication/useUpdateUser'
 import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
-import toast from 'react-hot-toast'
 
 function UpdateForm() {
     const { register, formState, handleSubmit } = useForm()
@@ -28,9 +27,8 @@ function UpdateForm() {
                     type="file"
                     id="avatar"
                     accept="image/*"
-                    placeholder="Numer telefonu"
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color   bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 cursor-pointer ${
-                        errors?.phone?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color bg-transparent border-b border-yellow-500 rounded-3xl px-7 h-9 small:h-12 cursor-pointer ${
+                        errors?.avatar?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
@@ -42,8 +40,8 @@ function UpdateForm() {
                     id="userName"
                     placeholder="Imię"
                     defaultValue={userName}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 ${
-                        errors?.userName?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                        errors?.userName?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
@@ -58,8 +56,8 @@ function UpdateForm() {
                     id="street"
                     placeholder="Ulica i numer domu"
                     defaultValue={street}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 ${
-                        errors?.street?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                        errors?.street?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
@@ -74,8 +72,8 @@ function UpdateForm() {
                     id="zipCode"
                     placeholder="Kod pocztowy"
                     defaultValue={zipCode}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 ${
-                        errors?.zipCode?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                        errors?.zipCode?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
@@ -90,8 +88,8 @@ function UpdateForm() {
                     id="city"
                     placeholder="Miejscowość"
                     defaultValue={city}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 ${
-                        errors?.city?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                        errors?.city?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
@@ -117,14 +115,14 @@ function UpdateForm() {
                     id="phone"
                     placeholder="Numer telefonu"
                     defaultValue={phone}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-8 small:h-10 ${
-                        errors?.phone?.message ? 'focus:border-red-500' : ''
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                        errors?.phone?.message ? 'border-red-500' : ''
                     }
                     `}
                 />
             </UpdateUserFormRow>
 
-            <Button onClick={() => {}} type=" mt-2 px-6 " disabled={isUpdating}>
+            <Button type=" mt-2 px-6 " disabled={isUpdating}>
                 Zapisz
             </Button>
         </form>

@@ -27,3 +27,6 @@
         }
     }
 }
+input[type='file']::file-selector-button {
+    @apply bg-yellow-400 text-white cursor-pointer py-1 px-3 small:py-1.5 small:px-5 border-[1px] border-yellow-400 mr-2 hover:bg-yellow-500 transition-colors duration-300 rounded-full  text-xs small:text-sm focus:outline-none small:mt-1;
+}

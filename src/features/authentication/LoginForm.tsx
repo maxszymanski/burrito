@@ -3,24 +3,30 @@ import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../../ui/Button'
 import useLogin from './useLogin'
 import Loader from '../../ui/Loader'
 import { usePrice } from '../../context/PriceContext'
 import { useSelector } from 'react-redux'
 import { getCart } from '../cart/cartSlice'
+import { useUser } from './useUser'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
     const { login, isLoading } = useLogin()
     const { setIsFormShow } = usePrice()
     const cart = useSelector(getCart)
+    const { isAuthenticated } = useUser()
     const { register, formState, handleSubmit, reset } = useForm()
     const { errors } = formState
     const navigate = useNavigate()
     const inputClass =
         'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
+
+    useEffect(() => {
+        isAuthenticated && navigate('/account', { replace: true })
+    }, [isAuthenticated, navigate])
 
     const onSubmit = (user) => {
         login(user, {

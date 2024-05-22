@@ -2,22 +2,36 @@ import Loader from '../../ui/Loader'
 import { useUser } from '../authentication/useUser'
 import DeliveryForm from './DeliveryForm'
 import { usePrice } from '../../context/PriceContext'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
 function DeliveryAdress() {
     const { user, isAuthenticated, isLoading } = useUser()
-    const { isFormShow, handleShowForm, setIsFormShow } = usePrice()
+    const { isFormShow, handleShowForm, setIsFormShow, setOrderAddress } =
+        usePrice()
     const userData = user?.user_metadata
     const storedDeliveryData = localStorage.getItem('deliveryData')
     const shippingData = storedDeliveryData
         ? JSON.parse(storedDeliveryData)
         : null
+
+    const deliveryAddress = useMemo(
+        () => ({
+            name: shippingData ? shippingData.name : userData?.userName,
+            street: shippingData ? shippingData.streetUser : userData?.street,
+            zip: shippingData ? shippingData.zipCodeUser : userData?.zipCode,
+            city: shippingData ? shippingData.cityUser : userData?.city,
+            phone: shippingData ? shippingData.phoneUser : userData?.phone,
+        }),
+        [shippingData, userData]
+    )
+
     useEffect(() => {
         if (isAuthenticated || storedDeliveryData) return
         if (!storedDeliveryData || !isAuthenticated) {
             setIsFormShow(true)
         }
     }, [isAuthenticated, storedDeliveryData, setIsFormShow])
+
     if (isLoading) return <Loader />
 
     return (
@@ -28,29 +42,12 @@ function DeliveryAdress() {
             {(isAuthenticated || shippingData) && !isFormShow && (
                 <div className="flex justify-between items-end my-6">
                     <div className="text-sm small:text-base leading-5 pb-1">
+                        <p>{deliveryAddress.name}</p>
+                        <p>{deliveryAddress.street}</p>
                         <p>
-                            {shippingData
-                                ? shippingData.name
-                                : userData?.userName}
+                            {deliveryAddress.zip} {deliveryAddress.city}
                         </p>
-                        <p>
-                            {shippingData
-                                ? shippingData.streetUser
-                                : userData?.street}
-                        </p>
-                        <p>
-                            {shippingData
-                                ? shippingData.zipCodeUser
-                                : userData?.zipCode}{' '}
-                            {shippingData
-                                ? shippingData.cityUser
-                                : userData?.city}
-                        </p>
-                        <p>
-                            {shippingData
-                                ? shippingData.phoneUser
-                                : userData?.phone}
-                        </p>
+                        <p>{deliveryAddress.phone}</p>
                     </div>
                     <button
                         className="text-yellow-500 p-1 uppercase text-xs small:text-sm"
