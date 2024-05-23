@@ -9,6 +9,7 @@ import {
 } from '../cart/cartSlice'
 import toast from 'react-hot-toast'
 import QuantityButton from '../../ui/QuantityButton'
+import Loader from '../../ui/Loader'
 
 function MenuCard({
     cardInfo = {
@@ -27,7 +28,7 @@ function MenuCard({
     const cartItem = cart.filter((item) => item.itemId === id)
     const isInCart = cartItem.length > 0
 
-    if (!cardInfo) return <p>Loading...</p>
+    if (!cardInfo) return <Loader />
 
     function handleAddToCart() {
         const newItem = {

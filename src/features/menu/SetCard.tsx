@@ -1,25 +1,56 @@
+import { useDispatch, useSelector } from 'react-redux'
 import AddRemoveBtn from '../../ui/AddRemoveBtn'
 import BasketButton from '../../ui/BasketButton'
+import {
+    addItem,
+    decreaseItemQuantity,
+    deleteItem,
+    getCart,
+    increaseItemQuantity,
+} from '../cart/cartSlice'
+import Loader from '../../ui/Loader'
+import toast from 'react-hot-toast'
 
 function SetCard({
     isOverflow = true,
     title = '',
-    itemOne = { name: '', price: 0, ingredients: '' },
-    itemTwo = { name: '', price: 0, ingredients: '' },
+    itemOne = { name: '', price: 0, ingredients: '', id: 100 },
+    itemTwo = { name: '', price: 0, ingredients: '', id: 100 },
     image = '',
     imageBig = '',
     isEnd = false,
 }) {
-    const totalPrice = itemOne?.price + itemTwo?.price || 0
-    // const itemId = itemOne.id.toString() + '-' + itemTwo.id.toString() || ''
-    // const handleCreateOrder = () => {
-    //     const newCard = {
-    //         itemId,
-    //         title,
-    //         totalPrice,
-    //         quantity,
-    //     }
-    // }
+    const dispatch = useDispatch()
+    const cart = useSelector(getCart)
+    const idSet = itemOne.id + itemTwo.id + 100
+    const cartItem = cart.filter((item) => item.itemId === idSet)
+    const isInCart = cartItem.length > 0
+    const ingredientsSet = [
+        ...itemOne.ingredients.split(', '),
+        ...itemTwo.ingredients.split(', '),
+    ]
+    const uniqeIngredients = [...new Set(ingredientsSet)].join(', ')
+
+    const totalPriceSet = itemOne?.price + itemTwo?.price || 0
+    if (!itemOne || !itemTwo) return <Loader />
+
+    function handleAddToCart() {
+        const newItem = {
+            itemId: idSet,
+            name: title,
+            quantity: 1,
+            price: totalPriceSet,
+            totalPrice: totalPriceSet * 1,
+            image,
+            ingredients: uniqeIngredients,
+        }
+        dispatch(addItem(newItem))
+        toast('Produkt dodany do koszyka')
+    }
+    function removeFromCart() {
+        dispatch(deleteItem(cartItem[0].itemId))
+        toast.error('Produkt usunięty z koszyka')
+    }
 
     return (
         <div
@@ -48,11 +79,30 @@ function SetCard({
                     ({itemTwo?.ingredients})
                 </p>
                 <p className="text-base small:text-lg md:text-3xl font-bold">
-                    {totalPrice} zł
+                    {totalPriceSet} zł
                 </p>
                 <div className="flex items-center justify-between gap-4 pt-4 sm:w-48 md:w-full">
-                    <AddRemoveBtn />
-                    <BasketButton onClick={() => {}} />
+                    {isInCart ? (
+                        <AddRemoveBtn
+                            quantity={cartItem[0].quantity}
+                            onClickInc={() => {
+                                cartItem[0].quantity > 1
+                                    ? dispatch(
+                                          decreaseItemQuantity(
+                                              cartItem[0].itemId
+                                          )
+                                      )
+                                    : removeFromCart()
+                            }}
+                            onClickDec={() =>
+                                dispatch(
+                                    increaseItemQuantity(cartItem[0].itemId)
+                                )
+                            }
+                        />
+                    ) : (
+                        <BasketButton onClick={handleAddToCart} />
+                    )}
                 </div>
             </div>
             <img

@@ -26,11 +26,19 @@ function DeliveryAdress() {
     )
 
     useEffect(() => {
+        const deliveryAddress = {
+            name: shippingData ? shippingData.name : userData?.userName,
+            street: shippingData ? shippingData.streetUser : userData?.street,
+            zip: shippingData ? shippingData.zipCodeUser : userData?.zipCode,
+            city: shippingData ? shippingData.cityUser : userData?.city,
+            phone: shippingData ? shippingData.phoneUser : userData?.phone,
+        }
+        setOrderAddress(deliveryAddress)
         if (isAuthenticated || storedDeliveryData) return
         if (!storedDeliveryData || !isAuthenticated) {
             setIsFormShow(true)
         }
-    }, [isAuthenticated, storedDeliveryData, setIsFormShow])
+    }, [isAuthenticated, storedDeliveryData, setIsFormShow, setOrderAddress])
 
     if (isLoading) return <Loader />
 
@@ -41,13 +49,14 @@ function DeliveryAdress() {
             </h4>
             {(isAuthenticated || shippingData) && !isFormShow && (
                 <div className="flex justify-between items-end my-6">
-                    <div className="text-sm small:text-base leading-5 pb-1">
-                        <p>{deliveryAddress.name}</p>
-                        <p>{deliveryAddress.street}</p>
+                    <div className="text-xs  leading-4 small:text-sm smmall:leading-5 pb-1">
+                        <p>{deliveryAddress.name.toUpperCase()}</p>
+                        <p>{deliveryAddress.street.toUpperCase()}</p>
                         <p>
-                            {deliveryAddress.zip} {deliveryAddress.city}
+                            {deliveryAddress.zip.toUpperCase()}{' '}
+                            {deliveryAddress.city.toUpperCase()}
                         </p>
-                        <p>{deliveryAddress.phone}</p>
+                        <p>{deliveryAddress.phone.toUpperCase()}</p>
                     </div>
                     <button
                         className="text-yellow-500 p-1 uppercase text-xs small:text-sm"
@@ -57,8 +66,6 @@ function DeliveryAdress() {
                     </button>
                 </div>
             )}
-            {/* {(!isAuthenticated && !isLoading && !shippingData) ||
-                (isFormShow && <SavedAdress />)} */}
             {isFormShow && (
                 <DeliveryForm
                     onReset={handleShowForm}

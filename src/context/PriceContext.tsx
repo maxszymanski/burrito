@@ -4,6 +4,7 @@ import {
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
 import { createContext, useContext, useState } from 'react'
+import { useUser } from '../features/authentication/useUser'
 
 const PriceContext = createContext()
 const defaultAdress = {
@@ -33,6 +34,9 @@ const PriceProvider = ({ children }) => {
     const clearPaymentMethod = () => {
         setPaymentMethod(null)
     }
+    const clearOrderAddress = () => {
+        setOrderAddress(defaultAdress)
+    }
 
     return (
         <PriceContext.Provider
@@ -50,6 +54,7 @@ const PriceProvider = ({ children }) => {
                 setIsFormShow,
                 orderAddress,
                 setOrderAddress,
+                clearOrderAddress,
             }}
         >
             {children}
@@ -60,7 +65,7 @@ const PriceProvider = ({ children }) => {
 function usePrice() {
     const contexts = useContext(PriceContext)
     if (contexts === undefined)
-        throw new Error('Price context was used outside Provider')
+        throw new Error('Price context został użyty poza providerem')
     return contexts
 }
 

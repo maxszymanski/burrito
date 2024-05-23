@@ -10,8 +10,15 @@ import { ANONYMOUS_USER_ID } from '../utils/helpers'
 
 function SummaryButton({ isSummary = false }) {
     const cart = useSelector(getCart)
-    const { total, discount, shipping, paymentMethod, clearPaymentMethod } =
-        usePrice()
+    const {
+        total,
+        discount,
+        shipping,
+        paymentMethod,
+        clearPaymentMethod,
+        orderAddress,
+        clearOrderAddress,
+    } = usePrice()
     const { createOrder, isCreating } = useCreateOrder()
     const { user, isLoading, isAuthenticated } = useUser()
     const navigate = useNavigate()
@@ -37,6 +44,7 @@ function SummaryButton({ isSummary = false }) {
             payment: paymentMethod,
             UserId,
             status: 'W przygotowaniu',
+            address: orderAddress,
         }
         createOrder(newOrder, {
             onSuccess: () => {
@@ -44,6 +52,7 @@ function SummaryButton({ isSummary = false }) {
                 dispatch(clearCart())
                 clearPaymentMethod()
                 localStorage.removeItem('deliveryData')
+                clearOrderAddress()
             },
         })
     }
