@@ -2,15 +2,18 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import NavMenu from '../ui/NavMenu'
 import { useUser } from '../features/authentication/useUser'
 import { useEffect } from 'react'
+import Loader from '../ui/Loader'
 
 function Account() {
-    const { isAuthenticated } = useUser()
+    const { isAuthenticated, isLoading } = useUser()
     const navigate = useNavigate()
 
     useEffect(() => {
+        if (isLoading) return
         if (!isAuthenticated) navigate('/login')
-    }, [isAuthenticated, navigate])
+    }, [isAuthenticated, navigate, isLoading])
 
+    if (isLoading) return <Loader />
     return (
         <>
             <div className=" font-muli w-full min-h-screen relative">
