@@ -101,7 +101,7 @@ function SetCard({
                             }
                         />
                     ) : (
-                        <BasketButton onClick={handleAddToCart} />
+                        <BasketButton isMainPage onClick={handleAddToCart} />
                     )}
                 </div>
             </div>
