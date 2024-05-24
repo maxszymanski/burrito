@@ -12,6 +12,7 @@ import { useOrders } from '../orders/useOrders'
 function UserProfile() {
     const [showDetails, setShowDetails] = useState(false)
     const { user, isLoading: isLoadingUser } = useUser()
+
     const { city, phone, street, userName, zipCode } = user?.user_metadata || ''
     const { orders: orderss } = useOrders()
     const orders = orderss?.length

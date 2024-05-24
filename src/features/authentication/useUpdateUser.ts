@@ -16,14 +16,13 @@ export function useUpdateUser() {
                 phone,
                 avatar,
             }),
-        onSuccess: () => {
-            toast.success('Profil został zaaktualizowany')
-            queryClient.invalidateQueries({
-                // gdy funkcja dodawania się powiedzie nakazujemy wywołać invalidate dla queryKey: 'user i się odświeża
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({
                 queryKey: ['user'],
             })
+            await queryClient.refetchQueries({ queryKey: ['user'] })
+            toast.success('Profil został zaaktualizowany')
             navigate('/account')
-            // queryClient.setQueryData(['user'], data?.user)
         },
         onError: (err) => toast.error(err.message),
     })

@@ -4,7 +4,6 @@ import {
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
 import { createContext, useContext, useState } from 'react'
-import { useUser } from '../features/authentication/useUser'
 
 const PriceContext = createContext()
 const defaultAdress = {
@@ -16,7 +15,10 @@ const defaultAdress = {
 }
 
 const PriceProvider = ({ children }) => {
-    const [paymentMethod, setPaymentMethod] = useState(null)
+    const [paymentMethod, setPaymentMethod] = useState(() => {
+        const storedPaymentMethod = localStorage.getItem('paymentMethod')
+        return storedPaymentMethod ? JSON.parse(storedPaymentMethod) : null
+    })
     const [isFormShow, setIsFormShow] = useState(false)
     const [orderAddress, setOrderAddress] = useState(defaultAdress)
     const totalCartQuantity = useSelector(getTotalCartQuantity)
@@ -26,6 +28,7 @@ const PriceProvider = ({ children }) => {
     const total = totalCartPrice + shipping - discount
 
     const handleSetPaymentMenthod = (e) => {
+        localStorage.setItem('paymentMethod', JSON.stringify(e.target.value))
         setPaymentMethod(e.target.value)
     }
     const handleShowForm = () => {
@@ -33,6 +36,7 @@ const PriceProvider = ({ children }) => {
     }
     const clearPaymentMethod = () => {
         setPaymentMethod(null)
+        localStorage.removeItem('paymentMethod')
     }
     const clearOrderAddress = () => {
         setOrderAddress(defaultAdress)

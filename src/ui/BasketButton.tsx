@@ -9,11 +9,14 @@ function BasketButton({ onClick, isMainPage = false }) {
             onClick={onClick}
         >
             {isMainPage ? (
-                <span className=" md:block w-full text-2xl tracking-widest  ">
-                    Dodaj
-                </span>
+                <span className="w-full text-2xl tracking-widest  ">Dodaj</span>
             ) : (
-                <BiBasket className="text-mywhite small:text-3xl text-2xl md:hidden" />
+                <>
+                    <BiBasket className="text-mywhite small:text-3xl text-2xl md:hidden" />
+                    <span className="hidden md:block w-full text-2xl tracking-widest  ">
+                        Dodaj
+                    </span>
+                </>
             )}
         </button>
     )

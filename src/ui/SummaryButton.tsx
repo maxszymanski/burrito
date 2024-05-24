@@ -29,12 +29,19 @@ function SummaryButton({ isSummary = false }) {
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
     if (isCreating || isLoading || (!user && isAuthenticated)) return <Loader />
 
-    function handleOrder() {
+    const getRandomId = () => {
         const length = 6
-        const orderId = Array.from({ length }, () =>
-            Math.floor(Math.random() * 10)
-        ).join('')
+        let orderId
+        do {
+            orderId = Array.from({ length }, () =>
+                Math.floor(Math.random() * 10)
+            ).join('')
+        } while (orderId.startsWith('0'))
+        return orderId
+    }
 
+    function handleOrder() {
+        const orderId = getRandomId()
         const UserId = user ? user.id : ANONYMOUS_USER_ID
 
         const newOrder = {
@@ -45,6 +52,10 @@ function SummaryButton({ isSummary = false }) {
             UserId,
             status: 'W przygotowaniu',
             address: orderAddress,
+        }
+        if (!paymentMethod) {
+            toast.error('Proszę wybrać metodę płatności')
+            return
         }
         createOrder(newOrder, {
             onSuccess: () => {

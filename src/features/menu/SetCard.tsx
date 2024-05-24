@@ -10,6 +10,7 @@ import {
 } from '../cart/cartSlice'
 import Loader from '../../ui/Loader'
 import toast from 'react-hot-toast'
+import { useEffect, useState } from 'react'
 
 function SetCard({
     isOverflow = true,
@@ -20,6 +21,7 @@ function SetCard({
     imageBig = '',
     isEnd = false,
 }) {
+    const [isImageLoaded, setIsImageLoaded] = useState(false)
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
     const idSet = itemOne.id + itemTwo.id + 100
@@ -32,7 +34,15 @@ function SetCard({
     const uniqeIngredients = [...new Set(ingredientsSet)].join(', ')
 
     const totalPriceSet = itemOne?.price + itemTwo?.price || 0
-    if (!itemOne || !itemTwo) return <Loader />
+
+    useEffect(() => {
+        const newImage = new Image()
+        newImage.src = image
+        newImage.onload = () => setIsImageLoaded(true)
+        console.log('teraz')
+    }, [image])
+
+    if (!itemOne || !itemTwo || !isImageLoaded) return <Loader />
 
     function handleAddToCart() {
         const newItem = {

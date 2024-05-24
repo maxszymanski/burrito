@@ -14,7 +14,7 @@ function Cart() {
     const cart = useSelector(getCart)
     const dispatch = useDispatch()
 
-    function handleCloseModal() {
+    function toogleShowModal() {
         setShowMore((isOpen) => !isOpen)
     }
 
@@ -27,15 +27,15 @@ function Cart() {
         }
 
         document.addEventListener('click', handleClick, true) // dodajemy na koncu true i wtedy addEven nie działa do gory tylko w dól i nasłuchuje tylko jesli modal jest otwarty
-        return () => document.removeEventListener('click', handleClick, true)
-    }, [setShowMore])
+        return () => document.removeEventListener('click', handleClick)
+    }, [])
 
     if (!cart?.length) return <EmptyCart />
 
     return (
         <div className=" pb-28 px-4 py-6 small:px-6">
             <ClearCart
-                onClose={handleCloseModal}
+                onClose={toogleShowModal}
                 refs={ref}
                 showMore={showMore}
                 onClear={() => dispatch(clearCart())}

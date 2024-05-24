@@ -34,11 +34,19 @@ function DeliveryAdress() {
             phone: shippingData ? shippingData.phoneUser : userData?.phone,
         }
         setOrderAddress(deliveryAddress)
-        if (isAuthenticated || storedDeliveryData) return
+        if (isAuthenticated || storedDeliveryData || isLoading) return
         if (!storedDeliveryData || !isAuthenticated) {
             setIsFormShow(true)
         }
-    }, [isAuthenticated, storedDeliveryData, setIsFormShow, setOrderAddress])
+    }, [
+        isAuthenticated,
+        storedDeliveryData,
+        setIsFormShow,
+        setOrderAddress,
+        isLoading,
+        shippingData,
+        userData,
+    ])
 
     if (isLoading) return <Loader />
 

@@ -13,18 +13,25 @@ import PageNotFound from './pages/PageNotFound'
 import ForgotPassword from './features/authentication/ForgotPassword'
 import LoginForm from './features/authentication/LoginForm'
 import SigninForm from './features/authentication/SigninForm'
-import UpdateProfile from './features/user/UpdateProfile'
-import UserProfile from './features/user/UserProfile'
+// import UpdateProfile from './features/user/UpdateProfile'
+// import UserProfile from './features/user/UserProfile'
 import Cart from './features/cart/Cart'
 import OrderCart from './features/cart/OrderCart'
 import { PriceProvider } from './context/PriceContext'
 import Summary from './features/cart/Summary'
 import SuccessOrder from './features/cart/SuccessOrder'
 import OrderDetails from './features/orders/OrderDetails'
-import OrdersHistory from './features/orders/OrdersHistory'
+// import OrdersHistory from './features/orders/OrdersHistory'
 import Admin from './pages/Admin'
+import { Suspense, lazy } from 'react'
+import Loader from './ui/Loader'
 
 const queryClient = new QueryClient()
+
+// const Account = lazy(() => import('./pages/Account'))
+const UserProfile = lazy(() => import('./features/user/UserProfile'))
+const UpdateProfile = lazy(() => import('./features/user/UpdateProfile'))
+const OrdersHistory = lazy(() => import('./features/orders/OrdersHistory'))
 
 const router = createBrowserRouter([
     {
@@ -92,18 +99,31 @@ const router = createBrowserRouter([
     },
     {
         element: <Account />,
+
         children: [
             {
                 path: '/account',
-                element: <UserProfile />,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <UserProfile />
+                    </Suspense>
+                ),
             },
             {
-                path: '/updateProfile',
-                element: <UpdateProfile />,
+                path: 'updateProfile',
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <UpdateProfile />
+                    </Suspense>
+                ),
             },
             {
-                path: '/ordersHistory',
-                element: <OrdersHistory />,
+                path: 'ordersHistory',
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <OrdersHistory />
+                    </Suspense>
+                ),
             },
         ],
     },

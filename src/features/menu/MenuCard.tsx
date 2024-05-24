@@ -10,6 +10,7 @@ import {
 import toast from 'react-hot-toast'
 import QuantityButton from '../../ui/QuantityButton'
 import Loader from '../../ui/Loader'
+import { useEffect, useState } from 'react'
 
 function MenuCard({
     cardInfo = {
@@ -21,14 +22,19 @@ function MenuCard({
     },
     isOpen = false,
 }) {
+    const [isImageLoaded, setIsImageLoaded] = useState(false)
     const dispatch = useDispatch()
     const { name, ingredients, price, image, id } = cardInfo
     const cart = useSelector(getCart)
 
     const cartItem = cart.filter((item) => item.itemId === id)
     const isInCart = cartItem.length > 0
-
-    if (!cardInfo) return <Loader />
+    useEffect(() => {
+        const newImage = new Image()
+        newImage.src = image
+        newImage.onload = () => setIsImageLoaded(true)
+    }, [image])
+    if (!cardInfo || !isImageLoaded) return <Loader />
 
     function handleAddToCart() {
         const newItem = {
@@ -53,7 +59,7 @@ function MenuCard({
             <div className="flex items-center justify-between py-4 gap-3 px-4 my-4 rounded-2xl bg-[rgba(216,222,203,0.2)] min-h-[170px]">
                 <img
                     src={image}
-                    alt=""
+                    alt={`Obraz przedstawiający ${name}`}
                     className="h-auto max-w-[30%] small:max-w-[35%] max-h-28"
                 />
                 <div className="flex flex-col gap-2 small:pl-3 pl-1.5 ">
