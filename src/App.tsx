@@ -1,41 +1,42 @@
+import { Suspense, lazy } from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import AppLayout from './ui/AppLayout'
-import MainPage from './pages/MainPage'
-import Login from './pages/Login'
-import Account from './pages/Account'
-import BasketPage from './pages/BasketPage'
-import Contact from './pages/Contact'
-import MenuPage from './pages/MenuPage'
-import PageNotFound from './pages/PageNotFound'
-import ForgotPassword from './features/authentication/ForgotPassword'
-import LoginForm from './features/authentication/LoginForm'
-import SigninForm from './features/authentication/SigninForm'
-// import UpdateProfile from './features/user/UpdateProfile'
-// import UserProfile from './features/user/UserProfile'
-import Cart from './features/cart/Cart'
-import OrderCart from './features/cart/OrderCart'
 import { PriceProvider } from './context/PriceContext'
-import Summary from './features/cart/Summary'
-import SuccessOrder from './features/cart/SuccessOrder'
-import OrderDetails from './features/orders/OrderDetails'
-// import OrdersHistory from './features/orders/OrdersHistory'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Contact from './pages/Contact'
+import PageNotFound from './pages/PageNotFound'
 import Admin from './pages/Admin'
-import { Suspense, lazy } from 'react'
 import Loader from './ui/Loader'
 
 const queryClient = new QueryClient()
-
-// const Account = lazy(() => import('./pages/Account'))
+const AppLayout = lazy(() => import('./ui/AppLayout'))
+const Login = lazy(() => import('./pages/Login'))
+const BasketPage = lazy(() => import('./pages/BasketPage'))
+const MainPage = lazy(() => import('./pages/MainPage'))
+const MenuPage = lazy(() => import('./pages/MenuPage'))
+const Account = lazy(() => import('./pages/Account'))
 const UserProfile = lazy(() => import('./features/user/UserProfile'))
 const UpdateProfile = lazy(() => import('./features/user/UpdateProfile'))
 const OrdersHistory = lazy(() => import('./features/orders/OrdersHistory'))
+const LoginForm = lazy(() => import('./features/authentication/LoginForm'))
+const SigninForm = lazy(() => import('./features/authentication/SigninForm'))
+const ForgotPassword = lazy(
+    () => import('./features/authentication/ForgotPassword')
+)
+const Cart = lazy(() => import('./features/cart/Cart'))
+const OrderCart = lazy(() => import('./features/cart/OrderCart'))
+const Summary = lazy(() => import('./features/cart/Summary'))
+const SuccessOrder = lazy(() => import('./features/cart/SuccessOrder'))
+const OrderDetails = lazy(() => import('./features/orders/OrderDetails'))
 
 const router = createBrowserRouter([
     {
-        element: <AppLayout />,
+        element: (
+            <Suspense fallback={<Loader />}>
+                <AppLayout />
+            </Suspense>
+        ),
         children: [
             {
                 path: '/',
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
         ],
     },
     {
-        element: <Login />,
+        element: (
+            <Suspense fallback={<Loader />}>
+                <Login />
+            </Suspense>
+        ),
         children: [
             {
                 path: '/login',
@@ -73,7 +78,11 @@ const router = createBrowserRouter([
         ],
     },
     {
-        element: <BasketPage />,
+        element: (
+            <Suspense fallback={<Loader />}>
+                <BasketPage />
+            </Suspense>
+        ),
         children: [
             {
                 path: '/basket',
@@ -98,32 +107,24 @@ const router = createBrowserRouter([
         ],
     },
     {
-        element: <Account />,
+        element: (
+            <Suspense fallback={<Loader />}>
+                <Account />
+            </Suspense>
+        ),
 
         children: [
             {
                 path: '/account',
-                element: (
-                    <Suspense fallback={<Loader />}>
-                        <UserProfile />
-                    </Suspense>
-                ),
+                element: <UserProfile />,
             },
             {
                 path: 'updateProfile',
-                element: (
-                    <Suspense fallback={<Loader />}>
-                        <UpdateProfile />
-                    </Suspense>
-                ),
+                element: <UpdateProfile />,
             },
             {
                 path: 'ordersHistory',
-                element: (
-                    <Suspense fallback={<Loader />}>
-                        <OrdersHistory />
-                    </Suspense>
-                ),
+                element: <OrdersHistory />,
             },
         ],
     },

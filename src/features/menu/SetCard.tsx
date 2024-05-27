@@ -39,7 +39,6 @@ function SetCard({
         const newImage = new Image()
         newImage.src = image
         newImage.onload = () => setIsImageLoaded(true)
-        console.log('teraz')
     }, [image])
 
     if (!itemOne || !itemTwo || !isImageLoaded) return <Loader />
