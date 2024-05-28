@@ -17,7 +17,7 @@ function OrderSearch({ isOpen }) {
     return (
         <form
             onSubmit={handleSubmit}
-            className={`w-full absolute top-0  right-0 z-20 font-muli transition-transform duration-300  ${
+            className={`md:hidden w-full absolute top-0  right-0 z-20 font-muli transition-transform duration-300  ${
                 !isOpen
                     ? '-translate-y-full absolute'
                     : 'translate-y-0 relative'
@@ -30,7 +30,7 @@ function OrderSearch({ isOpen }) {
                 Search
             </label>
             <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <div className="absolute inset-y-0 start-4 flex items-center ps-3 pointer-events-none">
                     <svg
                         className="w-4 h-4  text-gray-400"
                         aria-hidden="true"
@@ -52,7 +52,7 @@ function OrderSearch({ isOpen }) {
                     id="order-search"
                     value={inputValue}
                     onChange={handleChangeInput}
-                    className="block w-full p-4 ps-10 text-sm focus:outline-[#aaa82493]  bg-gray-700  placeholder-gray-400 text-white focus:ring-yellow-400 focus:border-yellow-400 "
+                    className="block w-full p-4 ps-14 text-sm focus:outline-[#aaa82493]  border-[#aaa82493]  bg-gray-700  placeholder-gray-400 text-white focus:ring-yellow-400 focus:border-yellow-400  "
                     placeholder="Numer zamówienia"
                     required
                 />

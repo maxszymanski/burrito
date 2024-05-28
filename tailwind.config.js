@@ -27,6 +27,7 @@ export default {
                 food: "url('./src/images/food-bg.png')",
                 foodSm: "url('./src/images/food-sm.png')",
                 headerTablet: "url('./src/images/header-tablet.png')",
+                headerDesktop: "url('./src/images/header-desktop.png')",
             },
             keyframes: {
                 slide: {
