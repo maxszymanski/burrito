@@ -5,11 +5,13 @@ import SummaryOrderItem from '../cart/SummaryOrderItem'
 import OrderCartHeader from '../cart/OrderCartHeader'
 import OrderRow from '../../ui/OrderRow'
 import { useOrder } from './useOrder'
+import OrderNotFound from './OrderNotFound'
 
 function OrderDetails() {
-    const { order, isLoading, orderNumber } = useOrder()
+    const { order, isLoading, orderNumber, error } = useOrder()
     const { isAuthenticated } = useUser()
-    if (isLoading || !order) return <Loader />
+    if (isLoading) return <Loader />
+    if (!order) return <OrderNotFound />
     const { created_at, totalPrice, status } = order
     const createdDate = created_at.slice(0, 10).split('-').reverse().join('.')
 
@@ -60,11 +62,6 @@ function OrderDetails() {
                 >
                     {status}
                 </p>
-                {/* {order.total < 120 ? (
-                    <p className="text-sm text-orange-400">W przygotowaniu</p>
-                ) : (
-                    <p className="text-sm text-red-500">Zakończony</p>
-                )} */}
             </OrderRow>
         </section>
     )

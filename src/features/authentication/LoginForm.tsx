@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Button from '../../ui/Button'
 import useLogin from './useLogin'
@@ -112,18 +112,18 @@ function LoginForm() {
                 >
                     zaloguj
                 </Button>
-                <NavLink
+                <Link
                     to="/forgotpassword"
                     className="font-scope text-xs small:text-base p-2 text-center block hover:text-yellow-500 transition-colors duration-300 text-yellow-400 my-6 "
                 >
                     Nie pamiętasz swojego hasła lub chcesz stworzyć nowe?
-                </NavLink>
-                <NavLink
+                </Link>
+                <Link
                     to="/registration"
                     className="w-full text-center block border-2 border-yellow-100 rounded-lg text-yellow-100   transition-colors duration-300 uppercase font-semibold text-sm small:text-xl pb-2 pt-3 tracking-widest font-scope  focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2 disabled:cursor-not-allowed bg-[rgba(138,139,136,0.4)] hover:bg-[rgba(138,139,136,0.8)]"
                 >
                     załóż konto
-                </NavLink>
+                </Link>
             </form>
         </div>
     )

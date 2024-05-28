@@ -1,13 +1,15 @@
+import { useUser } from '../features/authentication/useUser'
 import Logo from './Logo'
 import OrderSearch from './OrderSearch'
 
 function Header() {
+    const { isAuthenticated } = useUser()
     return (
-        <>
+        <header>
+            {!isAuthenticated && <OrderSearch isOpen={true} />}
             <div className="bg-gradient-to-b from-[#9A1E02] to-[#eeb02a] md:bg-headerTablet relative z-0 md:bg-center md:bg-cover md:py-24 xl:pt-44 xl:min-h-[750px]">
                 <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.2)] z-10 md:hidden"></div>
                 <Logo />
-                <OrderSearch />
 
                 <div className=" px-6 pt-8 md:pt-20">
                     <h1 className="font-frederick text-2xl small:text-4xl text-mywhite leading-normal pb-8 pl-4 relative md:text-7xl lg:text-8xl md:text-center lg:pl-4  md:pb-16 md:leading-tight">
@@ -54,7 +56,7 @@ function Header() {
                     />
                 </div>
             </div>
-        </>
+        </header>
     )
 }
 

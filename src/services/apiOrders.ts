@@ -24,7 +24,6 @@ export async function getOrder(id) {
         console.error(error)
         throw new Error('Nie znaleziono zamówienia')
     }
-
     return data
 }
 
@@ -45,7 +44,7 @@ export async function updateStatus(status) {
     const { data, error } = await supabase
         .from('orders')
         .update({ status: status })
-        .eq('id', 577102)
+        .eq('id', 981586)
         .select('*')
 
     if (error) {

@@ -14,6 +14,7 @@ function OrdersHistory() {
         !isAuthenticated && navigate('/login')
     }, [isAuthenticated, navigate])
     if (isLoadingOrders || !orders || isLoading) return <Loader />
+    orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 
     return (
         <section className="px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm text-mywhite pb-24 small:pb-32">
