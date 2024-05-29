@@ -3,7 +3,9 @@ import {
     getTotalCardPrice,
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { useUser } from '../features/authentication/useUser'
+import { useOrders } from '../features/orders/useOrders'
 
 const PriceContext = createContext()
 const defaultAdress = {
@@ -15,6 +17,8 @@ const defaultAdress = {
 }
 
 const PriceProvider = ({ children }) => {
+    const { isAuthenticated } = useUser()
+    const { orders } = useOrders()
     const [paymentMethod, setPaymentMethod] = useState(() => {
         const storedPaymentMethod = localStorage.getItem('paymentMethod')
         return storedPaymentMethod ? JSON.parse(storedPaymentMethod) : null
@@ -23,9 +27,24 @@ const PriceProvider = ({ children }) => {
     const [orderAddress, setOrderAddress] = useState(defaultAdress)
     const totalCartQuantity = useSelector(getTotalCartQuantity)
     const totalCartPrice: number = useSelector(getTotalCardPrice)
-    const shipping = totalCartPrice >= 60 ? 0 : 5
-    const discount: number = +(totalCartPrice * 0.1).toFixed(2)
-    const total = totalCartPrice + shipping - discount
+    const [shipping, setShipping] = useState(5)
+    const [discount, setDiscount] = useState(0)
+    const [total, setTotal] = useState(0)
+
+    const totalDiscount = (shipping === 0 ? 5 : 0) + discount
+
+    useEffect(() => {
+        setShipping(isAuthenticated ? 0 : 5)
+    }, [isAuthenticated, setShipping])
+
+    useEffect(() => {
+        if (isAuthenticated && orders && orders.length > 10)
+            setDiscount(+(totalCartPrice * 0.1).toFixed(2))
+    }, [setDiscount, isAuthenticated, totalCartPrice, orders])
+
+    useEffect(() => {
+        setTotal(totalCartPrice + shipping - discount)
+    }, [totalCartPrice, shipping, discount])
 
     const handleSetPaymentMenthod = (e) => {
         localStorage.setItem('paymentMethod', JSON.stringify(e.target.value))
@@ -59,6 +78,9 @@ const PriceProvider = ({ children }) => {
                 orderAddress,
                 setOrderAddress,
                 clearOrderAddress,
+                totalDiscount,
+                setShipping,
+                setDiscount,
             }}
         >
             {children}

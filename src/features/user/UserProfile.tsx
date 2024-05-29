@@ -15,7 +15,7 @@ function UserProfile() {
 
     const { city, phone, street, userName, zipCode } = user?.user_metadata || ''
     const { orders: orderss } = useOrders()
-    const orders = orderss?.length
+    const orders = orderss?.length || 0
     if (isLoadingUser) return <Loader />
 
     return (

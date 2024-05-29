@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
 import SummaryOrderItem from '../cart/SummaryOrderItem'
@@ -12,8 +11,10 @@ function OrderDetails() {
     const { isAuthenticated } = useUser()
     if (isLoading) return <Loader />
     if (!order) return <OrderNotFound />
-    const { created_at, totalPrice, status } = order
+    const { created_at, totalPrice, status, totalDiscount } = order
     const createdDate = created_at.slice(0, 10).split('-').reverse().join('.')
+    const totalRest = totalPrice % 1 === 0 ? '.00' : '0'
+    const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
 
     return (
         <section className=" px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm">
@@ -39,9 +40,20 @@ function OrderDetails() {
                     )
                 )}
             </ul>
-            <OrderRow>
+            <div></div>
+
+            <OrderRow isCol>
                 <p>Cena całkowita:</p>
-                <p className="text-sm">{totalPrice} zł</p>
+                <div className="flex flex-col items-end">
+                    <p className="text-sm">
+                        {totalPrice}
+                        {totalRest} zł
+                    </p>
+                    <p className="text-stone-400 text-xs">
+                        rabat {totalDiscount}
+                        {totalDiscountRest} zł
+                    </p>
+                </div>
             </OrderRow>
             <OrderRow>
                 <p>Data zamówienia:</p>
@@ -52,9 +64,9 @@ function OrderDetails() {
                 <p
                     className={`text-sm ${
                         status === 'W przygotowaniu'
-                            ? 'text-orange-400'
+                            ? 'text-lime-500'
                             : status === 'W drodze'
-                            ? 'text-yellow-400'
+                            ? 'text-orange-400'
                             : status === 'Zakończone'
                             ? 'text-red-500'
                             : ''

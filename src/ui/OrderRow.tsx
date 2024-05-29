@@ -1,6 +1,10 @@
-function OrderRow({ children }) {
+function OrderRow({ children, isCol = false }) {
     return (
-        <div className="flex items-center justify-between py-0.5 px-4  tracking-wider ">
+        <div
+            className={`flex  mb-0.5 justify-between py-0.5 px-4  tracking-wider ${
+                isCol ? 'items-start' : 'items-center'
+            } `}
+        >
             {children}
         </div>
     )

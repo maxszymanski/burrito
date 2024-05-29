@@ -137,8 +137,8 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <PriceProvider>
-            <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
+            <PriceProvider>
                 <RouterProvider router={router} />
                 <ReactQueryDevtools initialIsOpen={false} />
                 <Toaster
@@ -165,8 +165,8 @@ function App() {
                         },
                     }}
                 />
-            </QueryClientProvider>
-        </PriceProvider>
+            </PriceProvider>
+        </QueryClientProvider>
     )
 }
 

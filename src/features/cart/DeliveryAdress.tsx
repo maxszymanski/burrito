@@ -26,27 +26,21 @@ function DeliveryAdress() {
     )
 
     useEffect(() => {
-        const deliveryAddress = {
-            name: shippingData ? shippingData.name : userData?.userName,
-            street: shippingData ? shippingData.streetUser : userData?.street,
-            zip: shippingData ? shippingData.zipCodeUser : userData?.zipCode,
-            city: shippingData ? shippingData.cityUser : userData?.city,
-            phone: shippingData ? shippingData.phoneUser : userData?.phone,
-        }
-        setOrderAddress(deliveryAddress)
-        if (isAuthenticated || storedDeliveryData || isLoading) return
-        if (!storedDeliveryData || !isAuthenticated) {
+        setOrderAddress((prevAddress) => {
+            if (
+                JSON.stringify(prevAddress) !== JSON.stringify(deliveryAddress)
+            ) {
+                return deliveryAddress
+            }
+            return prevAddress
+        })
+    }, [deliveryAddress, setOrderAddress])
+
+    useEffect(() => {
+        if (!isLoading && !isAuthenticated && !storedDeliveryData) {
             setIsFormShow(true)
         }
-    }, [
-        isAuthenticated,
-        storedDeliveryData,
-        setIsFormShow,
-        setOrderAddress,
-        isLoading,
-        shippingData,
-        userData,
-    ])
+    }, [isAuthenticated, isLoading, storedDeliveryData, setIsFormShow])
 
     if (isLoading) return <Loader />
 

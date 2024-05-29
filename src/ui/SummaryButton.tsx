@@ -18,13 +18,13 @@ function SummaryButton({ isSummary = false }) {
         clearPaymentMethod,
         orderAddress,
         clearOrderAddress,
+        totalDiscount,
     } = usePrice()
     const { createOrder, isCreating } = useCreateOrder()
     const { user, isLoading, isAuthenticated } = useUser()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const shippingPriceToDiscount = shipping === 0 ? 5 : 0
-    const totalDiscount = discount + shippingPriceToDiscount
+
     const totalRest = total % 1 === 0 ? '.00' : '0'
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
     if (isCreating || isLoading || (!user && isAuthenticated)) return <Loader />
@@ -52,6 +52,7 @@ function SummaryButton({ isSummary = false }) {
             UserId,
             status: 'W przygotowaniu',
             address: orderAddress,
+            totalDiscount,
         }
         if (!paymentMethod) {
             toast.error('Proszę wybrać metodę płatności')
