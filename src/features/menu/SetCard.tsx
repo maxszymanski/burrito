@@ -63,15 +63,15 @@ function SetCard({
 
     return (
         <div
-            className={` flex items-center justify-between px-6 py-10 w-full text-mywhite md:rounded-3xl md:gap-x-5 max-w-[880px]
+            className={` flex items-center justify-between px-6 sm:px-20 md:px-6 py-10 w-full text-mywhite md:rounded-[4rem] md:gap-x-5 max-w-[880px] 
 			 ${
                  isOverflow
-                     ? 'bg-[rgba(216,222,203,0.2)]'
-                     : 'md:bg-[rgba(216,222,203,0.2)] self-center'
+                     ? 'bg-[rgba(216,222,203,0.25)]'
+                     : 'md:bg-[rgba(216,222,203,0.25)] self-center'
              } ${isEnd ? 'self-end' : ''} `}
         >
             <div className="space-y-2 w-full md:space-y-4 ">
-                <h3 className="text-lg small:text-xl pb-1 font-bold tracking-wide md:text-3xl">
+                <h3 className="text-lg small:text-xl pb-1 font-bold tracking-wide md:text-3xl ">
                     {title}
                 </h3>
                 <p className="text-base small:text-lg md:text-3xl">
