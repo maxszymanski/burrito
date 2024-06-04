@@ -1,6 +1,6 @@
 function Logo() {
     return (
-        <div className="flex justify-center items-center  py-6 md:-mt-24 gap-6 xl:-mt-44">
+        <div className="flex justify-center items-center  pt-6  gap-6 xl:hidden ">
             <img
                 src="./logo-md.png"
                 alt="logo"

@@ -63,11 +63,11 @@ function SetCard({
 
     return (
         <div
-            className={` flex items-center justify-between px-6 sm:px-20 md:px-6 py-10 w-full text-mywhite md:rounded-[4rem] md:gap-x-5 max-w-[880px] 
+            className={` flex items-center justify-between px-6 sm:px-20 md:px-6 py-10 w-full transition-colors duration-300 text-mywhite md:rounded-[4rem] md:gap-x-5 max-w-[880px] xl:hover:bg-[rgba(216,222,203,0.35)]
 			 ${
                  isOverflow
-                     ? 'bg-[rgba(216,222,203,0.25)]'
-                     : 'md:bg-[rgba(216,222,203,0.25)] self-center'
+                     ? 'bg-[rgba(216,222,203,0.25)] '
+                     : 'md:bg-[rgba(216,222,203,0.25)]  self-center'
              } ${isEnd ? 'self-end' : ''} `}
         >
             <div className="space-y-2 w-full md:space-y-4 ">

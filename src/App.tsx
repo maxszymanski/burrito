@@ -140,7 +140,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <PriceProvider>
                 <RouterProvider router={router} />
-                <ReactQueryDevtools initialIsOpen={false} />
+                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                 <Toaster
                     position="top-center"
                     gutter={12}

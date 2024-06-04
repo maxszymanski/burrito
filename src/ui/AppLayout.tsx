@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import NavMenu from './NavMenu'
 import { useEffect } from 'react'
-import Container from './Container'
 
 function AppLayout() {
     const location = useLocation()
