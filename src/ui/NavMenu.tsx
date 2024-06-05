@@ -27,7 +27,7 @@ function NavMenu() {
                     
             "
         >
-            <Container>
+            <Container isFooter={false}>
                 <ul
                     className="px-2 pt-1 font-scope text-2xl small:text-3xl text-mywhite flex
 			justify-between bg-menu-bg-sm items-center xl:bg-none "
@@ -38,7 +38,7 @@ function NavMenu() {
                         linkTo="/"
                         isDesktop
                     />
-                    <li className="xl:hover:scale-105 scale-1 duration-300 transition-transform hidden xl:block ">
+                    <li className="hidden xl:block ">
                         <NavLink to="/" className=" py-4 px-3  ">
                             <img
                                 src="./logo.webp"

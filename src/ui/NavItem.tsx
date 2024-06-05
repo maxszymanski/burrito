@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 interface NavItemProps {
@@ -22,7 +22,7 @@ const NavItem: React.FC<NavItemProps> = ({
 }) => {
     return (
         <li
-            className={`text-mywhite relative xl:hover:bg-[rgba(213,216,199,0.1)] duration-300 transition-colors ${
+            className={`text-mywhite relative xl:hover:text-yellow-500 duration-300 transition-colors ${
                 isDesktop ? 'xl:hidden' : ''
             } ${isCart ? '' : ''} ${isMobile ? 'hidden xl:block' : ''}`}
         >

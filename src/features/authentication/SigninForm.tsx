@@ -18,7 +18,7 @@ function SigninForm() {
     const { isAuthenticated } = useUser()
     const navigate = useNavigate()
     const inputClass =
-        'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
+        'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)] '
     useEffect(() => {
         isAuthenticated && navigate('/account', { replace: true })
     }, [isAuthenticated, navigate])
@@ -31,7 +31,7 @@ function SigninForm() {
     }
 
     return (
-        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
+        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl lg:px-12 xl:my-24 lg:my-12 sm:my-16">
             <img
                 src="./pin.png"
                 alt="żółta pinezka"
