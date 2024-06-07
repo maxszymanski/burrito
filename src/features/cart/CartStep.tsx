@@ -1,6 +1,6 @@
 function CartStep({ one = false, two = false, three = false, four = false }) {
     const yellow = 'bg-yellow-500'
-    const gray = 'bg-[rgba(112,112,100,0.3)]'
+    const gray = 'bg-[rgba(112,112,100,0.3)] lg:bg-[rgba(112,112,100,0.8)]'
     const step =
         one && two && three && four
             ? 4

@@ -10,23 +10,23 @@ function CartSummary() {
     if (!totalCartQuantity) return null
 
     return (
-        <div className="font-muli mt-9 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 ">
-            <h4 className="pb-4 text-white">Twoje zamówienie</h4>
-            <div className="flex items-center justify-between">
+        <div className="font-muli mt-9 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 lg:bg-[rgba(216,222,203,0.15)] lg:mx-44 ">
+            <h4 className="pb-4 text-white lg:text-xl">Twoje zamówienie</h4>
+            <div className="flex items-center justify-between  lg:text-lg">
                 <p>Suma</p>
                 <p>
                     {totalCartPrice}
                     {totalCartPriceRest} zł
                 </p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between lg:text-lg">
                 <p>Rabat</p>
                 <p>
                     {discount}
                     {discountRest} zł
                 </p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between lg:text-lg">
                 <p>Dostawa</p>
                 <div className="flex items-center gap-1">
                     {shipping != 5 && (
@@ -35,7 +35,7 @@ function CartSummary() {
                     <p>{shipping}.00 zł</p>
                 </div>
             </div>
-            <div className="flex items-center justify-between pt-6 text-white">
+            <div className="flex items-center justify-between lg:text-lg pt-6 text-white">
                 <p>Cena całkowita</p>
                 <p>
                     {total}

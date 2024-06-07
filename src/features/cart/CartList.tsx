@@ -1,14 +1,13 @@
 import { useMemo } from 'react'
 import CartItem from './CartItem'
 
-function CartList({ cart }) {
-    // użycie useMemo, aby uniknąć ponownego przeliczania, gdy dane cart się nie zmieniają
+function CartList({ cart }: { cart: object[] }) {
     const cartItems = useMemo(() => {
         return cart.map((item) => <CartItem item={item} key={item.itemId} />)
     }, [cart])
 
     return (
-        <ul className="space-y-6 mt-5 divide-y-[1px] divide-yellow-500">
+        <ul className="space-y-6 mt-5 divide-y-[1px] divide-yellow-500 lg:space-y-10 lg:mb-24 ">
             {cartItems}
         </ul>
     )

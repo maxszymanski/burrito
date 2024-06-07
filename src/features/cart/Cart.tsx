@@ -8,6 +8,7 @@ import CartStep from './CartStep'
 import ClearCart from './ClearCart'
 import CartList from './CartList'
 import NavMenu from '../../ui/NavMenu'
+import NextLinkCart from '../../ui/NextLinkCart'
 
 function Cart() {
     const [showMore, setShowMore] = useState(false)
@@ -33,7 +34,7 @@ function Cart() {
     if (!cart?.length) return <EmptyCart />
 
     return (
-        <div className=" pb-28 px-4 py-6 small:px-6">
+        <div className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-12 ">
             <ClearCart
                 onClose={toogleShowModal}
                 refs={ref}
@@ -43,15 +44,8 @@ function Cart() {
             <CartStep one />
             <CartList cart={cart} />
             <CartSummary />
-            <div className="mx-4 mt-2 pb-8">
-                <Link
-                    to="/order"
-                    className="w-full mt-8 text-xl bg-[rgb(51,51,48)] py-3 rounded-xl text-white inline-block text-center"
-                >
-                    Dalej
-                </Link>
-            </div>
-            <NavMenu />
+            <NextLinkCart />
+            <NavMenu noMobile={false} />
         </div>
     )
 }
