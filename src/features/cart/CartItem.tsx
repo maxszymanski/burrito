@@ -26,11 +26,11 @@ function CartItem({
     }
 
     return (
-        <div className="flex items-center justify-evenly pt-6 lg:pt-12 ">
+        <div className="flex items-center justify-evenly pt-6 lg:pt-12 lg:w-5/12">
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[23%] lg:max-w-[15%] max-h-24 rounded-full grow-0 basis-2/6"
+                className="h-auto max-w-[23%]  max-h-24 rounded-full grow-0 basis-2/6"
             />
             <div className="flex flex-col gap-4 px-3 justify-between grow-0 basis-3/6  items-start">
                 <h4 className="font-semibold tracking-wider  text-sm leading-6">

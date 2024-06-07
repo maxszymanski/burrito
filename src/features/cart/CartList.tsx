@@ -7,7 +7,7 @@ function CartList({ cart }: { cart: object[] }) {
     }, [cart])
 
     return (
-        <ul className="space-y-6 mt-5 divide-y-[1px] divide-yellow-500 lg:space-y-10 lg:mb-24 ">
+        <ul className="space-y-6 mt-5 divide-y-[1px] divide-yellow-500 lg:space-y-0 lg:mb-24 lg:flex lg:flex-wrap lg:divide-y-0 justify-between lg:items-center  ">
             {cartItems}
         </ul>
     )

@@ -34,7 +34,7 @@ function Cart() {
     if (!cart?.length) return <EmptyCart />
 
     return (
-        <div className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-12 ">
+        <div className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16  ">
             <ClearCart
                 onClose={toogleShowModal}
                 refs={ref}
