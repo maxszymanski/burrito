@@ -19,10 +19,10 @@ function ConfirmSignup() {
         return () => clearInterval(intervalId)
     }, [navigate])
     return (
-        <section className="w-full min-h-screen bg-menu-bg-sm bg-contain bg-center xl:bg-menu-bg- px-6 py-6  ">
-            <div className="text-mywhite lg:container lg:mx-auto lg:w-full">
+        <section className="w-full min-h-screen bg-menu-bg-sm bg-cover bg-center xl:bg-cart px-6 py-6  ">
+            <div className="text-mywhite lg:container lg:mx-auto lg:w-full xl:text-center">
                 <Logo isHidden={false} />
-                <h2 className="text-yellow-500 small:text-3xl text-2xl text-center py-12 tracking-wider leading-normal lg:py-16 lg:text-left lg:text-4xl xl:text-5xl xl:mt-12">
+                <h2 className="text-yellow-500 small:text-3xl text-2xl text-center py-12 tracking-wider leading-normal lg:py-16  lg:text-4xl xl:text-5xl xl:mt-12">
                     Rejestracja zakończona pomyślnie!
                 </h2>
                 <p className="small:text-lg tracking-wider mb-4 leading-relaxed lg:leading-loose lg:text-xl xl:text-2xl">

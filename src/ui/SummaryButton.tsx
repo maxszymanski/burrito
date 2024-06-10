@@ -72,7 +72,7 @@ function SummaryButton({ isSummary = false }) {
     }
 
     return (
-        <div className="fixed left-0 bottom-0 w-full border-t-[1px]  border-stone-700  p-2  text-sm px-6 bg-[#2c2c2b] lg:bg-menu-bg-big ">
+        <div className="fixed left-0 bottom-0 w-full border-t-[1px]  border-stone-700  p-2  text-sm px-6 bg-[#2c2c2b] lg:bg-[rgba(255,255,255,0.1)] ">
             <div className="lg:flex lg:items-center lg:justify-center lg:container lg:mx-auto lg:max-w-5xl gap-x-20">
                 <div className="flex justify-between mb-4 mt-1 small:text-lg lg:w-3/5 lg:justify-evenly ">
                     <p>Razem</p>

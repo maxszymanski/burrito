@@ -11,7 +11,10 @@ function OrderItem({ item, orderNumber }) {
 
     return (
         <li>
-            <div className="flex items-center justify-around py-3 border-b-[1px] border-yellow-400 text-sm">
+            <Link
+                to={`/order/${item.id}`}
+                className="flex items-center justify-around py-3 border-b border-yellow-400 text-sm md:text-base xl:text-xl hover:mr-6 transition-all duration-300"
+            >
                 <p>
                     Nr.{orderNumber}{' '}
                     <span className="text-yellow-400 ml-2">{item.id}</span>
@@ -29,13 +32,10 @@ function OrderItem({ item, orderNumber }) {
                     } `}
                 ></div>
 
-                <Link
-                    to={`/order/${item.id}`}
-                    className="flex items-center gap-2 p-2"
-                >
+                <p className="flex items-center gap-2 p-2 ">
                     Więcej <FaArrowRight className="mt-0.5" />
-                </Link>
-            </div>
+                </p>
+            </Link>
         </li>
     )
 }

@@ -18,6 +18,8 @@ function UpdateForm() {
         updateUser(updatedUser)
     }
     if (isUpdating || isLoading) return <Loader />
+    const inputClass =
+        'w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 xl:h-12'
 
     return (
         <form onSubmit={handleSubmit(onUpdate)}>
@@ -27,7 +29,7 @@ function UpdateForm() {
                     type="file"
                     id="avatar"
                     accept="image/*"
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color bg-transparent border-b border-yellow-500 rounded-3xl px-7 h-9 small:h-12 cursor-pointer ${
+                    className={`w-full  accent-yellow-500 focus:outline-none transition-color bg-transparent border-b border-yellow-500 rounded-3xl px-7 h-9 small:h-12 cursor-pointer xl:h-14 ${
                         errors?.avatar?.message ? 'border-red-500' : ''
                     }
                     `}
@@ -35,12 +37,14 @@ function UpdateForm() {
             </UpdateUserFormRow>
             <UpdateUserFormRow error={errors?.userName?.message} label="Imię">
                 <input
-                    {...register('userName')}
+                    {...register('userName', {
+                        required: 'Imię użytkownika jest wymagane',
+                    })}
                     type="text"
                     id="userName"
                     placeholder="Imię"
                     defaultValue={userName}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                    className={`${inputClass} ${
                         errors?.userName?.message ? 'border-red-500' : ''
                     }
                     `}
@@ -51,12 +55,14 @@ function UpdateForm() {
                 label="Ulica i numer domu"
             >
                 <input
-                    {...register('street')}
+                    {...register('street', {
+                        required: 'Ulica jest wymagana',
+                    })}
                     type="text"
                     id="street"
                     placeholder="Ulica i numer domu"
                     defaultValue={street}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                    className={`${inputClass} ${
                         errors?.street?.message ? 'border-red-500' : ''
                     }
                     `}
@@ -67,12 +73,14 @@ function UpdateForm() {
                 label="Kod pocztowy"
             >
                 <input
-                    {...register('zipCode')}
+                    {...register('zipCode', {
+                        required: 'Kod pocztowy jest wymagany',
+                    })}
                     type="text"
                     id="zipCode"
                     placeholder="Kod pocztowy"
                     defaultValue={zipCode}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                    className={`${inputClass} ${
                         errors?.zipCode?.message ? 'border-red-500' : ''
                     }
                     `}
@@ -83,12 +91,14 @@ function UpdateForm() {
                 label="Miejscowość"
             >
                 <input
-                    {...register('city')}
+                    {...register('city', {
+                        required: 'Nazwa miejscowości jest wymagana',
+                    })}
                     type="text"
                     id="city"
                     placeholder="Miejscowość"
                     defaultValue={city}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                    className={`${inputClass} ${
                         errors?.city?.message ? 'border-red-500' : ''
                     }
                     `}
@@ -97,6 +107,7 @@ function UpdateForm() {
             <UpdateUserFormRow error={errors?.phone?.message} label="Telefon">
                 <input
                     {...register('phone', {
+                        required: 'Numer telefonu jest wymagany',
                         minLength: {
                             value: 9,
                             message: 'Numer telefonu musi składać się z 9 cyfr',
@@ -115,7 +126,7 @@ function UpdateForm() {
                     id="phone"
                     placeholder="Numer telefonu"
                     defaultValue={phone}
-                    className={`w-full  accent-yellow-500 focus:outline-none transition-color focus:bg-[rgb(5,5,5,0.1)]  bg-transparent border-b border-yellow-500 rounded-3xl px-8 h-9 small:h-11 ${
+                    className={`${inputClass} ${
                         errors?.phone?.message ? 'border-red-500' : ''
                     }
                     `}

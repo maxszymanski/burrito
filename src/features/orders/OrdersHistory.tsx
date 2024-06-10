@@ -17,12 +17,12 @@ function OrdersHistory() {
     orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 
     return (
-        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:pt-32 lg:ml-12">
+        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:pt-40 lg:ml-16 2xl:ml-6 sm:pt-14 ">
             <OrderCartHeader title="Historia Zamówień" to="/account" />
             {orders.length === 0 ? (
                 <p>Nie masz żadnych zamówień</p>
             ) : (
-                <ul className=" flex flex-col justify-center space-y-2 pt-4 ">
+                <ul className=" flex flex-col justify-center space-y-2 pt-4  ">
                     {orders.map((item: { orderId: string }, index: number) => (
                         <OrderItem
                             item={item}
