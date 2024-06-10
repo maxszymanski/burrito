@@ -3,7 +3,6 @@ import { clearCart, getCart } from './cartSlice'
 import EmptyCart from './EmptyCart'
 import CartSummary from './CartSummary'
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import CartStep from './CartStep'
 import ClearCart from './ClearCart'
 import CartList from './CartList'
@@ -34,7 +33,7 @@ function Cart() {
     if (!cart?.length) return <EmptyCart />
 
     return (
-        <div className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-12 ">
+        <section className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-12 ">
             <ClearCart
                 onClose={toogleShowModal}
                 refs={ref}
@@ -46,7 +45,7 @@ function Cart() {
             <CartSummary />
             <NextLinkCart />
             <NavMenu noMobile={false} />
-        </div>
+        </section>
     )
 }
 

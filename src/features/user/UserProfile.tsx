@@ -19,7 +19,7 @@ function UserProfile() {
     if (isLoadingUser) return <Loader />
 
     return (
-        <div className="text-center bg-[#2c2c2b] min-h-screen text-mywhite small:text-lg pb-24 small:pb-32">
+        <div className="text-center  min-h-screen text-mywhite small:text-lg pb-24 small:pb-32 lg:pt-32 lg:ml-12">
             <UserHeader />
             <UserMain>
                 <UserInfo>

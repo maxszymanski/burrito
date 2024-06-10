@@ -16,9 +16,11 @@ function Account() {
     if (isLoading) return <Loader />
     return (
         <>
-            <div className=" font-muli w-full min-h-screen relative">
-                <Outlet />
-                <NavMenu />
+            <div className=" font-muli w-full min-h-screen relative bg-account bg-center bg-cover">
+                <div className="sm:container sm:mx-auto sm:max-w-[500px] lg:max-w-[700px] ">
+                    <Outlet />
+                    <NavMenu noMobile={false} />
+                </div>
             </div>
         </>
     )

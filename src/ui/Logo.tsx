@@ -1,6 +1,10 @@
-function Logo() {
+function Logo({ isHidden = true }) {
     return (
-        <div className="flex justify-center items-center  pt-6  gap-6 xl:hidden ">
+        <div
+            className={`flex justify-center items-center  pt-6  gap-6 ${
+                isHidden ? 'xl:hidden' : ''
+            } `}
+        >
             <img
                 src="./logo-md.png"
                 alt="logo"

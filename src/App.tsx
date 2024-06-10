@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import PageNotFound from './pages/PageNotFound'
 import Admin from './pages/Admin'
 import Loader from './ui/Loader'
+import ConfirmSignup from './features/authentication/ConfirmSignup'
 
 const queryClient = new QueryClient()
 const AppLayout = lazy(() => import('./ui/AppLayout'))
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
                 element: <OrdersHistory />,
             },
         ],
+    },
+    {
+        path: '/confirmed-registration',
+        element: <ConfirmSignup />,
     },
 
     {

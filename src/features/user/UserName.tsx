@@ -6,15 +6,15 @@ function UserName() {
     const location = useLocation()
     const currentPath = location.pathname
     return (
-        <div className="text-sm small:mb-3">
+        <div className="text-sm small:mb-3 xl:my-4">
             <p
-                className=" my-1 small:my-2 font-bold text-lg small:text-2xl 
+                className=" my-1 small:my-2 font-bold text-lg small:text-2xl xl:text-3xl
                 "
             >
                 {user?.user_metadata.userName}
             </p>
             <NavLink
-                className="text-yellow-500 p-3  "
+                className="text-yellow-500 p-3 xl:text-lg hover:text-yellow-400 transition-colors duration-300 "
                 to={
                     currentPath === '/account'
                         ? '/updateProfile'

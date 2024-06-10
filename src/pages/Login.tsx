@@ -7,7 +7,7 @@ function Login() {
         <>
             <div className="w-full relative bg-foodSm min-h-screen p-6 sm:p-8 flex bg-cover bg-center items-center justify-center pb-24 xl:bg-food">
                 <Outlet />
-                <NavMenu />
+                <NavMenu noMobile={false} />
             </div>
         </>
     )

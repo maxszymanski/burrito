@@ -24,6 +24,9 @@ export default {
             },
             backgroundImage: {
                 'menu-bg-sm': "url('./src/images/menu-bg-small.png')",
+                'menu-bg-big': "url('./src/images/menu-bg-big.png')",
+                account: "url('./src/images/bg-account.jpg')",
+                cart: "url('./src/images/bg-cart.jpg')",
                 food: "url('./src/images/food-bg.png')",
                 foodSm: "url('./src/images/food-sm.png')",
                 headerTablet: "url('./src/images/header-tablet.png')",
