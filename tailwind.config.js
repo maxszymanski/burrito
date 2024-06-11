@@ -29,6 +29,8 @@ export default {
                 accountBig: "url('./src/images/bg-account.jpg')",
                 'account-small': "url('./src/images/bg-account-small.png')",
                 cart: "url('./src/images/bg-cart.jpg')",
+                menu: "url('./src/images/menu.jpg')",
+
                 food: "url('./src/images/food-bg.png')",
                 foodSm: "url('./src/images/food-sm.png')",
                 headerTablet: "url('./src/images/header-tablet.png')",
