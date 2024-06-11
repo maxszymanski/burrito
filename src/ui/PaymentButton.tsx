@@ -17,7 +17,7 @@ function PaymentButton({
         <button
             type="button"
             value={value}
-            className={`w-full border-[1px] border-[#c4c0c0] rounded-md py-1  px-6 text-sm text-left  focus:outline-none small:border-2 small:text-base flex items-center gap-6 ${
+            className={`w-full border-[1px] border-[#c4c0c0] rounded-md py-1  px-6 text-sm text-left  focus:outline-none small:border-2 small:text-base flex items-center gap-6 lg:text-lg hover:bg-[rgb(255,255,255,0.1)] transition-colors duration-300 ${
                 paymentMethod === value ? 'border-yellow-500' : ''
             }`}
             onClick={handleSetPaymentMenthod}
@@ -25,7 +25,7 @@ function PaymentButton({
             <img
                 src={src}
                 alt={alt}
-                className="w-10 h-8 small:w-10 small:h-10"
+                className="w-10 h-8  small:h-10 lg:w-12 lg:h-12"
             />{' '}
             {children}
         </button>

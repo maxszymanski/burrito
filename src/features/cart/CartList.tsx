@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import CartItem from './CartItem'
 
-function CartList({ cart }: { cart: object[] }) {
+function CartList({ cart }: { cart: [] }) {
     const cartItems = useMemo(() => {
         return cart.map((item) => <CartItem item={item} key={item.itemId} />)
     }, [cart])

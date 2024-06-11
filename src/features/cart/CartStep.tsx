@@ -19,7 +19,7 @@ function CartStep({ one = false, two = false, three = false, four = false }) {
                 <div className={`${three ? yellow : gray} h-1 w-full`}></div>
                 <div className={`${four ? yellow : gray} h-1 w-full`}></div>
             </div>
-            <p className="text-end text-xs mt-2 text-[rgb(255,255,255,0.8)]">
+            <p className="text-end text-xs mt-2 text-[rgb(255,255,255,0.8)] lg:text-sm">
                 Krok: {step}/4
             </p>
         </div>

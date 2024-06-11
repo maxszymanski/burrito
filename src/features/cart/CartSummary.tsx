@@ -10,7 +10,7 @@ function CartSummary() {
     if (!totalCartQuantity) return null
 
     return (
-        <div className="font-muli mt-9 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 lg:bg-[rgba(216,222,203,0.15)] lg:mx-44 ">
+        <div className="font-muli mt-9 px-6 py-6 mx-4 rounded-2xl bg-[rgb(51,51,48)] space-y-1 lg:bg-[rgba(216,222,203,0.15)] lg:mx-24 ">
             <h4 className="pb-4 text-white lg:text-xl">Twoje zamówienie</h4>
             <div className="flex items-center justify-between  lg:text-lg">
                 <p>Suma</p>

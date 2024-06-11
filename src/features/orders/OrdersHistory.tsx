@@ -17,7 +17,7 @@ function OrdersHistory() {
     orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 
     return (
-        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:pt-40 lg:ml-16 2xl:ml-6 sm:pt-14 ">
+        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:mt-40 lg:ml-16 2xl:ml-6 sm:pt-14 lg:h-screen xl:pt-0  lg:overflow-y-auto lg:scrollbar-hide lg:py-36">
             <OrderCartHeader title="Historia Zamówień" to="/account" />
             {orders.length === 0 ? (
                 <p>Nie masz żadnych zamówień</p>

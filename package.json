@@ -30,7 +30,8 @@
         "react-router-dom": "^6.22.1",
         "redux": "^5.0.1",
         "sort-by": "^1.2.0",
-        "stripe": "^15.3.0"
+        "stripe": "^15.3.0",
+        "tailwind-scrollbar-hide": "^1.1.7"
     },
     "homepage": "http://localhost:5173/checkout",
     "proxy": "http://localhost:4242",

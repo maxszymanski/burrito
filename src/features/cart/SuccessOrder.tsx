@@ -16,25 +16,33 @@ function SuccessOrder() {
             <OrderCartHeader title="Zakończenie" to="/" />
             <CartStep one two three four />
             <div className="flex flex-col items-center justify-center mt-10">
-                <h2 className="text-2xl ">Dziękujemy za złożenie zamówienia</h2>
-                <p className="text-yellow-500 py-8 text-3xl"> #{newOrderID}</p>
-                <p className="text-center mb-1">
+                <h2 className="text-2xl lg:text-3xl">
+                    Dziękujemy za złożenie zamówienia
+                </h2>
+                <p className="text-yellow-500 py-8 text-3xl lg:text-5xl lg:py-12">
+                    {' '}
+                    #{newOrderID}
+                </p>
+                <p className="text-center mb-1 lg:text-lg">
                     Skorzystaj z powyższego numeru, aby śledzić status swojego
                     zamówienia.
                 </p>
-                <p className="mb-6">
+                <p className="mb-6 lg:text-lg">
                     Zachęcamy do regularnego sprawdzania, aby być na bieżąco z
                     postępem zamówienia.
                 </p>
 
                 <Link
                     to={`/order/${newOrderID}`}
-                    className="text-yellow-500 p-2 text-xl"
+                    className="text-yellow-500 p-2 text-xl lg:text-2xl duration-300 transition-colors hover:text-yellow-400"
                 >
                     Zobacz zamówienie
                 </Link>
-                <p className="py-1">lub</p>
-                <Link to={'/menu'} className="text-[#dbd8d8] p-2 text-lg">
+                <p className="py-1 lg:text-lg">lub</p>
+                <Link
+                    to={'/menu'}
+                    className="text-[rgb(219,216,216)] p-2 text-lg lg:text-xl duration-300 transition-colors hover:text-[rgb(180,178,178)]"
+                >
                     Wróc do menu
                 </Link>
             </div>

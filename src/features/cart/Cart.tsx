@@ -33,7 +33,7 @@ function Cart() {
     if (!cart?.length) return <EmptyCart />
 
     return (
-        <section className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[1000px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-12 ">
+        <section className=" pb-28 px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[900px] xl:my-28  lg:bg-transparent lg:py-16 lg:px-24 lg:h-screen lg:overflow-y-auto lg:scrollbar-hide ">
             <ClearCart
                 onClose={toogleShowModal}
                 refs={ref}

@@ -46,12 +46,12 @@ function DeliveryAdress() {
 
     return (
         <div className="mt-5 small:mt-10">
-            <h4 className="text-2xl pb-2.5 border-b-[1px] border-yellow-500">
+            <h4 className="text-2xl pb-2.5 border-b-[1px] border-yellow-500 lg:text-3xl">
                 Dane odbiorcy
             </h4>
             {(isAuthenticated || shippingData) && !isFormShow && (
-                <div className="flex justify-between items-end my-6">
-                    <div className="text-xs  leading-4 small:text-sm smmall:leading-5 pb-1">
+                <div className="flex justify-between items-end my-6 lg:my-8">
+                    <div className="text-xs  leading-4 small:text-sm small:leading-5 pb-1 lg:text-base">
                         <p>{deliveryAddress.name.toUpperCase()}</p>
                         <p>{deliveryAddress.street.toUpperCase()}</p>
                         <p>
@@ -61,7 +61,7 @@ function DeliveryAdress() {
                         <p>{deliveryAddress.phone.toUpperCase()}</p>
                     </div>
                     <button
-                        className="text-yellow-500 p-1 uppercase text-xs small:text-sm"
+                        className="text-yellow-500 p-1 uppercase text-xs small:text-sm lg:text-base hover:text-yellow-400 duration-300 transition-colors"
                         onClick={handleShowForm}
                     >
                         Zmień

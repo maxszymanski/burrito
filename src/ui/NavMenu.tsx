@@ -42,7 +42,7 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                         <NavLink to="/" className=" py-4 px-3  ">
                             <img
                                 src="./logo.webp"
-                                alt="logo firmy Buritto"
+                                alt="logo"
                                 className="h-9 mb-2 "
                             />
                         </NavLink>

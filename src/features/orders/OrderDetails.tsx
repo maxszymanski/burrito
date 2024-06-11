@@ -17,13 +17,13 @@ function OrderDetails() {
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
 
     return (
-        <section className=" px-4 py-6 small:px-6 text-center min-h-screen bg-menu-bg-sm">
+        <section className=" px-4 py-6 small:px-6 text-center min-h-screen  lg:container lg:mx-auto lg:max-w-[900px] xl:mt-28  lg:py-16 lg:px-24 ">
             <OrderCartHeader
                 title={`Zamówienie #${orderNumber}`}
                 to={isAuthenticated ? '/ordersHistory' : '/'}
             />
 
-            <ul className="space-y-3 my-3 pb-8  ">
+            <ul className="space-y-3 my-3 pb-8  lg:max-h-screen lg:overflow-y-auto lg:scrollbar-hide lg:my-10 lg:space-y-8">
                 {order.cart.map(
                     (item: {
                         itemId: string
@@ -40,41 +40,41 @@ function OrderDetails() {
                     )
                 )}
             </ul>
-            <div></div>
-
-            <OrderRow isCol>
-                <p>Cena całkowita:</p>
-                <div className="flex flex-col items-end">
-                    <p className="text-sm">
-                        {totalPrice}
-                        {totalRest} zł
+            <div className=" lg:p-6 lg:bg-[rgba(216,222,203,0.15)] lg:rounded-2xl">
+                <OrderRow isCol>
+                    <p>Cena całkowita:</p>
+                    <div className="flex flex-col items-end">
+                        <p className="text-sm lg:text-base">
+                            {totalPrice}
+                            {totalRest} zł
+                        </p>
+                        <p className="text-stone-400 text-xs lg:text-sm lg:text-stone-300">
+                            rabat {totalDiscount}
+                            {totalDiscountRest} zł
+                        </p>
+                    </div>
+                </OrderRow>
+                <OrderRow>
+                    <p>Data zamówienia:</p>
+                    <p className="text-sm lg:text-base">{createdDate}</p>
+                </OrderRow>
+                <OrderRow>
+                    <p>Status:</p>
+                    <p
+                        className={`text-sm lg:text-base ${
+                            status === 'W przygotowaniu'
+                                ? 'text-lime-500'
+                                : status === 'W drodze'
+                                ? 'text-orange-400'
+                                : status === 'Zakończone'
+                                ? 'text-red-500'
+                                : ''
+                        } `}
+                    >
+                        {status}
                     </p>
-                    <p className="text-stone-400 text-xs">
-                        rabat {totalDiscount}
-                        {totalDiscountRest} zł
-                    </p>
-                </div>
-            </OrderRow>
-            <OrderRow>
-                <p>Data zamówienia:</p>
-                <p className="text-sm">{createdDate}</p>
-            </OrderRow>
-            <OrderRow>
-                <p>Status:</p>
-                <p
-                    className={`text-sm ${
-                        status === 'W przygotowaniu'
-                            ? 'text-lime-500'
-                            : status === 'W drodze'
-                            ? 'text-orange-400'
-                            : status === 'Zakończone'
-                            ? 'text-red-500'
-                            : ''
-                    } `}
-                >
-                    {status}
-                </p>
-            </OrderRow>
+                </OrderRow>
+            </div>
         </section>
     )
 }

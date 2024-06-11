@@ -30,10 +30,10 @@ function CartItem({
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[23%] lg:max-w-[15%] max-h-24 rounded-full grow-0 basis-2/6"
+                className="h-auto max-w-[23%] max-h-24 rounded-full grow-0 basis-2/6"
             />
-            <div className="flex flex-col gap-4 px-3 justify-between grow-0 basis-3/6  items-start">
-                <h4 className="font-semibold tracking-wider  text-sm leading-6">
+            <div className="flex flex-col gap-4 px-3 justify-between grow-0 basis-3/6  items-start lg:gap-6">
+                <h4 className="font-semibold tracking-wider  text-sm leading-6 lg:text-base xl:text-xl">
                     {name}
                 </h4>
                 <QuantityButton
@@ -47,16 +47,19 @@ function CartItem({
                 >
                     {' '}
                 </QuantityButton>
-                <p className="font-semibold tracking-wider  text-sm">
-                    ilość: <span className="text-yellow-500">{quantity}</span>
+                <p className="font-semibold tracking-wider  text-sm lg:text-base">
+                    ilość:{' '}
+                    <span className="text-yellow-500 lg:text-base">
+                        {quantity}
+                    </span>
                 </p>
             </div>
             <div className="flex flex-col justify-between self-stretch text-center  grow-0 basis-1/6">
-                <p className="font-semibold tracking-wider  text-sm">
+                <p className="font-semibold tracking-wider  text-sm lg:text-base">
                     {totalPrice} zł
                 </p>
                 <button
-                    className="text-yellow-500"
+                    className="text-yellow-500 lg:text-lg hover:text-yellow-400 transition-colors duration-300"
                     onClick={() => {
                         dispatch(deleteItem(itemId))
                         toast.error('Produkt usunięty z koszyka')
