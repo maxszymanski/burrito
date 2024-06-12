@@ -63,7 +63,7 @@ function SetCard({
 
     return (
         <div
-            className={` flex items-center justify-between px-6 sm:px-20 md:px-6 py-10 w-full transition-colors duration-300 text-mywhite md:rounded-[4rem] md:gap-x-5 max-w-[880px] xl:hover:bg-[rgba(216,222,203,0.35)]
+            className={` flex items-center justify-between px-6 sm:px-20 md:px-6 py-10 w-full transition-colors duration-300 text-mywhite md:rounded-[4rem] md:gap-x-5 max-w-[880px] 
 			 ${
                  isOverflow
                      ? 'bg-[rgba(216,222,203,0.25)] '

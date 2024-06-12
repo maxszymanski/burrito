@@ -17,7 +17,7 @@ function SummaryOrderItem({
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[23%] max-h-24 lg:max-w-[17%] rounded-full grow-0 basis-2/6"
+                className="h-auto max-w-[23%] max-h-24 lg:max-h-28 small:max-w-[20%] sm:max-w-[15%] rounded-full grow-0 basis-2/6 md:max-w-[90px]"
             />
             <div className="flex flex-col gap-2.5 px-3 justify-between grow-0 basis-3/6  items-start">
                 <h4 className="font-semibold tracking-wider  text-sm leading-6 lg:text-lg xl:text-xl">

@@ -30,7 +30,7 @@ function CartItem({
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[23%] max-h-24 rounded-full grow-0 basis-2/6"
+                className="h-auto max-w-[18%] sm:max-w-[13%] md:max-w-[80px] lg:max-w-[15%] max-h-24 lg:max-h-28 xl:max-w-[14%] rounded-full grow-0 basis-2/6"
             />
             <div className="flex flex-col gap-4 px-3 justify-between grow-0 basis-3/6  items-start lg:gap-6">
                 <h4 className="font-semibold tracking-wider  text-sm leading-6 lg:text-base xl:text-xl">

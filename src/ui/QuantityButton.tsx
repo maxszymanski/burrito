@@ -8,7 +8,9 @@ function QuantityButton({
     return (
         <div
             className={`w-full px-2 flex gap-3 lg:gap-5 ${
-                isCol ? 'flex-col-reverse max-w-[50px] small:px-2.5' : ''
+                isCol
+                    ? 'flex-col-reverse  small:px-2.5 max-w-[50px] md:max-w-[150px] md:items-center xl:hidden'
+                    : ''
             }`}
         >
             <button
@@ -16,7 +18,9 @@ function QuantityButton({
                     quantity <= 0
                         ? 'border-gray-500 text-gray-500'
                         : 'border-yellow-500'
-                }`}
+                }
+                
+                `}
                 onClick={onClickInc}
                 disabled={quantity <= 0}
             >

@@ -6,7 +6,7 @@ function BasketButton({ onClick, isMainPage = false }) {
             className={`bg-gradient-to-r from-[rgb(86,111,46)] to-[rgb(170,167,36)] rounded-full p-2 md:py-3 transition-all duration-300  md:w-full   ${
                 isMainPage
                     ? 'w-full max-w-[120px] small:max-w-[140px] xl:max-w-[150px] hover:xl:max-w-[160px]'
-                    : ''
+                    : 'max-w-[150px] xl:mt-auto hover:text-yellow-500'
             }`}
             onClick={onClick}
         >

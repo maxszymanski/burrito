@@ -3,9 +3,9 @@ import MenuMobile from './MenuMobile'
 
 function Menu() {
     return (
-        <main className=" text-mywhite h-full xl:pt-32 min-h-screen ">
+        <main className=" text-mywhite h-full xl:pt-20 min-h-screen relative ">
+            <div className="h-full w-full absolute hidden xl:block top-0 left-0 bg-[rgba(0,0,0,0.6)] z-0"></div>
             <div className=" pt-8 px-4 lg:container lg:mx-auto w-full ">
-                <h2 className="text-4xl lg:text-5xl ">Menu</h2>
                 <MenuMobile />
                 <MenuDesktop />
             </div>
