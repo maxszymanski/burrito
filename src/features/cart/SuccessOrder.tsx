@@ -12,7 +12,7 @@ function SuccessOrder() {
     const newOrderID = orders[orders.length - 1].id || '0'
 
     return (
-        <section className=" px-4 py-6 small:px-6 text-center bg-menu-bg-sm lg:bg-none  xl:mt-28  lg:pt-16 lg:px-12 lg:container lg:mx-auto lg:max-w-[1000px]  min-h-screen  lg:min-h-full">
+        <section className=" px-4 py-6 small:px-6 text-center bg-menu-bg-sm lg:bg-none  xl:pt-44  lg:pt-16 lg:px-12 lg:container lg:mx-auto lg:max-w-[1000px]  h-screen  lg:overflow-y-auto lg:scrollbar-hide">
             <OrderCartHeader title="Zakończenie" to="/" />
             <CartStep one two three four />
             <div className="flex flex-col items-center justify-center mt-10">

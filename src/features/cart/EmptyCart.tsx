@@ -8,7 +8,7 @@ function EmptyCart() {
                     Twój koszyk jest pusty.
                 </p>
                 <img
-                    className="px-8 h-auto w-full max-w-lg lg:max-w-xl"
+                    className="px-8 h-auto w-full max-w-lg "
                     src="/emptyCart.png"
                     alt="pusty koszyk na zakupy"
                 />

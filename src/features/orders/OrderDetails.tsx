@@ -17,13 +17,13 @@ function OrderDetails() {
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
 
     return (
-        <section className=" px-4 py-6 small:px-6 text-center min-h-screen  lg:container lg:mx-auto lg:max-w-[900px] xl:mt-28  lg:py-16 lg:px-24 ">
+        <section className=" px-4 py-6 small:px-6 text-center min-h-screen  lg:container lg:mx-auto lg:max-w-[900px] xl:pt-44  lg:py-16 lg:px-24 ">
             <OrderCartHeader
                 title={`Zamówienie #${orderNumber}`}
                 to={isAuthenticated ? '/ordersHistory' : '/'}
             />
 
-            <ul className="space-y-3 my-3 pb-8  lg:max-h-screen lg:overflow-y-auto lg:scrollbar-hide lg:my-10 lg:space-y-8">
+            <ul className="space-y-3 my-3 pb-8   lg:my-10 lg:space-y-8">
                 {order.cart.map(
                     (item: {
                         itemId: string
@@ -40,7 +40,7 @@ function OrderDetails() {
                     )
                 )}
             </ul>
-            <div className=" lg:p-6 lg:bg-[rgba(216,222,203,0.15)] lg:rounded-2xl">
+            <div className=" lg:p-6 lg:bg-[rgba(216,222,203,0.15)] lg:rounded-2xl xl:mx-12">
                 <OrderRow isCol>
                     <p>Cena całkowita:</p>
                     <div className="flex flex-col items-end">

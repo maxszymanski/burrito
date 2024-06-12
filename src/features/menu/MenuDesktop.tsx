@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MenuCategoryDesktop from './MenuCategoryDesktop'
 import { useMenu } from './useMenu'
 import MenuCard from './MenuCard'
+import Footer from '../../ui/Footer'
 
 function MenuDesktop() {
     const [selectedCategory, setSelectedCategory] = useState(['Burrito'])
@@ -17,11 +18,11 @@ function MenuDesktop() {
         setSelectedCategory((prev) =>
             prev.includes(category)
                 ? prev.filter((cat) => cat !== category)
-                : [...prev, category]
+                : [category, ...prev]
         )
     }
     return (
-        <section className="hidden xl:block  pb-32 z-10 relative xl:h-screen xl:overflow-y-auto xl:scrollbar-hide">
+        <section className="hidden xl:block  pb-32 z-10 relative ">
             <h2 className="text-4xl lg:text-5xl z-10 relative xl:text-6xl xl:my-16 xl:text-center">
                 Menu
             </h2>

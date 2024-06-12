@@ -9,7 +9,7 @@ function AppLayout() {
     }, [location.pathname])
 
     return (
-        <div className=" w-full relative bg-menu-bg-sm min-h-screen xl:bg-cover xl:bg-center xl:bg-menu  ">
+        <div className=" w-full relative bg-menu-bg-sm min-h-screen xl:bg-cover xl:bg-center xl:bg-menu xl:h-screen xl:overflow-y-auto ">
             <Outlet />
             <NavMenu noMobile={false} />
         </div>

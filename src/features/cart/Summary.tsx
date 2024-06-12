@@ -9,7 +9,7 @@ import SummaryPayment from './SummaryPayment'
 function Summary() {
     const { isFormShow } = usePrice()
     return (
-        <section className="px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[900px] xl:mt-28  lg:bg-transparent lg:py-16 lg:px-24 lg:h-screen lg:overflow-y-auto lg:scrollbar-hide ">
+        <section className="px-4 py-6 small:px-6 lg:container lg:mx-auto lg:max-w-[900px] xl:pt-44  lg:bg-transparent lg:pt-16 lg:px-24 ">
             <OrderCartHeader title="Podsumowanie" to="/order" />
             <CartStep one two three />
             <DeliveryAdress />

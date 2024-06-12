@@ -16,7 +16,7 @@ function Account() {
     if (isLoading) return <Loader />
     return (
         <>
-            <div className=" font-muli w-full min-h-screen relative lg:bg-account bg-account-small bg-center bg-cover 2xl:bg-accountBig  lg:overflow-y-auto">
+            <div className=" font-muli w-full min-h-screen relative lg:bg-account bg-account-small bg-center bg-cover 2xl:bg-accountBig  lg:overflow-y-auto xl:h-screen">
                 <div className="sm:container sm:mx-auto sm:max-w-[500px] lg:max-w-[700px] ">
                     <Outlet />
                 </div>

@@ -11,8 +11,9 @@ function Popular() {
     const tacoChicken = menu?.find((item) => item.name === 'Taco Chicken')
     const tacoPork = menu?.find((item) => item.name === 'Taco Pork')
     return (
-        <main className="md:px-5 md:pb-8 xl:bg-food md:bg-center md:bg-cover">
-            <div className="lg:container lg:mx-auto w-full lg:flex lg:flex-col md:space-y-6 lg:pb-6 ">
+        <main className="md:px-5 md:pb-8 xl:bg-food md:bg-center md:bg-cover relative">
+            <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,.3)] z-0"></div>
+            <div className="lg:container lg:mx-auto w-full lg:flex lg:flex-col md:space-y-6 lg:pb-6 relative z-10">
                 <h2 className="text-mywhite small:text-3xl text-2xl font-semibold p-6 tracking-widest md:text-4xl  md:px-2 sm:px-8 lg:text-5xl sm:py-8 xl:py-12 2xl:text-6xl">
                     Popularne
                 </h2>
