@@ -35,7 +35,7 @@ function MenuCard({
         newImage.src = image
         newImage.onload = () => setIsImageLoaded(true)
     }, [image])
-    if (!cardInfo || !isImageLoaded) return <Loader />
+    // if (!cardInfo || !isImageLoaded) return <Loader />
 
     function handleAddToCart() {
         const newItem = {

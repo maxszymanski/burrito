@@ -23,7 +23,7 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
     const isInCart = cartQuantity >= 1
     return (
         <nav
-            className={`fixed left-0  bottom-0 w-full border-t-[1px] border-stone-700  max-h-20 xl:top-0 xl:absolute xl:border-none xl:max-h-28 xl:bg-[rgb(44,44,43,0.4)]
+            className={`fixed left-0  bottom-0 w-full border-t-[1px] border-stone-700  max-h-20 xl:top-0  xl:border-none xl:max-h-28 xl:bg-[rgb(0,0,0,0.6)] z-50
                     ${noMobile ? 'hidden xl:block' : 'block'}
             `}
         >
