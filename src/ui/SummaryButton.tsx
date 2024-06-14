@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { usePrice } from '../context/PriceContext'
+import { usePrice } from '../context/usePrice'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart, getCart } from '../features/cart/cartSlice'
@@ -14,8 +14,6 @@ function SummaryButton({ isSummary = false }) {
     const cart = useSelector(getCart)
     const {
         total,
-        discount,
-        shipping,
         paymentMethod,
         clearPaymentMethod,
         orderAddress,

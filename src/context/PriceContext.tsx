@@ -3,20 +3,51 @@ import {
     getTotalCardPrice,
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, createContext, useEffect, useState } from 'react'
 import { useUser } from '../features/authentication/useUser'
 import { useOrders } from '../features/orders/useOrders'
 
-const PriceContext = createContext()
-const defaultAdress = {
-    name: 'Anonimowy użytkownik',
+interface Price {
+    children: React.ReactNode
+}
+interface Address {
+    name: string
+    street: string
+    zip: string
+    city: string
+    phone: string
+}
+
+interface PriceContextType {
+    totalCartQuantity: number
+    totalCartPrice: number
+    shipping: number
+    discount: number
+    total: number
+    paymentMethod: string | null
+    handleSetPaymentMenthod: (e: ChangeEvent<HTMLInputElement>) => void
+    isFormShow: boolean
+    handleShowForm: () => void
+    clearPaymentMethod: () => void
+    setIsFormShow: React.Dispatch<React.SetStateAction<boolean>>
+    orderAddress: Address
+    setOrderAddress: React.Dispatch<React.SetStateAction<Address>>
+    clearOrderAddress: () => void
+    totalDiscount: number
+    setShipping: React.Dispatch<React.SetStateAction<number>>
+    setDiscount: React.Dispatch<React.SetStateAction<number>>
+}
+
+const PriceContext = createContext<PriceContextType | undefined>(undefined)
+const defaultAdress: Address = {
+    name: 'Anonim',
     street: '',
     zip: '',
     city: '',
     phone: '',
 }
 
-const PriceProvider = ({ children }) => {
+const PriceProvider: React.FC<Price> = ({ children }) => {
     const { isAuthenticated } = useUser()
     const { orders } = useOrders()
     const [paymentMethod, setPaymentMethod] = useState(() => {
@@ -46,7 +77,9 @@ const PriceProvider = ({ children }) => {
         setTotal(totalCartPrice + shipping - discount)
     }, [totalCartPrice, shipping, discount])
 
-    const handleSetPaymentMenthod = (e) => {
+    const handleSetPaymentMenthod = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
         localStorage.setItem('paymentMethod', JSON.stringify(e.target.value))
         setPaymentMethod(e.target.value)
     }
@@ -88,11 +121,4 @@ const PriceProvider = ({ children }) => {
     )
 }
 
-function usePrice() {
-    const contexts = useContext(PriceContext)
-    if (contexts === undefined)
-        throw new Error('Price context został użyty poza providerem')
-    return contexts
-}
-
-export { PriceProvider, usePrice }
+export { PriceProvider, PriceContext }

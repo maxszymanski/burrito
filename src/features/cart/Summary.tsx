@@ -1,4 +1,4 @@
-import { usePrice } from '../../context/PriceContext'
+import { usePrice } from '../../context/usePrice'
 import SummaryButton from '../../ui/SummaryButton'
 import CartStep from './CartStep'
 import DeliveryAdress from './DeliveryAdress'

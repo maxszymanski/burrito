@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
-import { usePrice } from '../../context/PriceContext'
+import { usePrice } from '../../context/usePrice'
 import { useUser } from '../authentication/useUser'
 import LoginLink from '../../ui/LoginLink'
 

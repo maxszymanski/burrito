@@ -1,14 +1,21 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import Button from '../../ui/Button'
 import usePasswordRecovery from './usePasswordRecovery'
 
+interface ForgotPasswordFormData {
+    email: string
+}
+
 function ForgotPassword() {
     const { passwordRecovery } = usePasswordRecovery()
-    const { register, formState, handleSubmit } = useForm()
+    const { register, formState, handleSubmit } =
+        useForm<ForgotPasswordFormData>()
     const { errors } = formState
 
-    const onResetPassword = ({ email }) => {
+    const onResetPassword: SubmitHandler<ForgotPasswordFormData> = ({
+        email,
+    }) => {
         passwordRecovery(email)
     }
 
@@ -38,14 +45,12 @@ function ForgotPassword() {
                     id="email"
                     placeholder="Adres email"
                     className={`w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-base px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]  ${
-                        errors?.userName?.message ? 'focus:ring-red-400' : ''
+                        errors?.email?.message ? 'focus:ring-red-400' : ''
                     }
                     `}
                 />
             </FormRow>
-            <Button onClick={() => {}} type=" mt-3 px-6">
-                Wyślij
-            </Button>
+            <Button type=" mt-3 px-6">Wyślij</Button>
         </form>
     )
 }

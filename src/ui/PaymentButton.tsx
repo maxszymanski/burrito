@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { usePrice } from '../context/PriceContext'
+import { usePrice } from '../context/usePrice'
 
 function PaymentButton({
     value,

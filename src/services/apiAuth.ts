@@ -51,7 +51,7 @@ export async function signUp({
     if (error) throw new Error(error.message)
     return data
 }
-export async function passwordRecovery(email) {
+export async function passwordRecovery(email: string) {
     const { error } = await supabase.auth.resetPasswordForEmail(email)
     if (error) throw new Error(error.message)
 }

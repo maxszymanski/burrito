@@ -1,4 +1,4 @@
-import { usePrice } from '../../context/PriceContext'
+import { usePrice } from '../../context/usePrice'
 
 function CartSummary() {
     const { totalCartQuantity, totalCartPrice, shipping, discount, total } =

@@ -3,7 +3,7 @@ import DeliveryAdress from './DeliveryAdress'
 import SummaryButton from '../../ui/SummaryButton'
 import PaymentMethod from './PaymentMethod'
 import OrderCartHeader from './OrderCartHeader'
-import { usePrice } from '../../context/PriceContext'
+import { usePrice } from '../../context/usePrice'
 function OrderCart() {
     const { isFormShow } = usePrice()
 

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import MenuCategoryDesktop from './MenuCategoryDesktop'
 import { useMenu } from './useMenu'
 import MenuCard from './MenuCard'
-import Footer from '../../ui/Footer'
 
 function MenuDesktop() {
     const [selectedCategory, setSelectedCategory] = useState(['Burrito'])

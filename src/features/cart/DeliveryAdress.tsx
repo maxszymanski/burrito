@@ -1,7 +1,7 @@
 import Loader from '../../ui/Loader'
 import { useUser } from '../authentication/useUser'
 import DeliveryForm from './DeliveryForm'
-import { usePrice } from '../../context/PriceContext'
+import { usePrice } from '../../context/usePrice'
 import { useEffect, useMemo } from 'react'
 
 function DeliveryAdress() {

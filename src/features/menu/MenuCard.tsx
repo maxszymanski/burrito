@@ -9,7 +9,6 @@ import {
 } from '../cart/cartSlice'
 import toast from 'react-hot-toast'
 import QuantityButton from '../../ui/QuantityButton'
-import Loader from '../../ui/Loader'
 import { useEffect, useState } from 'react'
 import AddRemoveBtn from '../../ui/AddRemoveBtn'
 

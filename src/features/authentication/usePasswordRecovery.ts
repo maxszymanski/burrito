@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 function usePasswordRecovery() {
     const navigate = useNavigate()
     const { mutate: passwordRecovery } = useMutation({
-        mutationFn: (email) => passwordRecoveryApi(email),
+        mutationFn: (email: string) => passwordRecoveryApi(email),
         onSuccess: () => {
             toast.success(`Instrukcja została wysłana na podany adres email`)
             navigate('/login', { replace: true })
