@@ -1,9 +1,17 @@
+import { ReactNode } from 'react'
+
 function QuantityButton({
     quantity,
     onClickInc,
     onClickDec,
     isCol = false,
     children,
+}: {
+    quantity: number
+    onClickInc: () => void
+    onClickDec: () => void
+    isCol: boolean
+    children: ReactNode
 }) {
     return (
         <div

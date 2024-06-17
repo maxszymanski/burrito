@@ -9,7 +9,6 @@ export function useCreateOrder() {
         onSuccess: () => {
             toast.success('Zamówienie zostalo złożone')
             queryClient.invalidateQueries({
-                // gdy funkcja dodawania się powiedzie nakazujemy wywołać invalidate dla queryKey: 'cabins i się odświeża
                 queryKey: ['orders'],
             })
         },

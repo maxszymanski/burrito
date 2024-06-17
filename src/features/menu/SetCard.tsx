@@ -24,8 +24,10 @@ function SetCard({
     const [isImageLoaded, setIsImageLoaded] = useState(false)
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
-    const idSet = itemOne.id + itemTwo.id + 100
-    const cartItem = cart.filter((item) => item.itemId === idSet)
+    const idSet: string = (itemOne.id + itemTwo.id + 100).toString()
+    const cartItem = cart.filter(
+        (item: { itemId: string }) => item.itemId === idSet
+    )
     const isInCart = cartItem.length > 0
     const ingredientsSet = [
         ...itemOne.ingredients.split(', '),

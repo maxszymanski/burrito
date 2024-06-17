@@ -1,7 +1,19 @@
 import { CiTrash } from 'react-icons/ci'
 import { IoMdMore } from 'react-icons/io'
 
-function ClearCart({ onClose, refs, showMore, onClear }) {
+interface ClearAllCart {
+    onClose: () => void
+    refs: React.MutableRefObject<HTMLButtonElement>
+    showMore: boolean
+    onClear: () => void
+}
+
+const ClearCart: React.FC<ClearAllCart> = ({
+    onClose,
+    refs,
+    showMore,
+    onClear,
+}) => {
     return (
         <div className="flex items-center mb-2 justify-between text-xl lg:text-2xl lg:mb-4  xl:text-4xl">
             <h2>Twój koszyk</h2>

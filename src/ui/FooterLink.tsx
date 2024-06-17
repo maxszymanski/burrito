@@ -1,4 +1,6 @@
-function FooterLink({ to, children }) {
+import { ReactNode } from 'react'
+
+function FooterLink({ to, children }: { to: string; children: ReactNode }) {
     return (
         <a
             href={to}

@@ -1,19 +1,29 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import Button from '../../ui/Button'
 import FormRow from '../../ui/FormRow'
 import { usePrice } from '../../context/usePrice'
 import { useUser } from '../authentication/useUser'
 import LoginLink from '../../ui/LoginLink'
+import { DeliveryData } from '../../types/types'
 
-function DeliveryForm({ onReset, storedDeliveryData }) {
-    const { register, formState, handleSubmit, reset } = useForm()
+function DeliveryForm({
+    onReset,
+    storedDeliveryData,
+}: {
+    onReset: () => void
+    storedDeliveryData: string | null
+}) {
+    const { register, formState, handleSubmit, reset } = useForm<DeliveryData>()
     const { isAuthenticated } = useUser()
     const { handleShowForm } = usePrice()
     const { errors } = formState
     const inputClass =
         'w-full h-8 accent-yellow-500 focus:outline-none focus:ring small:h-12 focus:ring-yellow-500 focus:ring-offset-2 placeholder:text-lg px-4 pt-1 placeholder:text-mywhite placeholder:font-scope placeholder:tracking-wide rounded-lg text-mywhite font-scope text-sm small:text-base focus:pt-0 bg-[rgba(138,139,136,0.4)]'
 
-    const onSubmit = (deliveryData) => {
+    const onSubmit: SubmitHandler<DeliveryData> = (
+        deliveryData: DeliveryData
+    ) => {
+        console.log(deliveryData)
         localStorage.setItem('deliveryData', JSON.stringify(deliveryData))
         reset()
         handleShowForm()

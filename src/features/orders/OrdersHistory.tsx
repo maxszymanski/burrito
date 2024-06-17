@@ -23,14 +23,22 @@ function OrdersHistory() {
                 <p>Nie masz żadnych zamówień</p>
             ) : (
                 <ul className=" flex flex-col justify-center space-y-2 pt-4  ">
-                    {orders.map((item: { orderId: string }, index: number) => (
-                        <OrderItem
-                            item={item}
-                            key={item.id}
-                            to={`/order/${item.id}`}
-                            orderNumber={index + 1}
-                        ></OrderItem>
-                    ))}
+                    {orders.map(
+                        (
+                            item: {
+                                id: string
+                                status: string
+                                created_at: string
+                            },
+                            index: number
+                        ) => (
+                            <OrderItem
+                                item={item}
+                                key={item.id}
+                                orderNumber={index + 1}
+                            ></OrderItem>
+                        )
+                    )}
                 </ul>
             )}
         </section>

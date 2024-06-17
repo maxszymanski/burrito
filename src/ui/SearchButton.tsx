@@ -1,4 +1,4 @@
-function SearchButton({ onClick }) {
+function SearchButton({ onClick }: { onClick: () => void }) {
     return (
         <button
             onClick={onClick}

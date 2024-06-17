@@ -5,6 +5,13 @@ function UserName() {
     const { user } = useUser()
     const location = useLocation()
     const currentPath = location.pathname
+    const route: string =
+        currentPath === '/account'
+            ? '/updateProfile'
+            : currentPath === '/updateProfile'
+            ? '/account'
+            : ''
+
     return (
         <div className="text-sm small:mb-3 xl:my-4">
             <p
@@ -15,11 +22,7 @@ function UserName() {
             </p>
             <NavLink
                 className="text-yellow-500 p-3 xl:text-lg hover:text-yellow-400 transition-colors duration-300 "
-                to={
-                    currentPath === '/account'
-                        ? '/updateProfile'
-                        : currentPath === '/updateProfile' && '/account'
-                }
+                to={route}
             >
                 {currentPath === '/account'
                     ? 'Edytuj profil'

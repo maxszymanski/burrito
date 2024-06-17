@@ -6,18 +6,9 @@ import {
 } from './cartSlice'
 import toast from 'react-hot-toast'
 import QuantityButton from '../../ui/QuantityButton'
+import { OrderDetailsType } from '../../types/types'
 
-function CartItem({
-    item,
-}: {
-    item: {
-        name: string
-        quantity: number
-        totalPrice: number
-        itemId: number
-        image: string
-    }
-}) {
+function CartItem({ item }: { item: OrderDetailsType }) {
     const dispatch = useDispatch()
     const { name, quantity, totalPrice, image, itemId } = item
     function removeFromCart() {

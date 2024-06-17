@@ -1,5 +1,5 @@
-export interface CartItem {
-    itemId: number
+export interface CartItemInterface {
+    itemId: string
     name: string
     quantity: number
     price: number
@@ -15,6 +15,13 @@ export interface Address {
     city: string
     phone: string
 }
+export interface DeliveryData {
+    name: string
+    streetUser: string
+    zipCodeUser: string
+    cityUser: string
+    phoneUser: string
+}
 
 export interface LoginFormInputs {
     email: string
@@ -26,7 +33,7 @@ export interface User {
 }
 
 export interface Order {
-    cart: CartItem[]
+    cart: CartItemInterface[]
     id: string
     totalPrice: number
     payment: string
@@ -35,6 +42,15 @@ export interface Order {
     address: Address
     totalDiscount: number
 }
+export interface OrderDetailsType {
+    itemId: string
+    name: string
+    quantity: number
+    totalPrice: number
+    image: string
+    ingredients: string
+}
+
 export interface NewUser {
     email: string
     password: string

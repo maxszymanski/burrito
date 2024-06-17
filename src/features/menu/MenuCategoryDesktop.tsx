@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 
-function MenuCategoryDesktop({ category, handleShowMenuCategory, isFirst }) {
+function MenuCategoryDesktop({
+    category,
+    handleShowMenuCategory,
+    isFirst,
+}: {
+    category: { name: string; image: string }
+    handleShowMenuCategory: (e: string) => void
+    isFirst: boolean
+}) {
     const [active, setActive] = useState(false)
     const { name, image } = category
 

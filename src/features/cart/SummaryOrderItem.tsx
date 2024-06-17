@@ -1,15 +1,6 @@
-function SummaryOrderItem({
-    item,
-}: {
-    item: {
-        name: string
-        quantity: number
-        totalPrice: number
-        itemId: number
-        image: string
-        ingredients: string
-    }
-}) {
+import { OrderDetailsType } from '../../types/types'
+
+function SummaryOrderItem({ item }: { item: OrderDetailsType }) {
     const { name, quantity, totalPrice, image, ingredients } = item
 
     return (

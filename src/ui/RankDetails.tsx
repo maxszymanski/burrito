@@ -1,4 +1,4 @@
-function RankDetails({ showDetails }) {
+function RankDetails({ showDetails }: { showDetails: boolean }) {
     return (
         <div
             className={`absolute top-6 bg-[rgb(12,12,12,0.9)] p-3 small:p-4 rounded-xl text-xs space-y-1 small:space-y-2 small:text-sm ${

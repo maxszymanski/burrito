@@ -37,6 +37,8 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                         iconText="Start"
                         linkTo="/"
                         isDesktop
+                        isCart={false}
+                        isMobile={false}
                     />
                     <li className="hidden xl:block ">
                         <NavLink to="/" className=" py-4 px-3  ">
@@ -51,12 +53,17 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                         icon={<BiFoodMenu />}
                         iconText="Menu"
                         linkTo="/menu"
+                        isCart={false}
+                        isMobile={false}
+                        isDesktop={false}
                     />
                     <NavItem
                         isCart
                         icon={<TbShoppingBag />}
                         iconText="Koszyk"
                         linkTo="/basket"
+                        isMobile={false}
+                        isDesktop={false}
                     >
                         {isInCart && (
                             <p className="absolute small:top-6 top-5 small:right-2 right-3 small:w-5 small:h-5 h-4 w-4 bg-gradient-to-r from-[#F92525] to-[#9F9C30] text-mywhite rounded-full text-center font-scope flex items-center justify-center">
@@ -68,17 +75,24 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                     </NavItem>
 
                     <NavItem
+                        isMobile={false}
+                        isDesktop={false}
+                        isCart={false}
                         icon={<FaRegCircleUser />}
                         iconText="Profil"
                         linkTo={isAuthenticated ? '/account' : '/login'}
                     />
                     <NavItem
+                        isMobile={false}
+                        isCart={false}
                         isDesktop
                         icon={<CiPhone />}
                         iconText="Zadzwoń"
                         linkTo="tel:514000000"
                     />
                     <NavItem
+                        isDesktop={false}
+                        isCart={false}
                         isMobile
                         icon={<CiPhone />}
                         iconText="Kontakt"

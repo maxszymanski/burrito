@@ -9,8 +9,8 @@ import {
 } from '../cart/cartSlice'
 import toast from 'react-hot-toast'
 import QuantityButton from '../../ui/QuantityButton'
-import { useEffect, useState } from 'react'
 import AddRemoveBtn from '../../ui/AddRemoveBtn'
+import { CartItemInterface } from '../../types/types'
 
 function MenuCard({
     cardInfo = {
@@ -22,19 +22,14 @@ function MenuCard({
     },
     isOpen = false,
 }) {
-    const [isImageLoaded, setIsImageLoaded] = useState(false)
     const dispatch = useDispatch()
     const { name, ingredients, price, image, id } = cardInfo
     const cart = useSelector(getCart)
 
-    const cartItem = cart.filter((item) => item.itemId === id)
+    const cartItem: CartItemInterface[] = cart.filter(
+        (item: { itemId: string }) => item.itemId === id
+    )
     const isInCart = cartItem.length > 0
-    useEffect(() => {
-        const newImage = new Image()
-        newImage.src = image
-        newImage.onload = () => setIsImageLoaded(true)
-    }, [image])
-    // if (!cardInfo || !isImageLoaded) return <Loader />
 
     function handleAddToCart() {
         const newItem = {

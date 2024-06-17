@@ -10,7 +10,7 @@ export function useOrder() {
         data: order,
     } = useQuery({
         queryKey: ['orders', orderNumber],
-        queryFn: () => getOrder(orderNumber),
+        queryFn: () => getOrder(orderNumber || ''),
     })
     return { isLoading, error, order, orderNumber }
 }

@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
 
-function OrderItem({ item, orderNumber }) {
+function OrderItem({
+    item,
+    orderNumber,
+}: {
+    item: { status: string; created_at: string; id: string }
+    orderNumber: number
+}) {
     const { status } = item
     const createdDate = item.created_at
         .slice(0, 10)

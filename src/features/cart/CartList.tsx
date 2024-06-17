@@ -1,9 +1,12 @@
 import { useMemo } from 'react'
 import CartItem from './CartItem'
+import { CartItemInterface } from '../../types/types'
 
 function CartList({ cart }: { cart: [] }) {
     const cartItems = useMemo(() => {
-        return cart.map((item) => <CartItem item={item} key={item.itemId} />)
+        return cart.map((item: CartItemInterface) => (
+            <CartItem item={item} key={item.itemId} />
+        ))
     }, [cart])
 
     return (

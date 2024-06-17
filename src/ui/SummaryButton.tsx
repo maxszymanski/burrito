@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { usePrice } from '../context/usePrice'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'

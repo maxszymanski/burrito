@@ -5,6 +5,7 @@ import OrderCartHeader from '../cart/OrderCartHeader'
 import OrderRow from '../../ui/OrderRow'
 import { useOrder } from './useOrder'
 import OrderNotFound from './OrderNotFound'
+import { OrderDetailsType } from '../../types/types'
 
 function OrderDetails() {
     const { order, isLoading, orderNumber } = useOrder()
@@ -24,21 +25,12 @@ function OrderDetails() {
             />
 
             <ul className="space-y-3 my-3 pb-8   lg:my-10 lg:space-y-8">
-                {order.cart.map(
-                    (item: {
-                        itemId: string
-                        name: string
-                        quantity: number
-                        totalPrice: number
-                        image: string
-                        ingredients: string
-                    }) => (
-                        <SummaryOrderItem
-                            item={item}
-                            key={`${item.itemId}${name}`}
-                        />
-                    )
-                )}
+                {order.cart.map((item: OrderDetailsType) => (
+                    <SummaryOrderItem
+                        item={item}
+                        key={`${item.itemId}${name}`}
+                    />
+                ))}
             </ul>
             <div className=" lg:p-6 lg:bg-[rgba(216,222,203,0.15)] lg:rounded-2xl xl:mx-12">
                 <OrderRow isCol>

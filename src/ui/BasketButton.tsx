@@ -1,6 +1,12 @@
 import { BiBasket } from 'react-icons/bi'
 
-function BasketButton({ onClick, isMainPage = false }) {
+function BasketButton({
+    onClick,
+    isMainPage = false,
+}: {
+    onClick: () => void
+    isMainPage: boolean
+}) {
     return (
         <button
             className={`bg-gradient-to-r from-[rgb(86,111,46)] to-[rgb(170,167,36)] rounded-full p-2 md:py-3 transition-all duration-300  md:w-full   ${

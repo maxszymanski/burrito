@@ -1,4 +1,14 @@
-function AddRemoveBtn({ quantity, onClickInc, onClickDec, isMenu = false }) {
+function AddRemoveBtn({
+    quantity,
+    onClickInc,
+    onClickDec,
+    isMenu = false,
+}: {
+    quantity: number
+    onClickInc: () => void
+    onClickDec: () => void
+    isMenu: boolean
+}) {
     return (
         <div
             className={` w-full border-2 rounded-full xl flex items-center justify-between font-scope px-2 border-[#EFB12A]  small:max-w-[140px] max-w-[120px] xl:max-w-[160px] ${

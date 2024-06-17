@@ -3,7 +3,7 @@ import {
     getTotalCardPrice,
     getTotalCartQuantity,
 } from '../features/cart/cartSlice'
-import { ChangeEvent, createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useUser } from '../features/authentication/useUser'
 import { useOrders } from '../features/orders/useOrders'
 import { Address } from '../types/types'
@@ -18,8 +18,8 @@ interface PriceContextType {
     shipping: number
     discount: number
     total: number
-    paymentMethod: string | null
-    handleSetPaymentMenthod: (e: ChangeEvent<HTMLInputElement>) => void
+    paymentMethod: string
+    handleSetPaymentMenthod: (value: string) => void
     isFormShow: boolean
     handleShowForm: () => void
     clearPaymentMethod: () => void
@@ -71,11 +71,9 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
         setTotal(totalCartPrice + shipping - discount)
     }, [totalCartPrice, shipping, discount])
 
-    const handleSetPaymentMenthod = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        localStorage.setItem('paymentMethod', JSON.stringify(e.target.value))
-        setPaymentMethod(e.target.value)
+    const handleSetPaymentMenthod = (value: string) => {
+        localStorage.setItem('paymentMethod', JSON.stringify(value))
+        setPaymentMethod(value)
     }
     const handleShowForm = () => {
         setIsFormShow((is) => !is)

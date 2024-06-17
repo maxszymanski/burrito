@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { getCart } from './cartSlice'
 import SummaryOrderItem from './SummaryOrderItem'
+import { CartItemInterface } from '../../types/types'
 
 function SummaryOrder() {
     const cart = useSelector(getCart)
@@ -10,18 +11,9 @@ function SummaryOrder() {
                 Zamówienie
             </h4>
             <ul className="space-y-3 my-3 lg:space-y-5">
-                {cart.map(
-                    (item: {
-                        itemId: string
-                        name: string
-                        quantity: number
-                        totalPrice: number
-                        image: string
-                        ingredients: string
-                    }) => (
-                        <SummaryOrderItem item={item} key={item.itemId} />
-                    )
-                )}
+                {cart.map((item: CartItemInterface) => (
+                    <SummaryOrderItem item={item} key={item.itemId} />
+                ))}
             </ul>
         </div>
     )
