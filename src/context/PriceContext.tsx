@@ -6,16 +6,10 @@ import {
 import { ChangeEvent, createContext, useEffect, useState } from 'react'
 import { useUser } from '../features/authentication/useUser'
 import { useOrders } from '../features/orders/useOrders'
+import { Address } from '../types/types'
 
 interface Price {
     children: React.ReactNode
-}
-interface Address {
-    name: string
-    street: string
-    zip: string
-    city: string
-    phone: string
 }
 
 interface PriceContextType {

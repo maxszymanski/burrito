@@ -2,12 +2,20 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { updateUser as updateCurrentUser } from '../../services/apiAuth'
 import { useNavigate } from 'react-router-dom'
+import { NewUser } from '../../types/types'
 
 export function useUpdateUser() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
     const { mutate: updateUser, isPending: isUpdating } = useMutation({
-        mutationFn: ({ userName, street, zipCode, city, phone, avatar }) =>
+        mutationFn: ({
+            userName,
+            street,
+            zipCode,
+            city,
+            phone,
+            avatar,
+        }: NewUser) =>
             updateCurrentUser({
                 userName,
                 street,

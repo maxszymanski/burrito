@@ -2,10 +2,11 @@ import { useMutation } from '@tanstack/react-query'
 import { signUp as signUpApi } from '../../services/apiAuth'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { NewUser } from '../../types/types'
 
 export function useSignUp() {
     const navigate = useNavigate()
-    const { mutate: signUp, isLoading } = useMutation({
+    const { mutate: signUp, isPending } = useMutation({
         mutationFn: ({
             email,
             password,
@@ -15,7 +16,7 @@ export function useSignUp() {
             city,
             phone,
             orders,
-        }) =>
+        }: NewUser) =>
             signUpApi({
                 email,
                 password,
@@ -26,7 +27,7 @@ export function useSignUp() {
                 phone,
                 orders,
             }),
-        onSuccess: (user) => {
+        onSuccess: () => {
             navigate('/login')
             toast('Link aktywacyjny został wysłany na podany adres email')
         },
@@ -37,5 +38,5 @@ export function useSignUp() {
             )
         },
     })
-    return { signUp, isLoading }
+    return { signUp, isPending }
 }

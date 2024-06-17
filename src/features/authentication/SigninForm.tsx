@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
@@ -8,13 +8,14 @@ import Button from '../../ui/Button'
 import { useSignUp } from './useSignin'
 import LoginLink from '../../ui/LoginLink'
 import { useUser } from './useUser'
+import { NewUser } from '../../types/types'
 
 function SigninForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
-    // const navigate = useNavigate()
-    const { register, formState, handleSubmit, reset, getValues } = useForm()
+    const { register, formState, handleSubmit, reset, getValues } =
+        useForm<NewUser>()
     const { errors } = formState
-    const { signUp, isLoading } = useSignUp()
+    const { signUp, isPending } = useSignUp()
     const { isAuthenticated } = useUser()
     const navigate = useNavigate()
     const inputClass =
@@ -23,7 +24,7 @@ function SigninForm() {
         isAuthenticated && navigate('/account', { replace: true })
     }, [isAuthenticated, navigate])
 
-    const onSubmit = (newUser) => {
+    const onSubmit: SubmitHandler<NewUser> = (newUser: NewUser) => {
         signUp(newUser, { onSettled: () => reset() })
     }
     const handleShowPassword = () => {
@@ -48,7 +49,7 @@ function SigninForm() {
                         })}
                         type="text"
                         id="userName"
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Imię"
                         className={`${inputClass}  ${
                             errors?.userName?.message
@@ -65,7 +66,7 @@ function SigninForm() {
                         })}
                         type="text"
                         id="street"
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Ulica i numer domu"
                         className={`${inputClass}  ${
                             errors?.street?.message ? 'focus:ring-red-400' : ''
@@ -79,7 +80,7 @@ function SigninForm() {
                             required: 'Proszę podać kod pocztowy',
                         })}
                         type="text"
-                        disabled={isLoading}
+                        disabled={isPending}
                         id="zipCode"
                         placeholder="Kod pocztowy"
                         className={`${inputClass}  ${
@@ -95,7 +96,7 @@ function SigninForm() {
                         })}
                         type="text"
                         id="city"
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Miejscowość"
                         className={`${inputClass}  ${
                             errors?.city?.message ? 'focus:ring-red-400' : ''
@@ -125,7 +126,7 @@ function SigninForm() {
                         })}
                         type="phone"
                         id="phone"
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Numer telefonu"
                         className={`${inputClass}  ${
                             errors?.phone?.message ? 'focus:ring-red-400' : ''
@@ -145,7 +146,7 @@ function SigninForm() {
                         type="email"
                         id="email"
                         placeholder="Email"
-                        disabled={isLoading}
+                        disabled={isPending}
                         className={`${inputClass}  ${
                             errors?.email?.message ? 'focus:ring-red-400' : ''
                         }
@@ -164,7 +165,7 @@ function SigninForm() {
                         })}
                         type={isShowPassword ? 'text' : 'password'}
                         id="password"
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Hasło (min. 8 znaków)"
                         className={`${inputClass} focus:pt-0 ${
                             errors?.password?.message
@@ -185,7 +186,7 @@ function SigninForm() {
                         type={isShowPassword ? 'text' : 'password'}
                         id="passwordConfirm"
                         placeholder="Powtórz hasło"
-                        disabled={isLoading}
+                        disabled={isPending}
                         className={`${inputClass}  focus:pt-0 ${
                             errors?.passwordConfirm?.message
                                 ? 'focus:ring-red-400'
@@ -197,7 +198,7 @@ function SigninForm() {
                         className="absolute -top-0.5 p-2 right-1 text-lg  small:p-3.5 small:text-2xl  small:right-2 focus:outline-none focus:text-yellow-500 hover:text-yellow-500 transition-colors duration-300 text-mywhite"
                         onClick={handleShowPassword}
                         type="button"
-                        disabled={isLoading}
+                        disabled={isPending}
                     >
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
@@ -205,7 +206,7 @@ function SigninForm() {
                 <Button
                     onClick={() => {}}
                     type="w-full mt-2"
-                    disabled={isLoading}
+                    disabled={isPending}
                 >
                     Zarejestruj się
                 </Button>

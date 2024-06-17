@@ -9,7 +9,7 @@ function useLogout() {
     const queryClient = useQueryClient()
     const { setShipping, setDiscount } = usePrice()
 
-    const { mutate: logout, isPending: isLogingout } = useMutation({
+    const { mutate: logout, isPending: isLogingOut } = useMutation({
         mutationFn: logoutApi,
         onSuccess: () => {
             queryClient.removeQueries(), navigate('/', { replace: true })
@@ -20,7 +20,7 @@ function useLogout() {
             toast.error('Wystąpił błąd podczas wylogowywania')
         },
     })
-    return { logout, isLogingout }
+    return { logout, isLogingOut }
 }
 
 export default useLogout

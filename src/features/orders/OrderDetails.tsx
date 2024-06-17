@@ -7,7 +7,7 @@ import { useOrder } from './useOrder'
 import OrderNotFound from './OrderNotFound'
 
 function OrderDetails() {
-    const { order, isLoading, orderNumber, error } = useOrder()
+    const { order, isLoading, orderNumber } = useOrder()
     const { isAuthenticated } = useUser()
     if (isLoading) return <Loader />
     if (!order) return <OrderNotFound />

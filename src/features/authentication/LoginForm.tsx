@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import { LuEye } from 'react-icons/lu'
 import { IoMdEyeOff } from 'react-icons/io'
@@ -11,14 +11,16 @@ import { usePrice } from '../../context/usePrice'
 import { useSelector } from 'react-redux'
 import { getCart } from '../cart/cartSlice'
 import { useUser } from './useUser'
+import { LoginFormInputs, User } from '../../types/types'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
-    const { login, isLoading } = useLogin()
+    const { login, isPending } = useLogin()
     const { setIsFormShow } = usePrice()
     const cart = useSelector(getCart)
     const { isAuthenticated } = useUser()
-    const { register, formState, handleSubmit, reset } = useForm()
+    const { register, formState, handleSubmit, reset } =
+        useForm<LoginFormInputs>()
     const { errors } = formState
     const navigate = useNavigate()
     const inputClass =
@@ -28,7 +30,7 @@ function LoginForm() {
         isAuthenticated && navigate('/account', { replace: true })
     }, [isAuthenticated, navigate])
 
-    const onSubmit = (user) => {
+    const onSubmit: SubmitHandler<LoginFormInputs> = (user: User) => {
         login(user, {
             onSuccess: () => {
                 reset()
@@ -43,7 +45,7 @@ function LoginForm() {
         setIsShowPassword((show) => !show)
     }
 
-    if (isLoading) return <Loader />
+    if (isPending) return <Loader />
 
     return (
         <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
@@ -55,7 +57,7 @@ function LoginForm() {
             <h2 className="text-center text-yellow-500 small:text-5xl text-3xl font-bold pb-12 small:pb-16 small:pt-4 tracking-wider">
                 Logowanie
             </h2>
-            <form onSubmit={handleSubmit(onSubmit)} className=" ">
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <FormRow error={errors?.email?.message}>
                     <input
                         {...register('email', {
@@ -100,14 +102,14 @@ function LoginForm() {
                         className="absolute -top-0.5 p-2 right-1 text-lg  small:p-3.5 small:text-2xl  small:right-2 focus:outline-none focus:text-yellow-500 hover:text-yellow-500 transition-colors duration-300 text-mywhite"
                         onClick={handleShowPassword}
                         type="button"
-                        disabled={isLoading}
+                        disabled={isPending}
                     >
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
                 </FormRow>
                 <Button
                     onClick={() => {}}
-                    disabled={isLoading}
+                    disabled={isPending}
                     type="w-full mt-2"
                 >
                     zaloguj

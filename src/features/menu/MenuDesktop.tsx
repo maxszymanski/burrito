@@ -13,7 +13,7 @@ function MenuDesktop() {
         { name: 'Sałatki', image: './salad.png' },
         { name: 'Dodatki', image: './additives.png' },
     ]
-    function handleShowMenuCategory(category) {
+    function handleShowMenuCategory(category: string) {
         setSelectedCategory((prev) =>
             prev.includes(category)
                 ? prev.filter((cat) => cat !== category)

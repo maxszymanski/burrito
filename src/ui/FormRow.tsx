@@ -6,7 +6,7 @@ interface FormRow {
     children: ReactNode
 }
 
-const FormRow: React.FC<FormRow> = ({ label, children, error = '' }) => {
+const FormRow: React.FC<FormRow> = ({ label, children, error }) => {
     return (
         <div className="mb-3 flex flex-col relative ">
             {label && <label htmlFor={children?.props?.id}>{label}</label>}

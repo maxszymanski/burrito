@@ -1,6 +1,7 @@
+import { Order } from '../types/types'
 import supabase from './supabase'
 
-export async function getOrders(userId) {
+export async function getOrders(userId: string) {
     const { data, error } = await supabase
         .from('orders')
         .select('*')
@@ -13,7 +14,7 @@ export async function getOrders(userId) {
     return data
 }
 
-export async function getOrder(id) {
+export async function getOrder(id: string) {
     const { data, error } = await supabase
         .from('orders')
         .select('*')
@@ -27,11 +28,12 @@ export async function getOrder(id) {
     return data
 }
 
-export async function createOrder(newOrder) {
+export async function createOrder(newOrder: Order) {
     const { data, error } = await supabase
         .from('orders')
         .insert([newOrder])
         .select('*')
+    console.log(newOrder)
 
     if (error) {
         console.error(error)
@@ -40,7 +42,7 @@ export async function createOrder(newOrder) {
 
     return data
 }
-export async function updateStatus(status) {
+export async function updateStatus(status: string) {
     const { data, error } = await supabase
         .from('orders')
         .update({ status: status })
