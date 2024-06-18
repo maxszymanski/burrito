@@ -3,7 +3,7 @@ import { IoMdMore } from 'react-icons/io'
 
 interface ClearAllCart {
     onClose: () => void
-    refs: React.MutableRefObject<HTMLButtonElement>
+    refs: React.MutableRefObject<HTMLButtonElement | null>
     showMore: boolean
     onClear: () => void
 }

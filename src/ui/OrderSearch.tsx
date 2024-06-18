@@ -5,12 +5,12 @@ function OrderSearch({ isDesktop = false }) {
     const [inputValue, setInputValue] = useState('')
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (inputValue.trim() === '') return
         navigate(`/order/${inputValue}`)
     }
-    const handleChangeInput = (e) => {
+    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value)
     }
 

@@ -28,6 +28,7 @@ function CartItem({ item }: { item: OrderDetailsType }) {
                     {name}
                 </h4>
                 <QuantityButton
+                    isCol={false}
                     quantity={quantity}
                     onClickInc={() => {
                         quantity > 1

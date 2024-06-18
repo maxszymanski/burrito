@@ -1,13 +1,12 @@
 import { useEditOrder } from './useEditOrder'
-// import Loader from '../ui/Loader'
 
 function Admin() {
     const { updateOrder } = useEditOrder()
 
-    const handleChangeStatus = (e) => {
+    const handleChangeStatus = (e: React.MouseEvent<HTMLButtonElement>) => {
         // const id = '577102'
-        console.log(e.target.value)
-        updateOrder(e.target.value)
+        console.log((e.target as HTMLButtonElement).value)
+        updateOrder((e.target as HTMLButtonElement).value)
     }
 
     return (

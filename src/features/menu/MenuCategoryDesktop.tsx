@@ -18,9 +18,9 @@ function MenuCategoryDesktop({
         }
     }, [isFirst])
 
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         setActive((act) => !act)
-        handleShowMenuCategory(e.target.value)
+        handleShowMenuCategory((e.target as HTMLButtonElement).value)
     }
     return (
         <li className="border-2 border-[#602020] rounded-2xl flex flex-col items-center justify-center h-32 w-32 overflow-hidden">

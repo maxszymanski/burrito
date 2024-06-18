@@ -4,17 +4,24 @@ import Button from '../../ui/Button'
 import { useUpdateUser } from '../authentication/useUpdateUser'
 import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
+import { UserMetadata } from '@supabase/supabase-js'
+import { NewUser } from '../../types/types'
 
 function UpdateForm() {
-    const { register, formState, handleSubmit } = useForm()
+    const { register, formState, handleSubmit } = useForm<NewUser>()
     const { errors } = formState
     const { updateUser, isUpdating } = useUpdateUser()
 
     const { user, isLoading } = useUser()
-    const { city, phone, street, userName, zipCode, avatar } =
-        user?.user_metadata || ''
+    const {
+        city = '',
+        phone = '',
+        street = '',
+        userName = '',
+        zipCode = '',
+    }: UserMetadata = user?.user_metadata || {}
 
-    const onUpdate = (updatedUser) => {
+    const onUpdate = (updatedUser: NewUser) => {
         updateUser(updatedUser)
     }
     if (isUpdating || isLoading) return <Loader />

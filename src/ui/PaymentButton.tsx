@@ -20,7 +20,9 @@ function PaymentButton({
             className={`w-full border-[1px] border-[#c4c0c0] rounded-md py-1  px-6 text-sm text-left  focus:outline-none small:border-2 small:text-base flex items-center gap-6 lg:text-lg hover:bg-[rgb(255,255,255,0.1)] transition-colors duration-300 ${
                 paymentMethod === value ? 'border-yellow-500' : ''
             }`}
-            onClick={(e) => handleSetPaymentMenthod(e.target.value)}
+            onClick={(e) =>
+                handleSetPaymentMenthod((e.target as HTMLButtonElement).value)
+            }
         >
             <img
                 src={src}

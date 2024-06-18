@@ -50,10 +50,17 @@ export interface OrderDetailsType {
     image: string
     ingredients: string
 }
+export interface UserMetadata {
+    city?: string
+    phone?: string
+    street?: string
+    userName?: string
+    zipCode?: string
+}
 
 export interface NewUser {
-    email: string
-    password: string
+    email?: string
+    password?: string
     userName: string
     street: string
     zipCode: string
@@ -62,4 +69,21 @@ export interface NewUser {
     orders: string
     passwordConfirm: string | null
     avatar: string | undefined
+}
+
+export interface PopularItem {
+    name: string
+    price: number
+    ingredients: string
+    id: number
+}
+
+export interface PopularItems {
+    isOverflow?: boolean
+    title?: string
+    itemOne: PopularItem
+    itemTwo: PopularItem
+    image: string
+    imageBig: string
+    isEnd?: boolean
 }

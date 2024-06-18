@@ -46,11 +46,11 @@ function OrderDetails() {
                         </p>
                     </div>
                 </OrderRow>
-                <OrderRow>
+                <OrderRow isCol={false}>
                     <p>Data zamówienia:</p>
                     <p className="text-sm lg:text-base">{createdDate}</p>
                 </OrderRow>
-                <OrderRow>
+                <OrderRow isCol={false}>
                     <p>Status:</p>
                     <p
                         className={`text-sm lg:text-base ${

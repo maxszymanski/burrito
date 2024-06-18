@@ -11,6 +11,7 @@ import {
 import Loader from '../../ui/Loader'
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
+import { CartItemInterface, PopularItems } from '../../types/types'
 
 function SetCard({
     isOverflow = true,
@@ -20,12 +21,12 @@ function SetCard({
     image = '',
     imageBig = '',
     isEnd = false,
-}) {
+}: PopularItems) {
     const [isImageLoaded, setIsImageLoaded] = useState(false)
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
     const idSet: string = (itemOne.id + itemTwo.id + 100).toString()
-    const cartItem = cart.filter(
+    const cartItem: CartItemInterface[] = cart.filter(
         (item: { itemId: string }) => item.itemId === idSet
     )
     const isInCart = cartItem.length > 0
@@ -95,6 +96,7 @@ function SetCard({
                 <div className="flex items-center justify-between gap-4 pt-4 sm:w-48 md:w-full">
                     {isInCart ? (
                         <AddRemoveBtn
+                            isMenu={false}
                             quantity={cartItem[0].quantity}
                             onClickInc={() => {
                                 cartItem[0].quantity > 1

@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { CartItemInterface } from '../../types/types'
 
 const cartStateString = localStorage.getItem('cart')
 const cart = cartStateString !== null && JSON.parse(cartStateString)
+const cartStart: CartItemInterface[] = cart.cart
 const initialState = {
-    cart: cart.cart || [],
+    cart: cartStart || [],
 }
 
 const cartSlice = createSlice({
@@ -13,6 +15,7 @@ const cartSlice = createSlice({
         addItem(state, action) {
             // payload = newItem
             state.cart.push(action.payload)
+            console.log(cart)
         },
         deleteItem(state, action) {
             state.cart = state.cart.filter(
@@ -23,16 +26,19 @@ const cartSlice = createSlice({
             const item = state.cart.find(
                 (item: { itemId: string }) => item.itemId === action.payload
             )
-
-            item.quantity++
-            item.totalPrice = item.quantity * item.price
+            if (item) {
+                item.quantity++
+                item.totalPrice = item.quantity * item.price
+            }
         },
         decreaseItemQuantity(state, action) {
             const item = state.cart.find(
                 (item: { itemId: string }) => item.itemId === action.payload
             )
-            item.quantity--
-            item.totalPrice = item.quantity * item.price
+            if (item) {
+                item.quantity--
+                item.totalPrice = item.quantity * item.price
+            }
         },
         clearCart(state) {
             state.cart = []

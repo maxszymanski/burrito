@@ -18,15 +18,15 @@ function Cart() {
         setShowMore((isOpen) => !isOpen)
     }
 
-    const ref = useRef()
+    const ref = useRef<HTMLButtonElement>(null)
     useEffect(() => {
-        function handleClick(e) {
-            if (ref.current && !ref.current.contains(e.target)) {
+        function handleClick(e: MouseEvent) {
+            if (ref.current && !ref.current.contains(e.target as Node)) {
                 setShowMore(false)
             }
         }
 
-        document.addEventListener('click', handleClick, true) // dodajemy na koncu true i wtedy addEven nie działa do gory tylko w dól i nasłuchuje tylko jesli modal jest otwarty
+        document.addEventListener('click', handleClick, true)
         return () => document.removeEventListener('click', handleClick)
     }, [])
 

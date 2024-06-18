@@ -8,12 +8,18 @@ import RankDetails from '../../ui/RankDetails'
 import Loader from '../../ui/Loader'
 import { Link } from 'react-router-dom'
 import { useOrders } from '../orders/useOrders'
+import { UserMetadata } from '../../types/types'
 
 function UserProfile() {
     const [showDetails, setShowDetails] = useState(false)
     const { user, isLoading: isLoadingUser } = useUser()
 
-    const { city, phone, street, userName, zipCode } = user?.user_metadata || ''
+    const {
+        city = '',
+        phone = '',
+        street = '',
+        zipCode = '',
+    }: UserMetadata = user?.user_metadata || {}
     const { orders: orderss } = useOrders()
     const orders = orderss?.length || 0
     if (isLoadingUser) return <Loader />
