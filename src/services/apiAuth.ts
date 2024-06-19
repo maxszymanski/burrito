@@ -60,6 +60,8 @@ export async function passwordRecovery(email: string) {
     if (error) throw new Error(error.message)
 }
 
+// export async function changePassword({ password }) {}
+
 export async function updateUser({
     userName = 'Anonim',
     street = 'brak ulicy',
