@@ -6,33 +6,7 @@ import {
 import { createContext, useEffect, useState } from 'react'
 import { useUser } from '../features/authentication/useUser'
 import { useOrders } from '../features/orders/useOrders'
-import { Address } from '../types/types'
-
-interface Price {
-    children: React.ReactNode
-}
-
-interface PriceContextType {
-    totalCartQuantity: number
-    totalCartPrice: number
-    shipping: number
-    discount: number
-    total: number
-    paymentMethod: string
-    handleSetPaymentMenthod: (value: string) => void
-    isFormShow: boolean
-    handleShowForm: () => void
-    clearPaymentMethod: () => void
-    setIsFormShow: React.Dispatch<React.SetStateAction<boolean>>
-    orderAddress: Address
-    setOrderAddress: React.Dispatch<React.SetStateAction<Address>>
-    clearOrderAddress: () => void
-    totalDiscount: number
-    setShipping: React.Dispatch<React.SetStateAction<number>>
-    setDiscount: React.Dispatch<React.SetStateAction<number>>
-    showCookieModal: boolean
-    closeCookieModal: () => void
-}
+import { Address, Price, PriceContextType } from '../types/types'
 
 const PriceContext = createContext<PriceContextType | undefined>(undefined)
 const defaultAdress: Address = {

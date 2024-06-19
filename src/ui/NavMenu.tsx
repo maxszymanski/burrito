@@ -101,9 +101,6 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                     <li className="hidden xl:block">
                         <OrderSearch isDesktop />
                     </li>
-                    {/* <li>
-                        <p className="text-2xl hidden xl:block">+48501987654</p>
-                    </li> */}
                 </ul>
             </Container>
         </nav>
