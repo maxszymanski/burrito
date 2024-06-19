@@ -3,7 +3,7 @@ import { useUser } from '../authentication/useUser'
 function UserAvatar() {
     const { user } = useUser()
     const userName = user?.user_metadata.userName || 'użytkownik'
-    const avatar = user?.user_metadata.avatar || '/user2.jpg'
+    const avatar = user?.user_metadata.avatar || '/images/user2.jpg'
 
     return (
         <a href={avatar}>

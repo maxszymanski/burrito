@@ -38,12 +38,12 @@ export default {
             },
             keyframes: {
                 slide: {
-                    '0%': { opacity: '0' },
-                    '100%': { opacity: '100' },
+                    '0%': { bottom: '-100%' },
+                    '100%': { bottom: '0' },
                 },
             },
             animation: {
-                slide: 'slide 1s',
+                'spin-slide': 'slide 1s',
             },
         },
     },

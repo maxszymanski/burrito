@@ -10,14 +10,14 @@ function PaymentMethod() {
                 <PaymentButton
                     value="Gotówka"
                     alt="logo gotówki"
-                    src="/money.svg"
+                    src="/images/money.svg"
                 >
                     Gotówka
                 </PaymentButton>
                 <PaymentButton
                     value="Karta płatnicza"
                     alt="Logo mastercard"
-                    src="/mastercard.svg"
+                    src="/images/mastercard.svg"
                 >
                     Karta Płatnicza
                 </PaymentButton>

@@ -96,7 +96,7 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                         isMobile
                         icon={<CiPhone />}
                         iconText="Kontakt"
-                        linkTo="/contact"
+                        linkTo="/"
                     />
                     <li className="hidden xl:block">
                         <OrderSearch isDesktop />
