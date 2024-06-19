@@ -34,7 +34,7 @@ function SigninForm() {
     return (
         <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl lg:px-12 xl:my-24 lg:my-12 sm:my-16">
             <img
-                src="./pin.png"
+                src="./images/pin.png"
                 alt="żółta pinezka"
                 className="absolute small:h-14 h-10 top-1.5 -right-1"
             />

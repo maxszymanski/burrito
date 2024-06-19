@@ -30,6 +30,8 @@ interface PriceContextType {
     totalDiscount: number
     setShipping: React.Dispatch<React.SetStateAction<number>>
     setDiscount: React.Dispatch<React.SetStateAction<number>>
+    showCookieModal: boolean
+    closeCookieModal: () => void
 }
 
 const PriceContext = createContext<PriceContextType | undefined>(undefined)
@@ -55,6 +57,10 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
     const [shipping, setShipping] = useState(5)
     const [discount, setDiscount] = useState(0)
     const [total, setTotal] = useState(0)
+
+    const [showCookieModal, setShowCookieModal] = useState(
+        !localStorage.getItem('cookie')
+    )
 
     const totalDiscount = (shipping === 0 ? 5 : 0) + discount
 
@@ -85,6 +91,10 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
     const clearOrderAddress = () => {
         setOrderAddress(defaultAdress)
     }
+    const closeCookieModal = () => {
+        localStorage.setItem('cookie', 'true')
+        setShowCookieModal(false)
+    }
 
     return (
         <PriceContext.Provider
@@ -106,6 +116,8 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
                 totalDiscount,
                 setShipping,
                 setDiscount,
+                showCookieModal,
+                closeCookieModal,
             }}
         >
             {children}
