@@ -8,7 +8,7 @@ function Footer() {
                 <div className="flex items-center justify-between small:text-xl text-lg  xl:w-3/4 xl:justify-around xl:text-2xl">
                     <FooterLink to="/">
                         <img
-                            src="./logo.webp"
+                            src="./images/logo.webp"
                             alt="logo firmy burrito"
                             className="mb-1 xl:h-10"
                         />

@@ -7,11 +7,11 @@ function MenuDesktop() {
     const [selectedCategory, setSelectedCategory] = useState(['Burrito'])
     const { menu } = useMenu()
     const categories = [
-        { name: 'Burrito', image: './burrito.png' },
-        { name: 'Taco', image: './taco.png' },
-        { name: 'Nachos', image: './nachos.png' },
-        { name: 'Sałatki', image: './salad.png' },
-        { name: 'Dodatki', image: './additives.png' },
+        { name: 'Burrito', image: '/images/burrito.png' },
+        { name: 'Taco', image: '/images/taco.png' },
+        { name: 'Nachos', image: '/images/nachos.png' },
+        { name: 'Sałatki', image: '/images/salad.png' },
+        { name: 'Dodatki', image: '/images/additives.png' },
     ]
     function handleShowMenuCategory(category: string) {
         setSelectedCategory((prev) =>

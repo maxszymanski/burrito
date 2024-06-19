@@ -21,7 +21,11 @@ function PaymentMethod() {
                 >
                     Karta Płatnicza
                 </PaymentButton>
-                <PaymentButton value="BLIK" alt="Logo blik" src="/blik.svg">
+                <PaymentButton
+                    value="BLIK"
+                    alt="Logo blik"
+                    src="/images/blik.svg"
+                >
                     BLIK
                 </PaymentButton>
             </div>

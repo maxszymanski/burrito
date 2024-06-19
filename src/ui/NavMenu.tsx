@@ -43,7 +43,7 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
                     <li className="hidden xl:block ">
                         <NavLink to="/" className=" py-4 px-3  ">
                             <img
-                                src="./logo.webp"
+                                src="./images/logo.webp"
                                 alt="logo"
                                 className="h-9 mb-2 "
                             />

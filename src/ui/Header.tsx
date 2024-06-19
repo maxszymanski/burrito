@@ -21,7 +21,7 @@ function Header() {
                         Meksyku
                     </h1>
                     <img
-                        src="./cactus.png"
+                        src="./images/cactus.png"
                         alt="cactus"
                         className="absolute bottom-0 right-8 small:h-48 h-40 md:hidden sm:right-24"
                     />
@@ -40,13 +40,13 @@ function Header() {
                     </p>
                     <a href="/">
                         <img
-                            src="./play-large.png"
+                            src="./images/play-large.png"
                             alt="obraz google play"
                             className=" w-24 small:w-32 md:w-44"
                         />
                     </a>
                     <img
-                        src="./mockup2.png"
+                        src="./images/mockup2.png"
                         alt="telefon z wyswietloną stroną"
                         className=" w-16 small:w-20 md:w-32"
                     />
