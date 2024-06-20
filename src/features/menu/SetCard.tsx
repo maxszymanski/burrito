@@ -8,10 +8,10 @@ import {
     getCart,
     increaseItemQuantity,
 } from '../cart/cartSlice'
-import Loader from '../../ui/Loader'
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 import { CartItemInterface, PopularItems } from '../../types/types'
+import Spinner from '../../ui/Spinner'
 
 function SetCard({
     isOverflow = true,
@@ -44,7 +44,7 @@ function SetCard({
         newImage.onload = () => setIsImageLoaded(true)
     }, [image])
 
-    if (!itemOne || !itemTwo || !isImageLoaded) return <Loader />
+    if (!itemOne || !itemTwo || !isImageLoaded) return <Spinner />
 
     function handleAddToCart() {
         const newItem = {

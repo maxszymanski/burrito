@@ -23,18 +23,17 @@ export default {
                 menuBtnYellow: 'rgba(159,156,48,0.4)',
             },
             backgroundImage: {
-                'menu-bg-sm': "url('/images/menu-bg-small.png')",
-                'menu-bg-big': "url('/images/menu-bg-big.png')",
-                account: "url('/images/bg-account-medium.png')",
-                accountBig: "url('/images/bg-account.jpg')",
-                'account-small': "url('/images/bg-account-small.png')",
-                cart: "url('/images/bg-cart.jpg')",
-                menu: "url('/images/menu.jpg')",
+                'menu-bg-sm': "url('/images/menu-bg-small.webp')",
+                'menu-bg-big': "url('/images/menu-bg-big.webp')",
+                account: "url('/images/bg-account-medium.webp')",
+                'account-small': "url('/images/bg-account-small.webp')",
+                cart: "url('/images/bg-cart.webp')",
+                menu: "url('/images/menu.webp')",
 
-                food: "url('/images/food-bg.png')",
-                foodSm: "url('/images/food-sm.png')",
-                headerTablet: "url('/images/header-tablet.png')",
-                headerDesktop: "url('/images/header-desktop.png')",
+                food: "url('/images/food-bg.webp')",
+                foodSm: "url('/images/food-sm.webp')",
+                headerTablet: "url('/images/header-tablet.webp')",
+                headerDesktop: "url('/images/header-desktop.webp')",
             },
             keyframes: {
                 slide: {

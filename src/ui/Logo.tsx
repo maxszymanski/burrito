@@ -6,7 +6,7 @@ function Logo({ isHidden = true }) {
             } `}
         >
             <img
-                src="/images/logo-md.png"
+                src="/images/logo-md.webp"
                 alt="logo"
                 className="h-8 small:h-10 md:h-12 "
             />

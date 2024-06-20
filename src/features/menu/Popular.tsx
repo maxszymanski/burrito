@@ -21,23 +21,23 @@ function Popular() {
                     title="Zestaw Double burrito"
                     itemOne={burritoChicken}
                     itemTwo={burritoPork}
-                    image="./images/doubleChicken.png"
-                    imageBig="./images/doubleChickenBig.png"
+                    image="https://yzldumjsikdcvhvippif.supabase.co/storage/v1/object/public/menu/doubleChicken.png"
+                    imageBig="./images/doubleChickenBig.webp"
                 />
                 <SetCard
                     title="Zestaw Double taco"
                     itemTwo={tacoPork}
                     itemOne={tacoChicken}
                     isOverflow={false}
-                    image="./images/doubleTaco.png"
-                    imageBig="./images/doubleTacoBig.png"
+                    image="https://yzldumjsikdcvhvippif.supabase.co/storage/v1/object/public/menu/doubleTaco.png"
+                    imageBig="./images/doubleTacoBig.webp"
                 />
                 <SetCard
                     title="Zestaw wegan"
                     itemOne={burritoSoja}
                     itemTwo={tacoVegan}
-                    image="./images/doubleVegan.png"
-                    imageBig="./images/doubleVeganBig.png"
+                    image="https://yzldumjsikdcvhvippif.supabase.co/storage/v1/object/public/menu/doubleVegan.png"
+                    imageBig="./images/doubleVeganBig.webp"
                     isEnd
                 />
             </div>

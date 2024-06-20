@@ -9,7 +9,7 @@ function EmptyCart() {
                 </p>
                 <img
                     className="px-8 h-auto w-full max-w-lg "
-                    src="/images/emptyCart.png"
+                    src="/images/emptyCart.webp"
                     alt="pusty koszyk na zakupy"
                 />
                 <Link
