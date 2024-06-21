@@ -3,10 +3,8 @@ import { FaArrowRight } from 'react-icons/fa6'
 
 function OrderItem({
     item,
-    orderNumber,
 }: {
     item: { status: string; created_at: string; id: string }
-    orderNumber: number
 }) {
     const { status } = item
     const createdDate = item.created_at
@@ -22,8 +20,7 @@ function OrderItem({
                 className="flex items-center justify-around py-3 border-b border-yellow-400 text-sm md:text-base xl:text-xl hover:mr-6 transition-all duration-300"
             >
                 <p>
-                    Nr.{orderNumber}{' '}
-                    <span className="text-yellow-400 ml-2">{item.id}</span>
+                    Nr.<span className="text-yellow-400 ml-1">{item.id}</span>
                 </p>
                 <p>{createdDate}</p>
                 <div

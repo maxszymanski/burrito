@@ -16,7 +16,7 @@ function AppLayout() {
         <div
             className={` w-full relative bg-menu-bg-sm min-h-screen  xl:h-screen xl:overflow-y-auto ${
                 isMenuPage
-                    ? ' xl:bg-cover xl:bg-center xl:bg-menu'
+                    ? ' xl:bg-cover xl:bg-center xl:bg-menu '
                     : 'xl:bg-none'
             }`}
         >

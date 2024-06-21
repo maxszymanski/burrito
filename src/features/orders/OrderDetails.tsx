@@ -12,7 +12,7 @@ function OrderDetails() {
     const { isAuthenticated } = useUser()
     if (isLoading) return <Loader />
     if (!order) return <OrderNotFound />
-    const { created_at, totalPrice, status, totalDiscount } = order
+    const { created_at, totalPrice, status, totalDiscount, payment } = order
     const createdDate = created_at.slice(0, 10).split('-').reverse().join('.')
     const totalRest = totalPrice % 1 === 0 ? '.00' : '0'
     const totalDiscountRest = totalDiscount % 1 === 0 ? '.00' : '0'
@@ -45,6 +45,10 @@ function OrderDetails() {
                             {totalDiscountRest} zł
                         </p>
                     </div>
+                </OrderRow>
+                <OrderRow isCol={false}>
+                    <p>Metoda płatości:</p>
+                    <p className="text-sm lg:text-base">{payment}</p>
                 </OrderRow>
                 <OrderRow isCol={false}>
                     <p>Data zamówienia:</p>

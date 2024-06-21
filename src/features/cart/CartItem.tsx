@@ -17,7 +17,7 @@ function CartItem({ item }: { item: OrderDetailsType }) {
     }
 
     return (
-        <div className="flex items-center justify-evenly pt-6 lg:pt-12 ">
+        <li className="flex items-center justify-evenly pt-6 lg:pt-12 ">
             <img
                 src={image}
                 alt=""
@@ -60,7 +60,7 @@ function CartItem({ item }: { item: OrderDetailsType }) {
                     Usuń
                 </button>
             </div>
-        </div>
+        </li>
     )
 }
 

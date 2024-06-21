@@ -21,30 +21,27 @@ function OrdersHistory() {
         return 0
     })
 
+    const isHistoryOrder = orders.length != 14
+
     return (
-        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:py-40 lg:ml-16 2xl:ml-6 sm:pt-14     ">
+        <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:py-40 lg:ml-16 2xl:ml-6 sm:pt-14 relative">
             <OrderCartHeader title="Historia Zamówień" to="/account" />
-            {orders.length === 0 ? (
-                <p>Nie masz żadnych zamówień</p>
-            ) : (
+            {isHistoryOrder ? (
                 <ul className=" flex flex-col justify-center space-y-2 pt-4  ">
                     {orders.map(
-                        (
-                            item: {
-                                id: string
-                                status: string
-                                created_at: string
-                            },
-                            index: number
-                        ) => (
-                            <OrderItem
-                                item={item}
-                                key={item.id}
-                                orderNumber={index + 1}
-                            ></OrderItem>
+                        (item: {
+                            id: string
+                            status: string
+                            created_at: string
+                        }) => (
+                            <OrderItem item={item} key={item.id}></OrderItem>
                         )
                     )}
                 </ul>
+            ) : (
+                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 small:text-xl lg:text-2xl xl:text-4xl xl:leading-[3rem]">
+                    Nie masz jeszcze żadnych zamówień.
+                </p>
             )}
         </section>
     )

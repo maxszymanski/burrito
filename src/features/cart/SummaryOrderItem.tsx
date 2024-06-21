@@ -4,7 +4,7 @@ function SummaryOrderItem({ item }: { item: OrderDetailsType }) {
     const { name, quantity, totalPrice, image, ingredients } = item
 
     return (
-        <div className="flex items-center justify-evenly pt-6 ">
+        <li className="flex items-center justify-evenly pt-6 ">
             <img
                 src={image}
                 alt=""
@@ -26,7 +26,7 @@ function SummaryOrderItem({ item }: { item: OrderDetailsType }) {
                     {totalPrice} zł
                 </p>
             </div>
-        </div>
+        </li>
     )
 }
 

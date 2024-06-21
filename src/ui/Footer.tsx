@@ -14,7 +14,7 @@ function Footer() {
                         />
                     </FooterLink>
                     <FooterLink to="/">O nas</FooterLink>
-                    <FooterLink to="/">Kontakt</FooterLink>
+                    <FooterLink to="/contact">Kontakt</FooterLink>
                     <FooterLink to="/">FAQ</FooterLink>
                 </div>
                 <div className="flex items-center justify-evenly small:text-3xl text-2xl xl:w-1/4 xl:text-4xl xl:gap-1">

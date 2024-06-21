@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { CiTrash } from 'react-icons/ci'
 import { IoMdMore } from 'react-icons/io'
 
@@ -14,19 +15,34 @@ const ClearCart: React.FC<ClearAllCart> = ({
     showMore,
     onClear,
 }) => {
+    const menuRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (refs.current && menuRef.current) {
+            const rect = refs.current.getBoundingClientRect()
+            menuRef.current.style.top = `${rect.bottom - 12}px`
+            menuRef.current.style.left = `${rect.left - 155}px`
+        }
+    }, [showMore, refs])
+
     return (
         <div className="flex items-center mb-2 justify-between text-xl lg:text-2xl lg:mb-4  xl:text-4xl">
             <h2>Twój koszyk</h2>
-            <button className="p-2 text-2xl" onClick={onClose} ref={refs}>
+            <button
+                className="p-2 text-2xl hover:text-yellow-400 duration-300 transition-colors"
+                onClick={onClose}
+                ref={refs}
+            >
                 <IoMdMore />
             </button>
             <div
-                className={`absolute top-[54px] right-10 bg-[rgb(32,32,27)] py-3 small:py-4 px-4 text-xs small:text-base animate-slide small:px-6 lg:top-[95px] lg:right-28 xl:top-[205px]  ${
+                ref={menuRef}
+                className={`absolute  bg-[rgb(32,32,27)]  text-xs small:text-base animate-slide    ${
                     showMore ? 'block' : 'hidden'
                 }`}
             >
                 <button
-                    className="flex items-center gap-2 text-sm small:text-base"
+                    className="flex items-center gap-2 py-3  px-4   text-base hover:text-yellow-400 duration-300 transition-colors"
                     onClick={onClear}
                 >
                     <CiTrash /> Wyczyść koszyk

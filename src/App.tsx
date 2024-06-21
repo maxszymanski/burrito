@@ -48,10 +48,6 @@ const router = createBrowserRouter([
                 element: <MenuPage />,
             },
             {
-                path: '/contact',
-                element: <Contact />,
-            },
-            {
                 path: '/admin',
                 element: <Admin />,
             },
@@ -126,6 +122,10 @@ const router = createBrowserRouter([
             {
                 path: 'ordersHistory',
                 element: <OrdersHistory />,
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
             },
         ],
     },
