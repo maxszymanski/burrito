@@ -15,20 +15,20 @@ function OrdersHistory() {
     }, [isAuthenticated, navigate])
     if (isLoadingOrders || !orders || isLoading) return <Loader />
 
-    orders.slice().sort((a, b) => {
+    const sortedOrders = orders.slice().sort((a, b) => {
         if (b.created_at < a.created_at) return -1
         if (b.created_at > a.created_at) return 1
         return 0
     })
 
-    const isHistoryOrder = orders.length != 14
+    const isHistoryOrder = orders.length != 0
 
     return (
         <section className="px-4 py-6 small:px-6 text-center min-h-screen  text-mywhite pb-24 small:pb-32  lg:py-40 lg:ml-16 2xl:ml-6 sm:pt-14 relative">
             <OrderCartHeader title="Historia Zamówień" to="/account" />
             {isHistoryOrder ? (
                 <ul className=" flex flex-col justify-center space-y-2 pt-4  ">
-                    {orders.map(
+                    {sortedOrders.map(
                         (item: {
                             id: string
                             status: string

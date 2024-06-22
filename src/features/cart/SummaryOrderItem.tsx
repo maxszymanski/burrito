@@ -8,10 +8,10 @@ function SummaryOrderItem({ item }: { item: OrderDetailsType }) {
             <img
                 src={image}
                 alt=""
-                className="h-auto max-w-[23%] max-h-24 lg:max-h-28 small:max-w-[20%] sm:max-w-[15%] rounded-full grow-0 basis-2/6 md:max-w-[90px]"
+                className="h-auto max-w-[20%] max-h-20 small:max-h-24 lg:max-h-28 sm:max-w-[15%] rounded-full grow-0 basis-2/6 md:max-w-[90px]"
             />
             <div className="flex flex-col gap-2.5 px-3 justify-between grow-0 basis-3/6  items-start">
-                <h4 className="font-semibold tracking-wider  text-sm leading-6 lg:text-lg xl:text-xl">
+                <h4 className="font-semibold tracking-wider  text-sm leading-6 lg:text-lg xl:text-xl text-start">
                     {name}
                 </h4>
                 <p className="text-xs text-start text-stone-400 lg:text-sm">
