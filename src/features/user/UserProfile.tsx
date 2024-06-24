@@ -47,9 +47,19 @@ function UserProfile() {
                         <h3 className="font-bold text-yellow-500">
                             Historia Zamówień
                         </h3>
-                        <Link to="/ordersHistory">{orders} zamówień</Link>
+                        <Link
+                            className="hover:text-yellow-400 duration-300 transition-colors"
+                            to="/ordersHistory"
+                        >
+                            {orders} zamówień
+                        </Link>
                     </div>
-                    <Link to="/ordersHistory">Wyświetl</Link>
+                    <Link
+                        className="hover:text-yellow-400 duration-300 transition-colors"
+                        to="/ordersHistory"
+                    >
+                        Wyświetl
+                    </Link>
                 </UserInfo>
                 <UserInfo>
                     <div className="flex justify-between items-center relative">

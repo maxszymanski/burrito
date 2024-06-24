@@ -34,7 +34,7 @@ function OrderDetails() {
             </ul>
             <div className=" lg:p-6 lg:bg-[rgba(216,222,203,0.15)] lg:rounded-2xl xl:mx-12">
                 <OrderRow isCol>
-                    <p>Cena całkowita:</p>
+                    <p className="text-sm lg:text-base">Cena całkowita:</p>
                     <div className="flex flex-col items-end">
                         <p className="text-sm lg:text-base">
                             {totalPrice}
@@ -47,15 +47,15 @@ function OrderDetails() {
                     </div>
                 </OrderRow>
                 <OrderRow isCol={false}>
-                    <p>Metoda płatości:</p>
+                    <p className="text-sm lg:text-base">Metoda płatości:</p>
                     <p className="text-sm lg:text-base">{payment}</p>
                 </OrderRow>
                 <OrderRow isCol={false}>
-                    <p>Data zamówienia:</p>
+                    <p className="text-sm lg:text-base">Data zamówienia:</p>
                     <p className="text-sm lg:text-base">{createdDate}</p>
                 </OrderRow>
                 <OrderRow isCol={false}>
-                    <p>Status:</p>
+                    <p className="text-sm lg:text-base">Status:</p>
                     <p
                         className={`text-sm lg:text-base ${
                             status === 'W przygotowaniu'

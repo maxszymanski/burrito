@@ -1,6 +1,10 @@
 export interface Price {
     children: React.ReactNode
 }
+export interface UpdatePasswordType {
+    password: string
+    passwordConfirm: string
+}
 
 export interface PriceContextType {
     totalCartQuantity: number

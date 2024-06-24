@@ -60,7 +60,12 @@ export async function passwordRecovery(email: string) {
     if (error) throw new Error(error.message)
 }
 
-// export async function changePassword({ password }) {}
+export async function updatePassword({ password }: { password: string }) {
+    const { error } = await supabase.auth.updateUser({
+        password,
+    })
+    if (error) throw new Error(error.message)
+}
 
 export async function updateUser({
     userName = 'Anonim',

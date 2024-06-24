@@ -3,7 +3,7 @@ import CookieBtn from './CookieBtn'
 function Cookie() {
     return (
         <div className="cookie fixed animate-spin-slide bottom-0 z-50 w-full bg-gray-700 text-mywhite font-scope">
-            <div className="container mx-auto flex-col flex items-center justify-between gap-4  p-4 text-sm lg:justify-evenly lg:flex-row xl:p-6 xl:text-base">
+            <div className="container mx-auto flex-col flex items-center justify-between gap-4  p-4 text-sm lg:justify-evenly lg:flex-row xl:p-6 xl:text-base w-full">
                 <div className="space-y-2">
                     <p>
                         Na stronie wykorzystujemy pliki cookies, aby zbierać
