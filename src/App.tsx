@@ -26,6 +26,9 @@ const UserProfile = lazy(() => import('./features/user/UserProfile'))
 const UpdateProfile = lazy(() => import('./features/user/UpdateProfile'))
 const OrdersHistory = lazy(() => import('./features/orders/OrdersHistory'))
 const LoginForm = lazy(() => import('./features/authentication/LoginForm'))
+const ResetPassword = lazy(
+    () => import('./features/authentication/ResetPassword')
+)
 const SigninForm = lazy(() => import('./features/authentication/SigninForm'))
 const ForgotPassword = lazy(
     () => import('./features/authentication/ForgotPassword')
@@ -86,6 +89,10 @@ const router = createBrowserRouter([
             {
                 path: '/registration',
                 element: <SigninForm />,
+            },
+            {
+                path: '/resetpassword',
+                element: <ResetPassword />,
             },
         ],
     },

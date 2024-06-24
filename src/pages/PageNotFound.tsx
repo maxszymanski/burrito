@@ -7,11 +7,11 @@ function PageNotFound() {
                 <div className="relative pb-8">
                     <div className="absolute">
                         <h2 className="mt-2 text-gray-800 font-bold text-2xl lg:text-4xl">
-                            Wygląda na to, że znalazłeś drzwi do wielkiego nic
+                            Wygląda na to, że dotarłeś do ślepego zaułka.
                         </h2>
                         <p className="my-6 text-gray-800 texl-lg small:text-xl lg:text-3xl">
-                            Przepraszamy za to! Odwiedź naszą stronę główną, aby
-                            dostać się tam, gdzie chcesz.
+                            Przepraszamy za to! Możesz wrócić na stronę główną,
+                            aby znaleźć to, czego szukasz.
                         </p>
 
                         <Link

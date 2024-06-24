@@ -14,7 +14,7 @@ function ForgotPassword() {
         useForm<ForgotPasswordFormData>()
     const { errors } = formState
 
-    const onResetPassword: SubmitHandler<ForgotPasswordFormData> = ({
+    const onRecoveryPassword: SubmitHandler<ForgotPasswordFormData> = ({
         email,
     }) => {
         passwordRecovery(email)
@@ -23,7 +23,7 @@ function ForgotPassword() {
     return (
         <form
             className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl text-center"
-            onSubmit={handleSubmit(onResetPassword)}
+            onSubmit={handleSubmit(onRecoveryPassword)}
         >
             <h3 className="text-center text-yellow-500 small:text-5xl text-3xl font-bold px-4 tracking-wider leading-normal small:leading-normal pb-6 ">
                 Resetowanie hasła
