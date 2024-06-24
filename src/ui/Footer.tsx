@@ -3,7 +3,7 @@ import FooterLink from './FooterLink'
 import Container from './Container'
 function Footer() {
     return (
-        <footer className=" bg-[#9A1E02] w-full px-6 small:pt-8 pt-6 small:pb-28 pb-24 text-[rgb(249,255,213,0.7)] lg:px-28 xl:pb-10 xl:pt-10 relative z-10 ">
+        <footer className=" bg-[#9A1E02] w-full px-6 small:pt-8 pt-6 small:pb-28 pb-24 text-[rgb(249,255,213,0.7)] lg:px-28 xl:pb-10 xl:pt-10 relative z-10 font-sans ">
             <Container isFooter>
                 <div className="flex items-center justify-between small:text-xl text-lg  xl:w-3/4 xl:justify-around xl:text-2xl">
                     <FooterLink to="/">
