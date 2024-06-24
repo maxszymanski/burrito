@@ -12,6 +12,8 @@ import Loader from './ui/Loader'
 import ConfirmSignup from './features/authentication/ConfirmSignup'
 import UpdateProfileMenu from './features/user/UpdateProfileMenu'
 import UpdatePassword from './features/user/UpdatePassword'
+import { ErrorBoundary } from 'react-error-boundary'
+import ErrorFallback from './ui/ErrorFallback'
 
 const queryClient = new QueryClient()
 const AppLayout = lazy(() => import('./ui/AppLayout'))
@@ -38,7 +40,12 @@ const router = createBrowserRouter([
     {
         element: (
             <Suspense fallback={<Loader />}>
-                <AppLayout />
+                <ErrorBoundary
+                    FallbackComponent={ErrorFallback}
+                    onReset={() => window.location.replace('/')}
+                >
+                    <AppLayout />
+                </ErrorBoundary>
             </Suspense>
         ),
         children: [
@@ -59,7 +66,12 @@ const router = createBrowserRouter([
     {
         element: (
             <Suspense fallback={<Loader />}>
-                <Login />
+                <ErrorBoundary
+                    FallbackComponent={ErrorFallback}
+                    onReset={() => window.location.replace('/login')}
+                >
+                    <Login />
+                </ErrorBoundary>
             </Suspense>
         ),
         children: [
@@ -80,7 +92,12 @@ const router = createBrowserRouter([
     {
         element: (
             <Suspense fallback={<Loader />}>
-                <BasketPage />
+                <ErrorBoundary
+                    FallbackComponent={ErrorFallback}
+                    onReset={() => window.location.replace('/basket')}
+                >
+                    <BasketPage />
+                </ErrorBoundary>
             </Suspense>
         ),
         children: [
@@ -109,7 +126,12 @@ const router = createBrowserRouter([
     {
         element: (
             <Suspense fallback={<Loader />}>
-                <Account />
+                <ErrorBoundary
+                    FallbackComponent={ErrorFallback}
+                    onReset={() => window.location.replace('/account')}
+                >
+                    <Account />
+                </ErrorBoundary>
             </Suspense>
         ),
 
