@@ -10,6 +10,7 @@ import Admin from './pages/Admin'
 import Loader from './ui/Loader'
 import ConfirmSignup from './features/authentication/ConfirmSignup'
 import UpdateProfileMenu from './features/user/UpdateProfileMenu'
+import UpdatePassword from './features/user/UpdatePassword'
 
 const queryClient = new QueryClient()
 const AppLayout = lazy(() => import('./ui/AppLayout'))
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
             {
                 path: 'updateProfile',
                 element: <UpdateProfile />,
+            },
+            {
+                path: 'updatePassword',
+                element: <UpdatePassword />,
             },
             {
                 path: 'updateProfileMenu',

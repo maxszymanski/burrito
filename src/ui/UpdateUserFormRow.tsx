@@ -21,9 +21,9 @@ const FormRow: React.FC<FormRow> = ({ label, children, error = '' }) => {
                 </label>
             )}
             {children}
-            <span className="text-red-400 text-sm mt-3 mx-1 text-left pl-8 lg:text-base ">
+            <p className="text-red-400 text-sm mt-3 mx-1 text-left ml-8 lg:text-base ">
                 {error}
-            </span>
+            </p>
         </div>
     )
 }

@@ -16,7 +16,7 @@ export function useUpdatePassword() {
                 queryKey: ['user'],
             })
             await queryClient.refetchQueries({ queryKey: ['user'] })
-            toast.success('Profil został zaaktualizowany')
+            toast.success('Hasło zostało zmienione')
             navigate('/account')
         },
         onError: (err) => toast.error(err.message),

@@ -203,11 +203,7 @@ function SigninForm() {
                         {isShowPassword ? <IoMdEyeOff /> : <LuEye />}
                     </button>
                 </FormRow>
-                <Button
-                    onClick={() => {}}
-                    type="w-full mt-2"
-                    disabled={isPending}
-                >
+                <Button type="w-full mt-2" disabled={isPending}>
                     Zarejestruj się
                 </Button>
                 <p className="font-scope text-xs small:text-base p-2 text-center text-mywhite transition-colors duration-300 my-6 ">

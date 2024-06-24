@@ -25,7 +25,7 @@ function UserProfile() {
     if (isLoadingUser) return <Loader />
 
     return (
-        <div className="text-center  min-h-screen text-mywhite small:text-lg pb-24 small:pb-32 lg:pt-32 lg:ml-12">
+        <section className="text-center  min-h-screen text-mywhite small:text-lg pb-24 small:pb-32 lg:pt-32 lg:ml-12">
             <UserHeader />
             <UserMain>
                 <UserInfo>
@@ -82,7 +82,7 @@ function UserProfile() {
             </UserMain>
 
             <Logout />
-        </div>
+        </section>
     )
 }
 

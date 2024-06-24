@@ -6,13 +6,7 @@ function UserName() {
     const location = useLocation()
     const currentPath = location.pathname
     const route: string =
-        currentPath === '/account'
-            ? '/updateProfileMenu'
-            : currentPath === '/updateProfileMenu'
-            ? '/account'
-            : currentPath === '/updateProfile'
-            ? '/account'
-            : ''
+        currentPath === '/account' ? '/updateProfileMenu' : '/account'
 
     return (
         <div className="text-sm small:mb-3 xl:my-4">
@@ -26,13 +20,7 @@ function UserName() {
                 className="text-yellow-500 p-3 xl:text-lg hover:text-yellow-400 transition-colors duration-300 "
                 to={route}
             >
-                {currentPath === '/account'
-                    ? 'Edytuj profil'
-                    : currentPath === '/updateProfileMenu'
-                    ? 'Zobacz profil'
-                    : currentPath === '/updateProfile'
-                    ? 'Zobacz profil'
-                    : ''}
+                {currentPath === '/account' ? 'Edytuj profil' : 'Zobacz profil'}
             </NavLink>
         </div>
     )

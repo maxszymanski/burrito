@@ -11,7 +11,7 @@ function UpdateProfileMenu() {
                     className="text-mywhite p-3 block xl:text-lg hover:text-yellow-400 transition-colors duration-300 "
                     to="/updateProfile"
                 >
-                    Aktualizacja danych adresowych
+                    Zaktualizuj swoje dane i zdjęcie
                 </Link>
                 <Link
                     className="text-mywhite p-3  blockxl:text-lg hover:text-yellow-400 transition-colors duration-300 "
