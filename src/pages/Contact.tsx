@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import FooterLink from '../ui/FooterLink'
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa'
-import Footer from '../ui/Footer'
 
 function Contact() {
     return (

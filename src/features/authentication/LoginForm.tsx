@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 import { getCart } from '../cart/cartSlice'
 import { useUser } from './useUser'
 import { LoginFormInputs, User } from '../../types/types'
+import Spinner from '../../ui/Spinner'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -112,7 +113,7 @@ function LoginForm() {
                     disabled={isPending}
                     type="w-full mt-2"
                 >
-                    zaloguj
+                    {isPending ? <Spinner /> : 'zaloguj'}
                 </Button>
                 <Link
                     to="/forgotpassword"

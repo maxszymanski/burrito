@@ -9,6 +9,7 @@ import { useSignUp } from './useSignin'
 import LoginLink from '../../ui/LoginLink'
 import { useUser } from './useUser'
 import { NewUser } from '../../types/types'
+import Spinner from '../../ui/Spinner'
 
 function SigninForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -204,7 +205,8 @@ function SigninForm() {
                     </button>
                 </FormRow>
                 <Button type="w-full mt-2" disabled={isPending}>
-                    Zarejestruj się
+                    {' '}
+                    {isPending ? <Spinner /> : 'Zarejestruj się'}
                 </Button>
                 <p className="font-scope text-xs small:text-base p-2 text-center text-mywhite transition-colors duration-300 my-6 ">
                     Posiadasz już konto i chcesz się zalogować?

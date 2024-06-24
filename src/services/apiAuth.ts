@@ -16,8 +16,7 @@ export async function login({
 }
 
 export async function getCurrentUser() {
-    const { data: session } = await supabase.auth.getSession() //wezmie dane z localstorage
-    //sprawdzamy w protected rout
+    const { data: session } = await supabase.auth.getSession()
     if (!session.session) return null
 
     const { data, error } = await supabase.auth.getUser()

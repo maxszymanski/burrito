@@ -2,13 +2,14 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import FormRow from '../../ui/FormRow'
 import Button from '../../ui/Button'
 import usePasswordRecovery from './usePasswordRecovery'
+import Spinner from '../../ui/Spinner'
 
 interface ForgotPasswordFormData {
     email: string
 }
 
 function ForgotPassword() {
-    const { passwordRecovery } = usePasswordRecovery()
+    const { passwordRecovery, isSending } = usePasswordRecovery()
     const { register, formState, handleSubmit } =
         useForm<ForgotPasswordFormData>()
     const { errors } = formState
@@ -50,7 +51,9 @@ function ForgotPassword() {
                     `}
                 />
             </FormRow>
-            <Button type=" mt-3 px-6">Wyślij</Button>
+            <Button type=" mt-3 px-6">
+                {isSending ? <Spinner /> : 'Wyślij'}
+            </Button>
         </form>
     )
 }

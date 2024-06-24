@@ -31,10 +31,9 @@ export function useSignUp() {
             navigate('/login')
             toast('Link aktywacyjny został wysłany na podany adres email')
         },
-        onError: (err) => {
-            console.log(err)
+        onError: () => {
             toast(
-                'Wystąpił problem z rejestracją konta. Prosimy sptóbować ponownie'
+                'Wystąpił problem z rejestracją konta. Prosimy spróbować ponownie lub użyć innego adresu email'
             )
         },
     })

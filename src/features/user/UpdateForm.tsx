@@ -6,6 +6,7 @@ import { useUser } from '../authentication/useUser'
 import Loader from '../../ui/Loader'
 import { UserMetadata } from '@supabase/supabase-js'
 import { NewUser } from '../../types/types'
+import Spinner from '../../ui/Spinner'
 
 function UpdateForm() {
     const { register, formState, handleSubmit } = useForm<NewUser>()
@@ -141,7 +142,7 @@ function UpdateForm() {
             </UpdateUserFormRow>
 
             <Button type=" mt-2 px-6 " disabled={isUpdating}>
-                Zapisz
+                {isUpdating ? <Spinner /> : 'Zapisz'}
             </Button>
         </form>
     )

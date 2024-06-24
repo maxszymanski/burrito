@@ -152,7 +152,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-    const isDesktop = useMediaQuery({ query: '(min-width: 992px)' })
+    const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' })
 
     return (
         <QueryClientProvider client={queryClient}>
