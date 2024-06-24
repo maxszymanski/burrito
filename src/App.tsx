@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -151,27 +152,33 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+    const isDesktop = useMediaQuery({ query: '(min-width: 992px)' })
+
     return (
         <QueryClientProvider client={queryClient}>
             <PriceProvider>
                 <RouterProvider router={router} />
                 <ReactQueryDevtools initialIsOpen={false} />
                 <Toaster
-                    position="top-center"
+                    position={isDesktop ? 'bottom-right' : 'top-center'}
                     gutter={12}
-                    containerStyle={{ marginTop: '10px' }}
+                    containerStyle={{
+                        marginTop: isDesktop ? '0px' : '10px',
+                        marginRight: isDesktop ? '50px' : '0px',
+                        marginBottom: isDesktop ? '20px' : '0px',
+                    }}
                     toastOptions={{
                         success: {
-                            duration: 2500,
+                            duration: isDesktop ? 3000 : 2500,
                         },
                         error: {
-                            duration: 2500,
+                            duration: isDesktop ? 3000 : 2500,
                             style: {
                                 backgroundColor: '#ef4444',
                             },
                         },
                         style: {
-                            fontSize: '18px',
+                            fontSize: isDesktop ? '20px' : '18px',
                             padding: '16px 20px',
                             backgroundColor: '#84cc16',
                             color: '#fff',
