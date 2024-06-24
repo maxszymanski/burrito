@@ -9,6 +9,7 @@ import PageNotFound from './pages/PageNotFound'
 import Admin from './pages/Admin'
 import Loader from './ui/Loader'
 import ConfirmSignup from './features/authentication/ConfirmSignup'
+import UpdateProfileMenu from './features/user/UpdateProfileMenu'
 
 const queryClient = new QueryClient()
 const AppLayout = lazy(() => import('./ui/AppLayout'))
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
             {
                 path: 'updateProfile',
                 element: <UpdateProfile />,
+            },
+            {
+                path: 'updateProfileMenu',
+                element: <UpdateProfileMenu />,
             },
             {
                 path: 'ordersHistory',

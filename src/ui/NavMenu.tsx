@@ -29,7 +29,7 @@ function NavMenu({ noMobile = false }: { noMobile: boolean }) {
         >
             <Container isFooter={false}>
                 <ul
-                    className="px-2 pt-1 font-scope text-2xl small:text-3xl text-mywhite flex
+                    className="w-full px-2 pt-1 font-scope text-2xl small:text-3xl text-mywhite flex
 			justify-between bg-[#1d1d1d] items-center xl:bg-transparent "
                 >
                     <NavItem

@@ -7,7 +7,9 @@ function UserName() {
     const currentPath = location.pathname
     const route: string =
         currentPath === '/account'
-            ? '/updateProfile'
+            ? '/updateProfileMenu'
+            : currentPath === '/updateProfileMenu'
+            ? '/account'
             : currentPath === '/updateProfile'
             ? '/account'
             : ''
@@ -26,7 +28,11 @@ function UserName() {
             >
                 {currentPath === '/account'
                     ? 'Edytuj profil'
-                    : currentPath === '/updateProfile' && 'Zobacz profil'}
+                    : currentPath === '/updateProfileMenu'
+                    ? 'Zobacz profil'
+                    : currentPath === '/updateProfile'
+                    ? 'Zobacz profil'
+                    : ''}
             </NavLink>
         </div>
     )
