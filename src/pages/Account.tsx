@@ -15,7 +15,7 @@ function Account() {
         if (!isAuthenticated && !contactPage) navigate('/login')
     }, [isAuthenticated, navigate, isLoading, contactPage])
 
-    if (isLoading) return <Loader />
+    if (isLoading && !contactPage) return <Loader />
     return (
         <>
             <div className=" font-muli w-full min-h-screen relative lg:bg-account bg-account-small bg-center bg-cover   lg:overflow-y-auto xl:h-screen">
