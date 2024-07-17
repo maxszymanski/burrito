@@ -49,7 +49,7 @@ function LoginForm() {
     if (isPending) return <Loader />
 
     return (
-        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
+        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl xl:mt-16">
             <img
                 src="./images/pin.webp"
                 alt="żółta pinezka"
