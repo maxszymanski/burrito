@@ -31,7 +31,7 @@ Password: Startowe1!
 - Users can create an account to receive discounts.
 - Users can view their previous orders and orders shared by other users.
 - Users can see the status of their current orders in real-time.
-- Users receive higher discounts based on the number of orders they have placed.
+- Users receive rank and higher discounts depending on the number of orders placed.
 - Users can edit their account details and profile picture.
 - Users can change and recover forgotten passwords.
 
@@ -40,6 +40,8 @@ Password: Startowe1!
 ## Technologies Used
 
 - [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev)
+  
+- [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
   
 - [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
@@ -54,7 +56,10 @@ Password: Startowe1!
 - [![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)](https://react-hook-form.com/)
   
 
-  
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 ## Contact
 
