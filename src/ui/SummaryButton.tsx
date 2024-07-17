@@ -19,6 +19,7 @@ function SummaryButton({ isSummary = false }) {
         orderAddress,
         clearOrderAddress,
         totalDiscount,
+        setNewOrderId,
     } = usePrice()
     const { createOrder, isCreating } = useCreateOrder()
     const { user, isLoading, isAuthenticated } = useUser()
@@ -65,6 +66,7 @@ function SummaryButton({ isSummary = false }) {
                 clearPaymentMethod()
                 localStorage.removeItem('deliveryData')
                 clearOrderAddress()
+                setNewOrderId(orderId)
             },
         })
     }

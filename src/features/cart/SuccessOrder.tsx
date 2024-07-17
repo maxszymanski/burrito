@@ -3,13 +3,14 @@ import Loader from '../../ui/Loader'
 import OrderCartHeader from './OrderCartHeader'
 import CartStep from './CartStep'
 import { useOrders } from '../orders/useOrders'
+import { usePrice } from '../../context/usePrice'
 
 function SuccessOrder() {
     const { orders, isLoading: isLoadingOrders } = useOrders()
+    const { newOrderId } = usePrice()
 
-    if (isLoadingOrders || !orders || orders.length === 0) return <Loader />
-
-    const newOrderID = orders[orders.length - 1].id || '0'
+    if (isLoadingOrders || !orders || orders.length === 0 || newOrderId === '')
+        return <Loader />
 
     return (
         <section className=" px-4 py-6 small:px-6 text-center bg-menu-bg-sm lg:bg-none  xl:pt-44  lg:pt-16 lg:px-12 lg:container lg:mx-auto lg:max-w-[1000px]  h-screen  lg:overflow-y-auto lg:scrollbar-hide">
@@ -21,7 +22,7 @@ function SuccessOrder() {
                 </h2>
                 <p className="text-yellow-500 py-8 text-3xl lg:text-5xl lg:py-12">
                     {' '}
-                    #{newOrderID}
+                    #{newOrderId}
                 </p>
                 <p className="text-center mb-1 lg:text-lg">
                     Skorzystaj z powyższego numeru, aby śledzić status swojego
@@ -33,7 +34,7 @@ function SuccessOrder() {
                 </p>
 
                 <Link
-                    to={`/order/${newOrderID}`}
+                    to={`/order/${newOrderId}`}
                     className="text-yellow-500 p-2 text-xl lg:text-2xl duration-300 transition-colors hover:text-yellow-400"
                 >
                     Zobacz zamówienie

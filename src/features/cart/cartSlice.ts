@@ -15,7 +15,6 @@ const cartSlice = createSlice({
         addItem(state, action) {
             // payload = newItem
             state.cart.push(action.payload)
-            console.log(cart)
         },
         deleteItem(state, action) {
             state.cart = state.cart.filter(
