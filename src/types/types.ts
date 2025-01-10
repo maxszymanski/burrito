@@ -93,7 +93,7 @@ export interface UserMetadata {
 export interface NewUser {
     email?: string
     password?: string
-    userName: string
+    userName?: string
     street: string
     zipCode: string
     city: string
