@@ -31,6 +31,7 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
     const [shipping, setShipping] = useState(5)
     const [discount, setDiscount] = useState(0)
     const [total, setTotal] = useState(0)
+    const [newOrderId, setNewOrderId] = useState('')
 
     const [showCookieModal, setShowCookieModal] = useState(
         !localStorage.getItem('cookie')
@@ -92,6 +93,8 @@ const PriceProvider: React.FC<Price> = ({ children }) => {
                 setDiscount,
                 showCookieModal,
                 closeCookieModal,
+                newOrderId,
+                setNewOrderId,
             }}
         >
             {children}

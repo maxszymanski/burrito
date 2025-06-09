@@ -26,6 +26,8 @@ export interface PriceContextType {
     setDiscount: React.Dispatch<React.SetStateAction<number>>
     showCookieModal: boolean
     closeCookieModal: () => void
+    newOrderId: string
+    setNewOrderId: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface CartItemInterface {
@@ -91,7 +93,7 @@ export interface UserMetadata {
 export interface NewUser {
     email?: string
     password?: string
-    userName: string
+    userName?: string
     street: string
     zipCode: string
     city: string

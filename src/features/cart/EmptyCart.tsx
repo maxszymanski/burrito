@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function EmptyCart() {
     return (
         <div className=" text-mywhite font-muli min-h-screen text-center bg-gradient-to-b from-[#9A1E02] to-[#eeb02a] lg:h-screen">
-            <div className="flex flex-col items-center justify-center min-h-screen px-4 py-3 container mx-auto ">
+            <div className="flex flex-col items-center justify-center min-h-screen px-4 py-3 container mx-auto xl:pt-16">
                 <p className=" font-bold text-2xl small:text-3xl leading-9 text-mywhite ">
                     Twój koszyk jest pusty.
                 </p>

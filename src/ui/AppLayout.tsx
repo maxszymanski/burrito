@@ -6,11 +6,11 @@ import { usePrice } from '../context/usePrice'
 
 function AppLayout() {
     const { showCookieModal } = usePrice()
-    const location = useLocation()
+    const { pathname } = useLocation()
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [location.pathname])
-    const isMenuPage = location.pathname === '/menu'
+    }, [pathname])
+    const isMenuPage = pathname === '/menu'
 
     return (
         <div

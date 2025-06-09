@@ -13,6 +13,7 @@ import { getCart } from '../cart/cartSlice'
 import { useUser } from './useUser'
 import { LoginFormInputs, User } from '../../types/types'
 import Spinner from '../../ui/Spinner'
+import LoginTestButton from '../../ui/LoginTestButton'
 
 function LoginForm() {
     const [isShowPassword, setIsShowPassword] = useState(false)
@@ -42,6 +43,22 @@ function LoginForm() {
         })
         setIsFormShow(false)
     }
+
+    const handleTestLogin = () => {
+        const testAccount = {
+            email: 'maxprojectss@gmail.com',
+            password: 'Startowe1!',
+        }
+        login(testAccount, {
+            onSuccess: () => {
+                reset()
+                cart.length > 0
+                    ? navigate('/basket', { replace: true })
+                    : navigate('/', { replace: true })
+            },
+        })
+        setIsFormShow(false)
+    }
     const handleShowPassword = () => {
         setIsShowPassword((show) => !show)
     }
@@ -49,7 +66,7 @@ function LoginForm() {
     if (isPending) return <Loader />
 
     return (
-        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl">
+        <div className="bg-[#2c2c2b] px-6 py-12 w-full text-mywhite relative rounded-lg max-w-2xl xl:mt-16">
             <img
                 src="./images/pin.webp"
                 alt="żółta pinezka"
@@ -115,6 +132,7 @@ function LoginForm() {
                 >
                     {isPending ? <Spinner /> : 'zaloguj'}
                 </Button>
+                <LoginTestButton onClick={handleTestLogin} />
                 <Link
                     to="/forgotpassword"
                     className="font-scope text-xs small:text-base p-2 text-center block hover:text-yellow-500 transition-colors duration-300 text-yellow-400 my-6 "

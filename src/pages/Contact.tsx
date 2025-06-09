@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa'
 function Contact() {
     return (
         <>
-            <section className="px-6 lg:container lg:mx-auto text-mywhite w-full pb-24 text-center xl:pb-12 xl:pt-28 2xl:ml-8">
+            <section className="px-6 lg:container lg:mx-auto text-mywhite w-full pb-24 text-center xl:pb-12 xl:pt-28 xl:ml-20 2xl:ml-10">
                 <Logo />
                 <h2 className="text-3xl py-8 text-yellow-500 lg:text-left lg:text-5xl lg:py-16 ">
                     Kontakt

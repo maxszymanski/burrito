@@ -4,7 +4,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { PriceProvider } from './context/PriceContext'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Contact from './pages/Contact'
 import PageNotFound from './pages/PageNotFound'
 import Admin from './pages/Admin'
@@ -180,7 +180,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <PriceProvider>
                 <RouterProvider router={router} />
-                <ReactQueryDevtools initialIsOpen={false} />
+                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                 <Toaster
                     position={isDesktop ? 'bottom-right' : 'top-center'}
                     gutter={12}
