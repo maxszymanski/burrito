@@ -33,7 +33,6 @@ export async function createOrder(newOrder: Order) {
         .from('orders')
         .insert([newOrder])
         .select('*')
-    console.log(newOrder)
 
     if (error) {
         console.error(error)
